@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc">
+  <meta name="description" content="Spring Boot" />
+  <meta name="author" content="Adolfo Sanz De Diego">
+  <title>Spring Boot</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../lib/reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="../lib/reveal.js-menu/menu.css">
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../lib/reveal.js/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="../lib/reveal.js/lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../lib/reveal.js/css/print/pdf.css' : '../lib/reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+  <style type="text/css">
+    body {
+      background: white !important;
+      background-color: white !important;
+    }
+    code{
+      white-space: pre;
+    }
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 200% !important;
+    }
+    h1 {
+      font-size: 200% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    h3 {
+      font-size: 100% !important;
+    }
+    @media print {
+      #only-print-parent { display: table !important; }
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 300% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+      h3 { font-size: 150% !important; }
+    }
+  </style>
+  <!--[if lt IE 9]>
+  <script src="../lib/reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">Spring Boot</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Pronoide</h3>
+    </div>
+</section>
+
+<section><section id="acerca-de" class="titleslide slide level1"><h1><span class="header-section-number">2</span> Acerca de</h1></section><section id="autor" class="slide level2">
+<h2><span class="header-section-number">2.1</span> Autor</h2>
+<ul>
+<li><strong>Adolfo Sanz De Diego</strong>
+<ul>
+<li>Blog: <a href="http://asanzdiego.com/">asanzdiego.com</a></li>
+<li>Correo: <a href="mailto:asanzdiego@gmail.com">asanzdiego@gmail.com</a></li>
+<li>GitHub: <a href="http://github.com/asanzdiego">github.com/asanzdiego</a></li>
+<li>Twitter: <a href="http://twitter.com/asanzdiego">twitter.com/asanzdiego</a></li>
+<li>LinkedIn: <a href="http://www.linkedin.com/in/asanzdiego">in/asanzdiego</a></li>
+<li>SlideShare: <a href="http://www.slideshare.net/asanzdiego/">slideshare.net/asanzdiego</a></li>
+</ul></li>
+</ul>
+</section><section id="licencia" class="slide level2">
+<h2><span class="header-section-number">2.2</span> Licencia</h2>
+<ul>
+<li><strong>Esta obra está bajo una licencia:</strong>
+<ul>
+<li><a href="http://creativecommons.org/licenses/by-sa/3.0/es/">Creative Commons Reconocimiento-CompartirIgual 3.0</a></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="microservicios" class="titleslide slide level1"><h1><span class="header-section-number">3</span> Microservicios</h1></section><section id="introducción" class="slide level2">
+<h2><span class="header-section-number">3.1</span> Introducción</h2>
+<ul>
+<li><p>Son <strong>son pequeños servicios autónomos que se comunican con APIs ligeros</strong>, típicamente con APIs REST.</p></li>
+<li><p>Encierran <strong>toda la lógica necesaria para cubrir una funcionalidad completa</strong>, desde el API que expone que puede hacer hasta el acceso a la base de datos.</p></li>
+<li><p>La arquitectura de microservicios, se forma con microservicios que se ejecutan y despliegan independientemente, comunicándose con la parte cliente o si es necesario entre ellas <strong>síncronamente a través de APIs o asíncronamente a través de servicios de mensajería</strong>.</p></li>
+</ul>
+</section><section id="ejemplo" class="slide level2">
+<h2><span class="header-section-number">3.2</span> Ejemplo</h2>
+<figure>
+<img src="../img/Arquitectura-Microservicios.png" alt="Arquitectura Microservicios" text-align="center" style="width:50.0%" /><figcaption>Arquitectura Microservicios</figcaption>
+</figure>
+</section><section id="ventajas" class="slide level2">
+<h2><span class="header-section-number">3.3</span> Ventajas</h2>
+<ul>
+<li><strong>Desarrollos pequeños y rápidos</strong>.</li>
+<li><strong>Escalado más granular</strong>, permitiendo aprovechar de forma más eficiente los recursos.</li>
+<li>Aprovechamiento de los puntos fuertes de cada lenguaje de programación, ya que <strong>permite el uso de distintas tecnologías</strong> para la implementación de cada microservicio.</li>
+</ul>
+</section><section id="desventajas" class="slide level2">
+<h2><span class="header-section-number">3.4</span> Desventajas</h2>
+<ul>
+<li><strong>Monitorización</strong> más compleja.</li>
+<li><strong>Despliegues</strong> más complejos.</li>
+<li>Surgen problemas con la <strong>compatibilidad entre versiones</strong>.</li>
+</ul>
+</section></section>
+<section><section id="rest" class="titleslide slide level1"><h1><span class="header-section-number">4</span> REST</h1></section><section id="introducción-1" class="slide level2">
+<h2><span class="header-section-number">4.1</span> Introducción</h2>
+<ul>
+<li>Los servicios REST son <strong>servicios basados en recursos</strong>, montados sobre HTTP.</li>
+<li>Los recursos son <strong>representados por una URL</strong> (Uniform Resource Locator).</li>
+<li>Los recursos se pueden <strong>acceder o modificar mediante los métodos del protocolo HTTP</strong> (POST, GET, PUT, DELETE).</li>
+</ul>
+</section><section id="ventajas-1" class="slide level2">
+<h2><span class="header-section-number">4.2</span> Ventajas</h2>
+<ul>
+<li>Es <strong>más sencillo</strong> (tanto la API como la implementación).</li>
+<li>Es <strong>más rápido</strong> (peticiones más ligeras que se pueden cachear).</li>
+<li>Es <strong>multiformato</strong> (HTML, XML, JSON, etc.).</li>
+</ul>
+</section><section id="ejemplo-1" class="slide level2">
+<h2><span class="header-section-number">4.3</span> Ejemplo</h2>
+<ul>
+<li><strong>GET</strong> a <a href="">http://myhost.com/person</a>
+<ul>
+<li>Devuelve todas las personas</li>
+</ul></li>
+<li><strong>POST</strong> a <a href="">http://myhost.com/person</a>
+<ul>
+<li>Crear una nueva persona</li>
+</ul></li>
+<li><strong>GET</strong> a <a href="">http://myhost.com/person/123</a>
+<ul>
+<li>Devuelve la persona con id=123</li>
+</ul></li>
+<li><strong>PUT</strong> a <a href="">http://myhost.com/person/123</a>
+<ul>
+<li>Actualiza la persona con id=123</li>
+</ul></li>
+<li><strong>DELETE</strong> a <a href="">http://myhost.com/person/123</a>
+<ul>
+<li>Borra la persona con id=123</li>
+</ul></li>
+</ul>
+</section><section id="estados-http" class="slide level2">
+<h2><span class="header-section-number">4.4</span> Estados HTTP</h2>
+<ul>
+<li>200 OK</li>
+<li>201 Created</li>
+<li>202 Accepted</li>
+<li>301 Moved Permanently</li>
+<li>400 Bad Request</li>
+<li>401 Unauthorized</li>
+<li>402 Payment Required</li>
+<li>403 Forbidden</li>
+<li>404 Not Found</li>
+<li>405 Method Not Allowed</li>
+<li>500 Internal Server Error</li>
+<li>501 Not Implemented</li>
+</ul>
+</section><section id="json" class="slide level2">
+<h2><span class="header-section-number">4.5</span> JSON</h2>
+<ul>
+<li>Acrónimo de <strong>JavaScript Object Notation</strong>.</li>
+<li>Sirve como <strong>formato ligero</strong> para el intercambio de datos.</li>
+<li>Su <strong>simplicidad</strong> ha generalizado su uso, especialmente como alternativa al XML.</li>
+</ul>
+</section><section id="ejemplo-2" class="slide level2">
+<h2><span class="header-section-number">4.6</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="op">{</span>
+    <span class="dt">curso</span><span class="op">:</span> <span class="st">&quot;Spring Boot y Angular&quot;</span><span class="op">,</span>
+    <span class="dt">profesor</span><span class="op">:</span> <span class="st">&quot;Adolfo&quot;</span><span class="op">,</span>
+    <span class="dt">participantes</span><span class="op">:</span> [
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Asunción&quot;, edad: 35 },</span>
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Miguel&quot;</span><span class="op">,</span> <span class="dt">edad</span><span class="op">:</span> <span class="dv">31</span> <span class="op">},</span>
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Miky&quot;</span><span class="op">,</span> <span class="dt">edad</span><span class="op">:</span> <span class="dv">27</span> <span class="op">},</span>
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Alberto&quot;</span><span class="op">,</span> <span class="dt">edad</span><span class="op">:</span> <span class="dv">25</span> <span class="op">}</span>
+    ]
+<span class="op">}</span></code></pre></div>
+</section></section>
+<section><section id="spring" class="titleslide slide level1"><h1><span class="header-section-number">5</span> Spring</h1></section><section id="introducción-2" class="slide level2">
+<h2><span class="header-section-number">5.1</span> Introducción</h2>
+<ul>
+<li><p><strong>Framework de desarrollo</strong> de aplicaciones java.</p></li>
+<li><p>Se encarga de la instanciación de POJOS mediante la <strong>Inversión de Control</strong> y la <strong>Inyección de Dependencias</strong>.</p></li>
+<li><p>Ha ido evolucionando y ahora tiene <strong>muchos sub proyectos</strong>: <a href="https://spring.io/projects" class="uri">https://spring.io/projects</a></p></li>
+<li><p><strong>No es intrusivo</strong>: puedes usar lo que el te proporciona u otras implementaciones.</p></li>
+</ul>
+</section><section id="definiciones" class="slide level2">
+<h2><span class="header-section-number">5.2</span> Definiciones</h2>
+<ul>
+<li><strong>Inversión de control</strong>:
+<ul>
+<li>Patrón de diseño que <strong>delega la creación de objetos en un contenedor</strong>.</li>
+</ul></li>
+<li><strong>Inyección de dependencias</strong>:
+<ul>
+<li>Patrón de diseño que <strong>permite desacoplar la Interfaz de su implementación</strong>.</li>
+</ul></li>
+</ul>
+</section><section id="ejemplo-3" class="slide level2">
+<h2><span class="header-section-number">5.3</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> PersonaDao {
+    <span class="dt">void</span> <span class="fu">insertar</span>(Persona persona);
+}
+<span class="kw">class</span> GestorPersonas {
+    <span class="kw">private</span> PersonaDao dao;
+    <span class="co">// Inyección por constructor</span>
+    <span class="kw">public</span> <span class="fu">GestorPersonas</span>(PersonaDao dao) {
+        <span class="kw">this</span>.<span class="fu">dao</span> = dao;
+    }
+    <span class="co">// Inyección por setter</span>
+    <span class="kw">public</span> <span class="fu">setDao</span>(PersonaDao dao) {
+        <span class="kw">this</span>.<span class="fu">dao</span> = dao;
+    }
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">alta</span>(Persona persona) {
+        dao.<span class="fu">insertar</span>(persona);
+    }
+}</code></pre></div>
+</section></section>
+<section><section id="spring-aop" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Spring AOP</h1></section><section id="introducción-3" class="slide level2">
+<h2><span class="header-section-number">6.1</span> Introducción</h2>
+<ul>
+<li><p>Aunque es bastante transparente para el programador, <strong>Spring hace uso intensivo de programación orientada a aspectos</strong> cada vez que usamos una de sus anotaciones.</p></li>
+<li><p>Los programas tienen muchas funcionalidades trasversales, <strong>que afectan a muchos los módulos de la aplicación</strong>, como el logging, la transaccionalidad o la seguridad.</p></li>
+<li><p>La AOP, o <strong>programación orientada a aspectos</strong>, se encarga de extraer dichas funcionalidades transversales de los módulos de la aplicación.</p></li>
+</ul>
+</section><section id="funcionalidades-trasversales" class="slide level2">
+<h2><span class="header-section-number">6.2</span> Funcionalidades trasversales</h2>
+<figure>
+<img src="../img/aop-funcionalidades.png" alt="Funcionalidades trasversales" text-align="center" style="width:50.0%" /><figcaption>Funcionalidades trasversales</figcaption>
+</figure>
+</section><section id="aop-overview" class="slide level2">
+<h2><span class="header-section-number">6.3</span> AOP Overview</h2>
+<figure>
+<img src="../img/aop-overview.png" alt="AOP Overview" text-align="center" style="width:50.0%" /><figcaption>AOP Overview</figcaption>
+</figure>
+</section></section>
+<section><section id="spring-mvc" class="titleslide slide level1"><h1><span class="header-section-number">7</span> Spring MVC</h1></section><section id="introducción-4" class="slide level2">
+<h2><span class="header-section-number">7.1</span> Introducción</h2>
+<ul>
+<li>Framework de desarrollo de aplicaciones web que implementa el <strong>Modelo Vista Controlador</strong>.</li>
+<li>Se basa en anotaciones, las más importantes:
+<ul>
+<li><strong><span class="citation" data-cites="Controller">@Controller</span></strong>: indica que una clase es un controlador.</li>
+<li><strong><span class="citation" data-cites="RequestMapping">@RequestMapping</span></strong>: mapea un método de clase a una request en función de la URL y el método HTTP.</li>
+<li><strong><span class="citation" data-cites="PathVariable">@PathVariable</span></strong>: obtiene el path de la URL.</li>
+<li><strong><span class="citation" data-cites="RequestParam">@RequestParam</span></strong>: obtiene parámetros de la URL.</li>
+<li><strong><span class="citation" data-cites="RequestBody">@RequestBody</span></strong>: obtiene el body de peticiones POST y PUT.</li>
+<li><strong><span class="citation" data-cites="ResponseBody">@ResponseBody</span></strong>: devuelve el body en el response.</li>
+<li><strong><span class="citation" data-cites="SessionAttribute">@SessionAttribute</span></strong>: obtiene información de la sesión.</li>
+</ul></li>
+</ul>
+</section><section id="ejemplo-4" class="slide level2">
+<h2><span class="header-section-number">7.2</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">// http://myhost.com/saludar/adolfo?edad=40</span>
+<span class="co">// en el body del POST {&quot;apellido1&quot;:&quot;sanz&quot;, &quot;apellido2&quot;:&quot;diego&quot;}</span>
+<span class="at">@Controller</span>
+<span class="kw">public</span> <span class="kw">class</span> SaludarController {
+    <span class="at">@ResponseBody</span>
+    <span class="at">@RequestMapping</span>(<span class="st">&quot;saludar/{nombre}&quot;</span>, method=RequestMethod.<span class="fu">POST</span>)
+    <span class="kw">public</span> Saludo <span class="fu">saludar</span>(<span class="at">@PathVariable</span>(<span class="st">&quot;nombre&quot;</span>) <span class="bu">String</span> nombre,
+        <span class="at">@RequestParam</span>(<span class="st">&quot;edad&quot;</span>) <span class="bu">Integer</span> edad, <span class="at">@RequestBody</span> Apellidos a,
+        <span class="at">@SessionAttribute</span> Login login){
+        Saludo saludo = <span class="kw">new</span> <span class="fu">Saludo</span>()
+        saludo.<span class="fu">setNombre</span>(nombre);
+        saludo.<span class="fu">setApellidos</span>(a.<span class="fu">getApellido1</span>(), a.<span class="fu">getApellido2</span>());
+        saludo.<span class="fu">setEdad</span>(edad);
+        saludo.<span class="fu">setLogin</span>(login);
+        <span class="kw">return</span> saludo;
+    }
+}</code></pre></div>
+</section><section id="spring-rest" class="slide level2">
+<h2><span class="header-section-number">7.3</span> Spring REST</h2>
+<ul>
+<li><strong><span class="citation" data-cites="RestController">@RestController</span></strong>: junta las anotaciones <span class="citation" data-cites="Controller">@Controller</span> y <span class="citation" data-cites="ResponseBody">@ResponseBody</span>.</li>
+<li><strong><span class="citation" data-cites="ResponseEntity">@ResponseEntity</span></strong>: para devolver el estado del response.</li>
+</ul>
+</section><section id="ejemplo-5" class="slide level2">
+<h2><span class="header-section-number">7.4</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">// http://myhost.com/saludar/adolfo?edad=40</span>
+<span class="co">// en el body del POST {&quot;apellido1&quot;:&quot;sanz&quot;, &quot;apellido2&quot;:&quot;diego&quot;}</span>
+<span class="at">@RestController</span>
+<span class="kw">public</span> <span class="kw">class</span> SaludarController {
+    <span class="at">@RequestMapping</span>(<span class="st">&quot;saludar/{nombre}&quot;</span>, method=RequestMethod.<span class="fu">POST</span>)
+    <span class="kw">public</span> ResponseEntity&lt;Saludo&gt; <span class="fu">saludar</span>(
+        <span class="at">@PathVariable</span>(<span class="st">&quot;nombre&quot;</span>) <span class="bu">String</span> nombre,
+        <span class="at">@RequestParam</span>(<span class="st">&quot;edad&quot;</span>) <span class="bu">String</span> edad, <span class="at">@RequestBody</span> Apellidos a,
+        <span class="at">@SessionAttribute</span> Login login){
+        <span class="kw">if</span> (login == <span class="kw">null</span>) {
+            <span class="kw">return</span> <span class="kw">new</span> ResponseEntity&lt;Saludo&gt;(HttpStatus.<span class="fu">UNAUTHORIZED</span>);
+        }
+        Saludo saludo = <span class="kw">new</span> <span class="fu">Saludo</span>(nombre,
+            a.<span class="fu">getApellido1</span>(), a.<span class="fu">getApellido2</span>(), edad, login);
+        <span class="kw">return</span> <span class="kw">new</span> ResponseEntity&lt;Saludo&gt;(saludo);
+    }
+}</code></pre></div>
+</section></section>
+<section><section id="spring-jpa" class="titleslide slide level1"><h1><span class="header-section-number">8</span> Spring JPA</h1></section><section id="introducción-5" class="slide level2">
+<h2><span class="header-section-number">8.1</span> Introducción</h2>
+<ul>
+<li><p><strong>Framework de persistencia</strong> que se basa en extender interfaces que otorgan funcionalidades a las clases de acceso a datos.</p></li>
+<li><p>Lo más interesante es que no es necesario definir implementaciones pues estas se crean <strong>en tiempo de ejecución</strong>.</p></li>
+</ul>
+</section><section id="ejemplo-6" class="slide level2">
+<h2><span class="header-section-number">8.2</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">interface</span> EntityRepository <span class="kw">extends</span> JpaRepository&lt;<span class="bu">Entity</span>, <span class="bu">Long</span>&gt; {
+
+    <span class="co">// EntityRepository tiene ya estos métodos por heredar de JpaRepository</span>
+
+    <span class="bu">Entity</span> <span class="fu">save</span>(<span class="bu">Entity</span> entity);      
+
+    Optional&lt;TEntity&gt; <span class="fu">findById</span>(<span class="bu">Long</span> primaryKey); 
+
+    <span class="bu">Iterable</span>&lt;TEntity&gt; <span class="fu">findAll</span>();               
+
+    <span class="dt">long</span> <span class="fu">count</span>();                        
+
+    <span class="dt">void</span> <span class="fu">delete</span>(<span class="bu">Entity</span> entity);               
+
+    <span class="dt">boolean</span> <span class="fu">existsById</span>(<span class="bu">Long</span> primaryKey);   
+}</code></pre></div>
+</section><section id="querys-personalizadas" class="slide level2">
+<h2><span class="header-section-number">8.3</span> Querys Personalizadas</h2>
+<ul>
+<li>Se pueden crear métodos siguiendo las siguientes reglas:
+<ul>
+<li>Prefijo del nombre del método <strong>findBy</strong> para busquedas y <strong><em>countBy</em></strong> para conteo de coincidencias.</li>
+<li>Seguido del nombre de los campos de búsqueda concatenados por los operadores correspondientes: <a href="http://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation">And, Or, Between, LessThan, LessThanEqual, GreaterThan, GreaterThanEqual, After, Before, IsNull, IsNotNull, Like, NotLike, StartingWith, EndingWith, Containing, OrderBy, Not, In, NotIn, True, False, IgnoreCase</a></li>
+</ul></li>
+<li>Tambien se pueden definir consultas personalizadas con <strong>JPQL</strong>.</li>
+</ul>
+</section><section id="ejemplos" class="slide level2">
+<h2><span class="header-section-number">8.4</span> Ejemplos</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="bu">List</span>&lt;Person&gt; <span class="fu">findByLastname</span>(<span class="bu">String</span> lastname);
+
+<span class="bu">List</span>&lt;Person&gt; <span class="fu">findByEmailAndLastname</span>(<span class="bu">String</span> email, <span class="bu">String</span> lastname);
+
+<span class="bu">List</span>&lt;Person&gt; <span class="fu">findDistinctByEmailOrLastname</span>(<span class="bu">String</span> email, <span class="bu">String</span> lastname);
+
+<span class="bu">List</span>&lt;Person&gt; <span class="fu">findByLastnameLikeIgnoreCase</span>(<span class="bu">String</span> lastname);
+
+<span class="bu">List</span>&lt;Person&gt; <span class="fu">findByLastnameOrderByFirstnameAsc</span>(<span class="bu">String</span> lastname);
+
+<span class="bu">List</span>&lt;Person&gt; <span class="fu">findByLastnameOrderByFirstnameDesc</span>(<span class="bu">String</span> lastname);</code></pre></div>
+</section><section id="ejemplos-jpql" class="slide level2">
+<h2><span class="header-section-number">8.5</span> Ejemplos JPQL</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Query</span>(<span class="st">&quot;from Country c where lower(c.name) like lower(:name)&quot;</span>)
+<span class="bu">List</span>&lt;Country&gt; <span class="fu">getByNameWithQuery</span>(<span class="bu">String</span> name);               
+
+<span class="at">@Query</span>(<span class="st">&quot;from Country c where lower(c.name) like lower(:name)&quot;</span>)
+Country <span class="fu">findByNameWithQuery</span>(<span class="at">@Param</span>(<span class="st">&quot;name&quot;</span>) <span class="bu">String</span> name);
+
+<span class="at">@Query</span>(<span class="st">&quot;select case when (count(c) &gt; 0) then true else false end&quot;</span>
+    + <span class="st">&quot; from Country c where c.name = :name)&quot;</span>)
+<span class="dt">boolean</span> <span class="fu">exists</span>(<span class="bu">String</span> name);    </code></pre></div>
+</section><section id="paginación-y-ordenación" class="slide level2">
+<h2><span class="header-section-number">8.6</span> Paginación y Ordenación</h2>
+<ul>
+<li>A las consultas se puede añadir un último parametro de tipo <strong>Pageable</strong> o <strong>Sort</strong> que permite definir el criterio de paginación o de ordenación.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Page&lt;Person&gt; <span class="fu">findByLastname</span>(<span class="bu">String</span> lastname, <span class="bu">Pageable</span> pageable);</code></pre></div>
+</section><section id="inserción-actualización" class="slide level2">
+<h2><span class="header-section-number">8.7</span> Inserción / Actualización</h2>
+<ul>
+<li>Se <strong>devolverá void o un entero</strong> (int/Integer) que contendrá el número de objetos modificados o eliminados.</li>
+<li>El método <strong>deberá ser transaccional</strong> o bien ser invocado desde otro que sí lo sea.</li>
+<li>Se pueden definir <strong>con JPQL, siempre que método esté anotado con <span class="citation" data-cites="Modifying">@Modifying</span></strong> si no Spring interpretará que se trata de una select y la ejecutará como tal.</li>
+</ul>
+</section><section id="ejemplos-1" class="slide level2">
+<h2><span class="header-section-number">8.8</span> Ejemplos</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Transactional</span>
+<span class="dt">int</span> <span class="fu">deleteByName</span>(<span class="bu">String</span> name);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Transactional</span>
+<span class="at">@Modifying</span>
+<span class="at">@Query</span>(<span class="st">&quot;UPDATE Country set creation = :creation)&quot;</span>
+<span class="dt">int</span> <span class="fu">updateCreation</span>(<span class="bu">Calendar</span> creation);  </code></pre></div>
+</section></section>
+<section><section id="spring-security" class="titleslide slide level1"><h1><span class="header-section-number">9</span> Spring Security</h1></section><section id="introducción-6" class="slide level2">
+<h2><span class="header-section-number">9.1</span> Introducción</h2>
+<ul>
+<li>Basada en <strong>otorgar accesos</strong>.</li>
+<li>Se pueden aplicar <strong>distintos niveles de acceso</strong> a los contenidos.</li>
+<li><strong>Fácil de migrar</strong> entre servidores de aplicaciones.</li>
+</ul>
+</section><section id="proteccion-de-recursos" class="slide level2">
+<h2><span class="header-section-number">9.2</span> Proteccion de recursos</h2>
+<ul>
+<li>Permite configurar las seguridad sobre las peticiones http.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Override</span>
+<span class="kw">protected</span> <span class="dt">void</span> <span class="fu">configure</span>(HttpSecurity http) <span class="kw">throws</span> <span class="bu">Exception</span> {
+    http
+        .<span class="fu">authorizeRequests</span>()
+            .<span class="fu">antMatchers</span>(<span class="st">&quot;/all/*&quot;</span>).<span class="fu">permitAll</span>()
+            .<span class="fu">antMatchers</span>(<span class="st">&quot;/**&quot;</span>).<span class="fu">access</span>(
+                <span class="st">&quot;hasAnyRole(&#39;AGENTE_ESPECIAL&#39;,&#39;DIRECTOR&#39;)&quot;</span>);
+}</code></pre></div>
+</section><section id="seguridad-de-métodos" class="slide level2">
+<h2><span class="header-section-number">9.3</span> Seguridad de métodos</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Secured</span>(<span class="st">&quot;ROLE_AGENTE_ESPECIAL,ROLE_DIRECTOR&quot;</span>)
+<span class="dt">void</span> <span class="fu">clasificar</span>(Expediente expediente);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@PreAuthorize</span>(<span class="st">&quot;hasRole(&#39;ROLE_DIRECTOR&#39;) &quot;</span> +
+    <span class="st">&quot;or #expediente.investigador == authentication.name&quot;</span>)
+<span class="dt">void</span> <span class="fu">desclasificar</span>(Expediente expediente);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@PostAuthorize</span>(<span class="st">&quot;hasRole(&#39;ROLE_DIRECTOR&#39;) &quot;</span> +
+    <span class="st">&quot;or returnObject.investigador == authentication.name&quot;</span>)
+Expediente <span class="fu">mostrar</span>(<span class="bu">Long</span> id);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@PostFilter</span>(<span class="st">&quot;(hasRole(&#39;ROLE_AGENTE&#39;) and not filterObject.clasificado) &quot;</span> +
+    <span class="st">&quot;or (hasAnyRole(&#39;ROLE_AGENTE_ESPECIAL&#39;,&#39;ROLE_DIRECTOR&#39;) &quot;</span> +
+    <span class="st">&quot;and not filterObject.informe.contains(principal.username))&quot;</span>)
+<span class="bu">List</span>&lt;Expediente&gt; <span class="fu">listarTodos</span>();</code></pre></div>
+</section></section>
+<section><section id="spring-boot" class="titleslide slide level1"><h1><span class="header-section-number">10</span> Spring Boot</h1></section><section id="introduccion" class="slide level2">
+<h2><span class="header-section-number">10.1</span> Introduccion</h2>
+<ul>
+<li>Framework orientado a la <strong>construcción de proyectos Spring</strong>.</li>
+<li>Basado en <strong>Convention-Over-Configuration</strong> minimiza la configuración.</li>
+<li>Proporciona <strong>Starters</strong> para simplificar las dependencias.</li>
+</ul>
+</section><section id="dependencia-principal" class="slide level2">
+<h2><span class="header-section-number">10.2</span> Dependencia principal</h2>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;project&gt;</span>
+    ...
+    <span class="kw">&lt;parent&gt;</span>
+        <span class="kw">&lt;groupId&gt;</span>org.springframework.boot<span class="kw">&lt;/groupId&gt;</span>
+        <span class="kw">&lt;artifactId&gt;</span>spring-boot-starter-parent<span class="kw">&lt;/artifactId&gt;</span>
+        <span class="kw">&lt;version&gt;</span>2.1.4.RELEASE<span class="kw">&lt;/version&gt;</span>
+    <span class="kw">&lt;/parent&gt;</span>
+    ...
+<span class="kw">&lt;/project&gt;</span></code></pre></div>
+</section><section id="dependencia-web" class="slide level2">
+<h2><span class="header-section-number">10.3</span> Dependencia web</h2>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;project&gt;</span>
+    ...
+    <span class="kw">&lt;dependencies&gt;</span>
+        <span class="kw">&lt;dependency&gt;</span>
+            <span class="kw">&lt;groupId&gt;</span>org.springframework.boot<span class="kw">&lt;/groupId&gt;</span>
+            <span class="kw">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="kw">&lt;/artifactId&gt;</span>
+        <span class="kw">&lt;/dependency&gt;</span>
+    <span class="kw">&lt;/dependencies&gt;</span>
+    ...
+<span class="kw">&lt;/project&gt;</span></code></pre></div>
+</section><section id="configutación-inicial" class="slide level2">
+<h2><span class="header-section-number">10.4</span> Configutación inicial</h2>
+<ul>
+<li><strong><span class="citation" data-cites="SpringBootApplication">@SpringBootApplication</span></strong>: es la unión de:
+<ul>
+<li><strong><span class="citation" data-cites="Configuration">@Configuration</span></strong>: clase como origen de definiciones de Beans.</li>
+<li><strong><span class="citation" data-cites="ComponentScan">@ComponentScan</span></strong>: buscar otras clases con anotaciones como <span class="citation" data-cites="RestController">@RestController</span>.</li>
+<li><strong><span class="citation" data-cites="EnableAutoConfiguration">@EnableAutoConfiguration</span></strong>: incluir configuración por defecto.</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@SpringBootApplication</span>
+<span class="kw">public</span> <span class="kw">class</span> HolaMundoApplication {
+    ...
+}</code></pre></div>
+</section><section id="jar-ejecutable" class="slide level2">
+<h2><span class="header-section-number">10.5</span> jar ejecutable</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@SpringBootApplication</span>
+<span class="kw">public</span> <span class="kw">class</span> HolaMundoApplication {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        SpringApplication.<span class="fu">run</span>(HolaMundoApplication.<span class="fu">class</span>, args);
+    }
+}</code></pre></div>
+</section><section id="primer-restcontroller" class="slide level2">
+<h2><span class="header-section-number">10.6</span> Primer RestController</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@RestController</span>
+<span class="kw">public</span> <span class="kw">class</span> HolaMundoController {
+    <span class="at">@RequestMapping</span>(<span class="st">&quot;/&quot;</span>)
+    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">holaMundo</span>() {
+        <span class="kw">return</span> <span class="st">&quot;¡Hola Mundo!&quot;</span>;
+    }
+}</code></pre></div>
+</section><section id="ejecución" class="slide level2">
+<h2><span class="header-section-number">10.7</span> Ejecución</h2>
+<pre><code>mvn spring-boot:run</code></pre>
+<pre><code>mvn package
+java -jar nombre-del-jar.jar</code></pre>
+</section></section>
+<section><section id="bibliografía" class="titleslide slide level1"><h1><span class="header-section-number">11</span> Bibliografía</h1></section><section id="oficial-de-spring" class="slide level2">
+<h2><span class="header-section-number">11.1</span> Oficial de Spring</h2>
+<ul>
+<li><a href="https://spring.io/guides/gs/spring-boot/">Building an Application with Spring Boot</a></li>
+<li><a href="https://spring.io/guides/gs/rest-service/">Building a RESTful Web Service</a></li>
+<li><a href="https://spring.io/guides/gs/accessing-data-jpa/">Accessing Data with JPA</a></li>
+<li><a href="https://spring.io/guides/gs/securing-web/">Securing a Web Application</a></li>
+<li><a href="https://spring.io/guides/gs/accessing-data-mysql/">Accessing data with MySQL</a></li>
+<li><a href="https://spring.io/guides/gs/rest-service-cors/">Enabling Cross Origin Requests</a></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        pdfMaxPagesPerSlide: 1,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1024,
+        height: 576,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.3,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.1,
+        maxScale: 1.9,
+
+        menu: {
+            // Specifies which side of the presentation the menu will
+            // be shown. Use 'left' or 'right'.
+            side: 'left',
+
+            // Add slide numbers to the titles in the slide list.
+            // Use 'true' or format string (same as reveal.js slide numbers)
+            numbers: false,
+
+            // Specifies which slide elements will be used for generating
+            // the slide titles in the menu. The default selects the first
+            // heading element found in the slide, but you can specify any
+            // valid css selector and the text from the first matching
+            // element will be used.
+            // Note: that a section data-menu-title attribute or an element
+            // with a menu-title class will take precedence over this option
+            titleSelector: 'h1, h2, h3, h4, h5, h6',
+
+            // Hide slides from the menu that do not have a title.
+            // Set to 'true' to only list slides with titles.
+            hideMissingTitles: false,
+
+            // Add markers to the slide titles to indicate the
+            // progress through the presentation
+            markers: false,
+
+            // Specify custom panels to be included in the menu, by
+            // providing an array of objects with 'title', 'icon'
+            // properties, and either a 'src' or 'content' property.
+            custom: false,
+
+            // Specifies the themes that will be available in the themes
+            // menu panel. Set to 'false' to hide themes panel.
+            themes: [
+                { name: 'Black', theme: '../lib/reveal.js/css/theme/black.css' },
+                { name: 'White', theme: '../lib/reveal.js/css/theme/white.css' },
+                { name: 'League', theme: '../lib/reveal.js/css/theme/league.css' },
+                { name: 'Sky', theme: '../lib/reveal.js/css/theme/sky.css' },
+                { name: 'Beige', theme: '../lib/reveal.js/css/theme/beige.css' },
+                { name: 'Simple', theme: '../lib/reveal.js/css/theme/simple.css' },
+                { name: 'Serif', theme: '../lib/reveal.js/css/theme/serif.css' },
+                { name: 'Blood', theme: '../lib/reveal.js/css/theme/blood.css' },
+                { name: 'Night', theme: '../lib/reveal.js/css/theme/night.css' },
+                { name: 'Moon', theme: '../lib/reveal.js/css/theme/moon.css' },
+                { name: 'Solarized', theme: '../lib/reveal.js/css/theme/solarized.css' }
+            ],
+
+            // Specifies if the transitions menu panel will be shown.
+            transitions: true,
+
+            // Adds a menu button to the slides to open the menu panel.
+            // Set to 'false' to hide the button.
+            openButton: true,
+
+            // If 'true' allows the slide number in the presentation to
+            // open the menu panel. The reveal.js slideNumber option must
+            // be displayed for this to take effect
+            openSlideNumber: false,
+
+            // If true allows the user to open and navigate the menu using
+            // the keyboard. Standard keyboard interaction with reveal
+            // will be disabled while the menu is open.
+            keyboard: true
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../lib/reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../lib/reveal.js/plugin/notes/notes.js', async: true },
+          //{ src: '../lib/reveal.js/plugin/search/search.js', async: true },
+          { src: '../lib/reveal.js-menu/menu.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

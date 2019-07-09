@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Spring Boot" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Spring Boot</title>
+  <style type="text/css">code{white-space: pre; background-color: lightgrey;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+</head>
+<body>
+<header>
+<h1 class="title">Spring Boot</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Pronoide</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#acerca-de"><span class="toc-section-number">2</span> Acerca de</a><ul>
+<li><a href="#autor"><span class="toc-section-number">2.1</span> Autor</a></li>
+<li><a href="#licencia"><span class="toc-section-number">2.2</span> Licencia</a></li>
+</ul></li>
+<li><a href="#microservicios"><span class="toc-section-number">3</span> Microservicios</a><ul>
+<li><a href="#introducción"><span class="toc-section-number">3.1</span> Introducción</a><ul>
+<li><a href="#ejemplo"><span class="toc-section-number">3.1.1</span> Ejemplo</a></li>
+</ul></li>
+<li><a href="#ventajas"><span class="toc-section-number">3.2</span> Ventajas</a></li>
+<li><a href="#desventajas"><span class="toc-section-number">3.3</span> Desventajas</a></li>
+</ul></li>
+<li><a href="#rest"><span class="toc-section-number">4</span> REST</a><ul>
+<li><a href="#introducción-1"><span class="toc-section-number">4.1</span> Introducción</a></li>
+<li><a href="#ventajas-1"><span class="toc-section-number">4.2</span> Ventajas</a><ul>
+<li><a href="#ejemplo-1"><span class="toc-section-number">4.2.1</span> Ejemplo</a></li>
+</ul></li>
+<li><a href="#estados-http"><span class="toc-section-number">4.3</span> Estados HTTP</a></li>
+<li><a href="#json"><span class="toc-section-number">4.4</span> JSON</a><ul>
+<li><a href="#ejemplo-2"><span class="toc-section-number">4.4.1</span> Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#spring"><span class="toc-section-number">5</span> Spring</a><ul>
+<li><a href="#introducción-2"><span class="toc-section-number">5.1</span> Introducción</a></li>
+<li><a href="#definiciones"><span class="toc-section-number">5.2</span> Definiciones</a><ul>
+<li><a href="#ejemplo-3"><span class="toc-section-number">5.2.1</span> Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#spring-aop"><span class="toc-section-number">6</span> Spring AOP</a><ul>
+<li><a href="#introducción-3"><span class="toc-section-number">6.1</span> Introducción</a></li>
+<li><a href="#funcionalidades-trasversales"><span class="toc-section-number">6.2</span> Funcionalidades trasversales</a></li>
+<li><a href="#aop-overview"><span class="toc-section-number">6.3</span> AOP Overview</a></li>
+</ul></li>
+<li><a href="#spring-mvc"><span class="toc-section-number">7</span> Spring MVC</a><ul>
+<li><a href="#introducción-4"><span class="toc-section-number">7.1</span> Introducción</a><ul>
+<li><a href="#ejemplo-4"><span class="toc-section-number">7.1.1</span> Ejemplo</a></li>
+</ul></li>
+<li><a href="#spring-rest"><span class="toc-section-number">7.2</span> Spring REST</a><ul>
+<li><a href="#ejemplo-5"><span class="toc-section-number">7.2.1</span> Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#spring-jpa"><span class="toc-section-number">8</span> Spring JPA</a><ul>
+<li><a href="#introducción-5"><span class="toc-section-number">8.1</span> Introducción</a><ul>
+<li><a href="#ejemplo-6"><span class="toc-section-number">8.1.1</span> Ejemplo</a></li>
+</ul></li>
+<li><a href="#querys-personalizadas"><span class="toc-section-number">8.2</span> Querys Personalizadas</a><ul>
+<li><a href="#ejemplos"><span class="toc-section-number">8.2.1</span> Ejemplos</a></li>
+<li><a href="#ejemplos-jpql"><span class="toc-section-number">8.2.2</span> Ejemplos JPQL</a></li>
+</ul></li>
+<li><a href="#paginación-y-ordenación"><span class="toc-section-number">8.3</span> Paginación y Ordenación</a><ul>
+<li><a href="#inserción-actualización"><span class="toc-section-number">8.3.1</span> Inserción / Actualización</a></li>
+<li><a href="#ejemplos-1"><span class="toc-section-number">8.3.2</span> Ejemplos</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#spring-security"><span class="toc-section-number">9</span> Spring Security</a><ul>
+<li><a href="#introducción-6"><span class="toc-section-number">9.1</span> Introducción</a></li>
+<li><a href="#proteccion-de-recursos"><span class="toc-section-number">9.2</span> Proteccion de recursos</a></li>
+<li><a href="#seguridad-de-métodos"><span class="toc-section-number">9.3</span> Seguridad de métodos</a></li>
+</ul></li>
+<li><a href="#spring-boot"><span class="toc-section-number">10</span> Spring Boot</a><ul>
+<li><a href="#introduccion"><span class="toc-section-number">10.1</span> Introduccion</a></li>
+<li><a href="#dependencia-principal"><span class="toc-section-number">10.2</span> Dependencia principal</a></li>
+<li><a href="#dependencia-web"><span class="toc-section-number">10.3</span> Dependencia web</a></li>
+<li><a href="#configutación-inicial"><span class="toc-section-number">10.4</span> Configutación inicial</a></li>
+<li><a href="#jar-ejecutable"><span class="toc-section-number">10.5</span> jar ejecutable</a></li>
+<li><a href="#primer-restcontroller"><span class="toc-section-number">10.6</span> Primer RestController</a></li>
+<li><a href="#ejecución"><span class="toc-section-number">10.7</span> Ejecución</a></li>
+</ul></li>
+<li><a href="#bibliografía"><span class="toc-section-number">11</span> Bibliografía</a><ul>
+<li><a href="#oficial-de-spring"><span class="toc-section-number">11.1</span> Oficial de Spring</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="acerca-de"><span class="header-section-number">2</span> Acerca de</h1>
+<h2 id="autor"><span class="header-section-number">2.1</span> Autor</h2>
+<ul>
+<li><strong>Adolfo Sanz De Diego</strong>
+<ul>
+<li>Blog: <a href="http://asanzdiego.com/">asanzdiego.com</a></li>
+<li>Correo: <a href="mailto:asanzdiego@gmail.com">asanzdiego@gmail.com</a></li>
+<li>GitHub: <a href="http://github.com/asanzdiego">github.com/asanzdiego</a></li>
+<li>Twitter: <a href="http://twitter.com/asanzdiego">twitter.com/asanzdiego</a></li>
+<li>LinkedIn: <a href="http://www.linkedin.com/in/asanzdiego">in/asanzdiego</a></li>
+<li>SlideShare: <a href="http://www.slideshare.net/asanzdiego/">slideshare.net/asanzdiego</a></li>
+</ul></li>
+</ul>
+<h2 id="licencia"><span class="header-section-number">2.2</span> Licencia</h2>
+<ul>
+<li><strong>Esta obra está bajo una licencia:</strong>
+<ul>
+<li><a href="http://creativecommons.org/licenses/by-sa/3.0/es/">Creative Commons Reconocimiento-CompartirIgual 3.0</a></li>
+</ul></li>
+</ul>
+<h1 id="microservicios"><span class="header-section-number">3</span> Microservicios</h1>
+<h2 id="introducción"><span class="header-section-number">3.1</span> Introducción</h2>
+<ul>
+<li><p>Son <strong>son pequeños servicios autónomos que se comunican con APIs ligeros</strong>, típicamente con APIs REST.</p></li>
+<li><p>Encierran <strong>toda la lógica necesaria para cubrir una funcionalidad completa</strong>, desde el API que expone que puede hacer hasta el acceso a la base de datos.</p></li>
+<li><p>La arquitectura de microservicios, se forma con microservicios que se ejecutan y despliegan independientemente, comunicándose con la parte cliente o si es necesario entre ellas <strong>síncronamente a través de APIs o asíncronamente a través de servicios de mensajería</strong>.</p></li>
+</ul>
+<h3 id="ejemplo"><span class="header-section-number">3.1.1</span> Ejemplo</h3>
+<figure>
+<img src="../img/Arquitectura-Microservicios.png" alt="Arquitectura Microservicios" text-align="center" style="width:50.0%" /><figcaption>Arquitectura Microservicios</figcaption>
+</figure>
+<h2 id="ventajas"><span class="header-section-number">3.2</span> Ventajas</h2>
+<ul>
+<li><strong>Desarrollos pequeños y rápidos</strong>.</li>
+<li><strong>Escalado más granular</strong>, permitiendo aprovechar de forma más eficiente los recursos.</li>
+<li>Aprovechamiento de los puntos fuertes de cada lenguaje de programación, ya que <strong>permite el uso de distintas tecnologías</strong> para la implementación de cada microservicio.</li>
+</ul>
+<h2 id="desventajas"><span class="header-section-number">3.3</span> Desventajas</h2>
+<ul>
+<li><strong>Monitorización</strong> más compleja.</li>
+<li><strong>Despliegues</strong> más complejos.</li>
+<li>Surgen problemas con la <strong>compatibilidad entre versiones</strong>.</li>
+</ul>
+<h1 id="rest"><span class="header-section-number">4</span> REST</h1>
+<h2 id="introducción-1"><span class="header-section-number">4.1</span> Introducción</h2>
+<ul>
+<li>Los servicios REST son <strong>servicios basados en recursos</strong>, montados sobre HTTP.</li>
+<li>Los recursos son <strong>representados por una URL</strong> (Uniform Resource Locator).</li>
+<li>Los recursos se pueden <strong>acceder o modificar mediante los métodos del protocolo HTTP</strong> (POST, GET, PUT, DELETE).</li>
+</ul>
+<h2 id="ventajas-1"><span class="header-section-number">4.2</span> Ventajas</h2>
+<ul>
+<li>Es <strong>más sencillo</strong> (tanto la API como la implementación).</li>
+<li>Es <strong>más rápido</strong> (peticiones más ligeras que se pueden cachear).</li>
+<li>Es <strong>multiformato</strong> (HTML, XML, JSON, etc.).</li>
+</ul>
+<h3 id="ejemplo-1"><span class="header-section-number">4.2.1</span> Ejemplo</h3>
+<ul>
+<li><strong>GET</strong> a <a href="">http://myhost.com/person</a>
+<ul>
+<li>Devuelve todas las personas</li>
+</ul></li>
+<li><strong>POST</strong> a <a href="">http://myhost.com/person</a>
+<ul>
+<li>Crear una nueva persona</li>
+</ul></li>
+<li><strong>GET</strong> a <a href="">http://myhost.com/person/123</a>
+<ul>
+<li>Devuelve la persona con id=123</li>
+</ul></li>
+<li><strong>PUT</strong> a <a href="">http://myhost.com/person/123</a>
+<ul>
+<li>Actualiza la persona con id=123</li>
+</ul></li>
+<li><strong>DELETE</strong> a <a href="">http://myhost.com/person/123</a>
+<ul>
+<li>Borra la persona con id=123</li>
+</ul></li>
+</ul>
+<h2 id="estados-http"><span class="header-section-number">4.3</span> Estados HTTP</h2>
+<ul>
+<li>200 OK</li>
+<li>201 Created</li>
+<li>202 Accepted</li>
+<li>301 Moved Permanently</li>
+<li>400 Bad Request</li>
+<li>401 Unauthorized</li>
+<li>402 Payment Required</li>
+<li>403 Forbidden</li>
+<li>404 Not Found</li>
+<li>405 Method Not Allowed</li>
+<li>500 Internal Server Error</li>
+<li>501 Not Implemented</li>
+</ul>
+<h2 id="json"><span class="header-section-number">4.4</span> JSON</h2>
+<ul>
+<li>Acrónimo de <strong>JavaScript Object Notation</strong>.</li>
+<li>Sirve como <strong>formato ligero</strong> para el intercambio de datos.</li>
+<li>Su <strong>simplicidad</strong> ha generalizado su uso, especialmente como alternativa al XML.</li>
+</ul>
+<h3 id="ejemplo-2"><span class="header-section-number">4.4.1</span> Ejemplo</h3>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="op">{</span>
+    <span class="dt">curso</span><span class="op">:</span> <span class="st">&quot;Spring Boot y Angular&quot;</span><span class="op">,</span>
+    <span class="dt">profesor</span><span class="op">:</span> <span class="st">&quot;Adolfo&quot;</span><span class="op">,</span>
+    <span class="dt">participantes</span><span class="op">:</span> [
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Asunción&quot;, edad: 35 },</span>
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Miguel&quot;</span><span class="op">,</span> <span class="dt">edad</span><span class="op">:</span> <span class="dv">31</span> <span class="op">},</span>
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Miky&quot;</span><span class="op">,</span> <span class="dt">edad</span><span class="op">:</span> <span class="dv">27</span> <span class="op">},</span>
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Alberto&quot;</span><span class="op">,</span> <span class="dt">edad</span><span class="op">:</span> <span class="dv">25</span> <span class="op">}</span>
+    ]
+<span class="op">}</span></code></pre></div>
+<h1 id="spring"><span class="header-section-number">5</span> Spring</h1>
+<h2 id="introducción-2"><span class="header-section-number">5.1</span> Introducción</h2>
+<ul>
+<li><p><strong>Framework de desarrollo</strong> de aplicaciones java.</p></li>
+<li><p>Se encarga de la instanciación de POJOS mediante la <strong>Inversión de Control</strong> y la <strong>Inyección de Dependencias</strong>.</p></li>
+<li><p>Ha ido evolucionando y ahora tiene <strong>muchos sub proyectos</strong>: <a href="https://spring.io/projects" class="uri">https://spring.io/projects</a></p></li>
+<li><p><strong>No es intrusivo</strong>: puedes usar lo que el te proporciona u otras implementaciones.</p></li>
+</ul>
+<h2 id="definiciones"><span class="header-section-number">5.2</span> Definiciones</h2>
+<ul>
+<li><strong>Inversión de control</strong>:
+<ul>
+<li>Patrón de diseño que <strong>delega la creación de objetos en un contenedor</strong>.</li>
+</ul></li>
+<li><strong>Inyección de dependencias</strong>:
+<ul>
+<li>Patrón de diseño que <strong>permite desacoplar la Interfaz de su implementación</strong>.</li>
+</ul></li>
+</ul>
+<h3 id="ejemplo-3"><span class="header-section-number">5.2.1</span> Ejemplo</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> PersonaDao {
+    <span class="dt">void</span> <span class="fu">insertar</span>(Persona persona);
+}
+<span class="kw">class</span> GestorPersonas {
+    <span class="kw">private</span> PersonaDao dao;
+    <span class="co">// Inyección por constructor</span>
+    <span class="kw">public</span> <span class="fu">GestorPersonas</span>(PersonaDao dao) {
+        <span class="kw">this</span>.<span class="fu">dao</span> = dao;
+    }
+    <span class="co">// Inyección por setter</span>
+    <span class="kw">public</span> <span class="fu">setDao</span>(PersonaDao dao) {
+        <span class="kw">this</span>.<span class="fu">dao</span> = dao;
+    }
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">alta</span>(Persona persona) {
+        dao.<span class="fu">insertar</span>(persona);
+    }
+}</code></pre></div>
+<h1 id="spring-aop"><span class="header-section-number">6</span> Spring AOP</h1>
+<h2 id="introducción-3"><span class="header-section-number">6.1</span> Introducción</h2>
+<ul>
+<li><p>Aunque es bastante transparente para el programador, <strong>Spring hace uso intensivo de programación orientada a aspectos</strong> cada vez que usamos una de sus anotaciones.</p></li>
+<li><p>Los programas tienen muchas funcionalidades trasversales, <strong>que afectan a muchos los módulos de la aplicación</strong>, como el logging, la transaccionalidad o la seguridad.</p></li>
+<li><p>La AOP, o <strong>programación orientada a aspectos</strong>, se encarga de extraer dichas funcionalidades transversales de los módulos de la aplicación.</p></li>
+</ul>
+<h2 id="funcionalidades-trasversales"><span class="header-section-number">6.2</span> Funcionalidades trasversales</h2>
+<figure>
+<img src="../img/aop-funcionalidades.png" alt="Funcionalidades trasversales" text-align="center" style="width:50.0%" /><figcaption>Funcionalidades trasversales</figcaption>
+</figure>
+<h2 id="aop-overview"><span class="header-section-number">6.3</span> AOP Overview</h2>
+<figure>
+<img src="../img/aop-overview.png" alt="AOP Overview" text-align="center" style="width:50.0%" /><figcaption>AOP Overview</figcaption>
+</figure>
+<h1 id="spring-mvc"><span class="header-section-number">7</span> Spring MVC</h1>
+<h2 id="introducción-4"><span class="header-section-number">7.1</span> Introducción</h2>
+<ul>
+<li>Framework de desarrollo de aplicaciones web que implementa el <strong>Modelo Vista Controlador</strong>.</li>
+<li>Se basa en anotaciones, las más importantes:
+<ul>
+<li><strong><span class="citation" data-cites="Controller">@Controller</span></strong>: indica que una clase es un controlador.</li>
+<li><strong><span class="citation" data-cites="RequestMapping">@RequestMapping</span></strong>: mapea un método de clase a una request en función de la URL y el método HTTP.</li>
+<li><strong><span class="citation" data-cites="PathVariable">@PathVariable</span></strong>: obtiene el path de la URL.</li>
+<li><strong><span class="citation" data-cites="RequestParam">@RequestParam</span></strong>: obtiene parámetros de la URL.</li>
+<li><strong><span class="citation" data-cites="RequestBody">@RequestBody</span></strong>: obtiene el body de peticiones POST y PUT.</li>
+<li><strong><span class="citation" data-cites="ResponseBody">@ResponseBody</span></strong>: devuelve el body en el response.</li>
+<li><strong><span class="citation" data-cites="SessionAttribute">@SessionAttribute</span></strong>: obtiene información de la sesión.</li>
+</ul></li>
+</ul>
+<h3 id="ejemplo-4"><span class="header-section-number">7.1.1</span> Ejemplo</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">// http://myhost.com/saludar/adolfo?edad=40</span>
+<span class="co">// en el body del POST {&quot;apellido1&quot;:&quot;sanz&quot;, &quot;apellido2&quot;:&quot;diego&quot;}</span>
+<span class="at">@Controller</span>
+<span class="kw">public</span> <span class="kw">class</span> SaludarController {
+    <span class="at">@ResponseBody</span>
+    <span class="at">@RequestMapping</span>(<span class="st">&quot;saludar/{nombre}&quot;</span>, method=RequestMethod.<span class="fu">POST</span>)
+    <span class="kw">public</span> Saludo <span class="fu">saludar</span>(<span class="at">@PathVariable</span>(<span class="st">&quot;nombre&quot;</span>) <span class="bu">String</span> nombre,
+        <span class="at">@RequestParam</span>(<span class="st">&quot;edad&quot;</span>) <span class="bu">Integer</span> edad, <span class="at">@RequestBody</span> Apellidos a,
+        <span class="at">@SessionAttribute</span> Login login){
+        Saludo saludo = <span class="kw">new</span> <span class="fu">Saludo</span>()
+        saludo.<span class="fu">setNombre</span>(nombre);
+        saludo.<span class="fu">setApellidos</span>(a.<span class="fu">getApellido1</span>(), a.<span class="fu">getApellido2</span>());
+        saludo.<span class="fu">setEdad</span>(edad);
+        saludo.<span class="fu">setLogin</span>(login);
+        <span class="kw">return</span> saludo;
+    }
+}</code></pre></div>
+<h2 id="spring-rest"><span class="header-section-number">7.2</span> Spring REST</h2>
+<ul>
+<li><strong><span class="citation" data-cites="RestController">@RestController</span></strong>: junta las anotaciones <span class="citation" data-cites="Controller">@Controller</span> y <span class="citation" data-cites="ResponseBody">@ResponseBody</span>.</li>
+<li><strong><span class="citation" data-cites="ResponseEntity">@ResponseEntity</span></strong>: para devolver el estado del response.</li>
+</ul>
+<h3 id="ejemplo-5"><span class="header-section-number">7.2.1</span> Ejemplo</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">// http://myhost.com/saludar/adolfo?edad=40</span>
+<span class="co">// en el body del POST {&quot;apellido1&quot;:&quot;sanz&quot;, &quot;apellido2&quot;:&quot;diego&quot;}</span>
+<span class="at">@RestController</span>
+<span class="kw">public</span> <span class="kw">class</span> SaludarController {
+    <span class="at">@RequestMapping</span>(<span class="st">&quot;saludar/{nombre}&quot;</span>, method=RequestMethod.<span class="fu">POST</span>)
+    <span class="kw">public</span> ResponseEntity&lt;Saludo&gt; <span class="fu">saludar</span>(
+        <span class="at">@PathVariable</span>(<span class="st">&quot;nombre&quot;</span>) <span class="bu">String</span> nombre,
+        <span class="at">@RequestParam</span>(<span class="st">&quot;edad&quot;</span>) <span class="bu">String</span> edad, <span class="at">@RequestBody</span> Apellidos a,
+        <span class="at">@SessionAttribute</span> Login login){
+        <span class="kw">if</span> (login == <span class="kw">null</span>) {
+            <span class="kw">return</span> <span class="kw">new</span> ResponseEntity&lt;Saludo&gt;(HttpStatus.<span class="fu">UNAUTHORIZED</span>);
+        }
+        Saludo saludo = <span class="kw">new</span> <span class="fu">Saludo</span>(nombre,
+            a.<span class="fu">getApellido1</span>(), a.<span class="fu">getApellido2</span>(), edad, login);
+        <span class="kw">return</span> <span class="kw">new</span> ResponseEntity&lt;Saludo&gt;(saludo);
+    }
+}</code></pre></div>
+<h1 id="spring-jpa"><span class="header-section-number">8</span> Spring JPA</h1>
+<h2 id="introducción-5"><span class="header-section-number">8.1</span> Introducción</h2>
+<ul>
+<li><p><strong>Framework de persistencia</strong> que se basa en extender interfaces que otorgan funcionalidades a las clases de acceso a datos.</p></li>
+<li><p>Lo más interesante es que no es necesario definir implementaciones pues estas se crean <strong>en tiempo de ejecución</strong>.</p></li>
+</ul>
+<h3 id="ejemplo-6"><span class="header-section-number">8.1.1</span> Ejemplo</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">interface</span> EntityRepository <span class="kw">extends</span> JpaRepository&lt;<span class="bu">Entity</span>, <span class="bu">Long</span>&gt; {
+
+    <span class="co">// EntityRepository tiene ya estos métodos por heredar de JpaRepository</span>
+
+    <span class="bu">Entity</span> <span class="fu">save</span>(<span class="bu">Entity</span> entity);      
+
+    Optional&lt;TEntity&gt; <span class="fu">findById</span>(<span class="bu">Long</span> primaryKey); 
+
+    <span class="bu">Iterable</span>&lt;TEntity&gt; <span class="fu">findAll</span>();               
+
+    <span class="dt">long</span> <span class="fu">count</span>();                        
+
+    <span class="dt">void</span> <span class="fu">delete</span>(<span class="bu">Entity</span> entity);               
+
+    <span class="dt">boolean</span> <span class="fu">existsById</span>(<span class="bu">Long</span> primaryKey);   
+}</code></pre></div>
+<h2 id="querys-personalizadas"><span class="header-section-number">8.2</span> Querys Personalizadas</h2>
+<ul>
+<li>Se pueden crear métodos siguiendo las siguientes reglas:
+<ul>
+<li>Prefijo del nombre del método <strong>findBy</strong> para busquedas y <strong><em>countBy</em></strong> para conteo de coincidencias.</li>
+<li>Seguido del nombre de los campos de búsqueda concatenados por los operadores correspondientes: <a href="http://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation">And, Or, Between, LessThan, LessThanEqual, GreaterThan, GreaterThanEqual, After, Before, IsNull, IsNotNull, Like, NotLike, StartingWith, EndingWith, Containing, OrderBy, Not, In, NotIn, True, False, IgnoreCase</a></li>
+</ul></li>
+<li>Tambien se pueden definir consultas personalizadas con <strong>JPQL</strong>.</li>
+</ul>
+<h3 id="ejemplos"><span class="header-section-number">8.2.1</span> Ejemplos</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="bu">List</span>&lt;Person&gt; <span class="fu">findByLastname</span>(<span class="bu">String</span> lastname);
+
+<span class="bu">List</span>&lt;Person&gt; <span class="fu">findByEmailAndLastname</span>(<span class="bu">String</span> email, <span class="bu">String</span> lastname);
+
+<span class="bu">List</span>&lt;Person&gt; <span class="fu">findDistinctByEmailOrLastname</span>(<span class="bu">String</span> email, <span class="bu">String</span> lastname);
+
+<span class="bu">List</span>&lt;Person&gt; <span class="fu">findByLastnameLikeIgnoreCase</span>(<span class="bu">String</span> lastname);
+
+<span class="bu">List</span>&lt;Person&gt; <span class="fu">findByLastnameOrderByFirstnameAsc</span>(<span class="bu">String</span> lastname);
+
+<span class="bu">List</span>&lt;Person&gt; <span class="fu">findByLastnameOrderByFirstnameDesc</span>(<span class="bu">String</span> lastname);</code></pre></div>
+<h3 id="ejemplos-jpql"><span class="header-section-number">8.2.2</span> Ejemplos JPQL</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Query</span>(<span class="st">&quot;from Country c where lower(c.name) like lower(:name)&quot;</span>)
+<span class="bu">List</span>&lt;Country&gt; <span class="fu">getByNameWithQuery</span>(<span class="bu">String</span> name);               
+
+<span class="at">@Query</span>(<span class="st">&quot;from Country c where lower(c.name) like lower(:name)&quot;</span>)
+Country <span class="fu">findByNameWithQuery</span>(<span class="at">@Param</span>(<span class="st">&quot;name&quot;</span>) <span class="bu">String</span> name);
+
+<span class="at">@Query</span>(<span class="st">&quot;select case when (count(c) &gt; 0) then true else false end&quot;</span>
+    + <span class="st">&quot; from Country c where c.name = :name)&quot;</span>)
+<span class="dt">boolean</span> <span class="fu">exists</span>(<span class="bu">String</span> name);    </code></pre></div>
+<h2 id="paginación-y-ordenación"><span class="header-section-number">8.3</span> Paginación y Ordenación</h2>
+<ul>
+<li>A las consultas se puede añadir un último parametro de tipo <strong>Pageable</strong> o <strong>Sort</strong> que permite definir el criterio de paginación o de ordenación.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Page&lt;Person&gt; <span class="fu">findByLastname</span>(<span class="bu">String</span> lastname, <span class="bu">Pageable</span> pageable);</code></pre></div>
+<h3 id="inserción-actualización"><span class="header-section-number">8.3.1</span> Inserción / Actualización</h3>
+<ul>
+<li>Se <strong>devolverá void o un entero</strong> (int/Integer) que contendrá el número de objetos modificados o eliminados.</li>
+<li>El método <strong>deberá ser transaccional</strong> o bien ser invocado desde otro que sí lo sea.</li>
+<li>Se pueden definir <strong>con JPQL, siempre que método esté anotado con <span class="citation" data-cites="Modifying">@Modifying</span></strong> si no Spring interpretará que se trata de una select y la ejecutará como tal.</li>
+</ul>
+<h3 id="ejemplos-1"><span class="header-section-number">8.3.2</span> Ejemplos</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Transactional</span>
+<span class="dt">int</span> <span class="fu">deleteByName</span>(<span class="bu">String</span> name);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Transactional</span>
+<span class="at">@Modifying</span>
+<span class="at">@Query</span>(<span class="st">&quot;UPDATE Country set creation = :creation)&quot;</span>
+<span class="dt">int</span> <span class="fu">updateCreation</span>(<span class="bu">Calendar</span> creation);  </code></pre></div>
+<h1 id="spring-security"><span class="header-section-number">9</span> Spring Security</h1>
+<h2 id="introducción-6"><span class="header-section-number">9.1</span> Introducción</h2>
+<ul>
+<li>Basada en <strong>otorgar accesos</strong>.</li>
+<li>Se pueden aplicar <strong>distintos niveles de acceso</strong> a los contenidos.</li>
+<li><strong>Fácil de migrar</strong> entre servidores de aplicaciones.</li>
+</ul>
+<h2 id="proteccion-de-recursos"><span class="header-section-number">9.2</span> Proteccion de recursos</h2>
+<ul>
+<li>Permite configurar las seguridad sobre las peticiones http.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Override</span>
+<span class="kw">protected</span> <span class="dt">void</span> <span class="fu">configure</span>(HttpSecurity http) <span class="kw">throws</span> <span class="bu">Exception</span> {
+    http
+        .<span class="fu">authorizeRequests</span>()
+            .<span class="fu">antMatchers</span>(<span class="st">&quot;/all/*&quot;</span>).<span class="fu">permitAll</span>()
+            .<span class="fu">antMatchers</span>(<span class="st">&quot;/**&quot;</span>).<span class="fu">access</span>(
+                <span class="st">&quot;hasAnyRole(&#39;AGENTE_ESPECIAL&#39;,&#39;DIRECTOR&#39;)&quot;</span>);
+}</code></pre></div>
+<h2 id="seguridad-de-métodos"><span class="header-section-number">9.3</span> Seguridad de métodos</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Secured</span>(<span class="st">&quot;ROLE_AGENTE_ESPECIAL,ROLE_DIRECTOR&quot;</span>)
+<span class="dt">void</span> <span class="fu">clasificar</span>(Expediente expediente);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@PreAuthorize</span>(<span class="st">&quot;hasRole(&#39;ROLE_DIRECTOR&#39;) &quot;</span> +
+    <span class="st">&quot;or #expediente.investigador == authentication.name&quot;</span>)
+<span class="dt">void</span> <span class="fu">desclasificar</span>(Expediente expediente);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@PostAuthorize</span>(<span class="st">&quot;hasRole(&#39;ROLE_DIRECTOR&#39;) &quot;</span> +
+    <span class="st">&quot;or returnObject.investigador == authentication.name&quot;</span>)
+Expediente <span class="fu">mostrar</span>(<span class="bu">Long</span> id);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@PostFilter</span>(<span class="st">&quot;(hasRole(&#39;ROLE_AGENTE&#39;) and not filterObject.clasificado) &quot;</span> +
+    <span class="st">&quot;or (hasAnyRole(&#39;ROLE_AGENTE_ESPECIAL&#39;,&#39;ROLE_DIRECTOR&#39;) &quot;</span> +
+    <span class="st">&quot;and not filterObject.informe.contains(principal.username))&quot;</span>)
+<span class="bu">List</span>&lt;Expediente&gt; <span class="fu">listarTodos</span>();</code></pre></div>
+<h1 id="spring-boot"><span class="header-section-number">10</span> Spring Boot</h1>
+<h2 id="introduccion"><span class="header-section-number">10.1</span> Introduccion</h2>
+<ul>
+<li>Framework orientado a la <strong>construcción de proyectos Spring</strong>.</li>
+<li>Basado en <strong>Convention-Over-Configuration</strong> minimiza la configuración.</li>
+<li>Proporciona <strong>Starters</strong> para simplificar las dependencias.</li>
+</ul>
+<h2 id="dependencia-principal"><span class="header-section-number">10.2</span> Dependencia principal</h2>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;project&gt;</span>
+    ...
+    <span class="kw">&lt;parent&gt;</span>
+        <span class="kw">&lt;groupId&gt;</span>org.springframework.boot<span class="kw">&lt;/groupId&gt;</span>
+        <span class="kw">&lt;artifactId&gt;</span>spring-boot-starter-parent<span class="kw">&lt;/artifactId&gt;</span>
+        <span class="kw">&lt;version&gt;</span>2.1.4.RELEASE<span class="kw">&lt;/version&gt;</span>
+    <span class="kw">&lt;/parent&gt;</span>
+    ...
+<span class="kw">&lt;/project&gt;</span></code></pre></div>
+<h2 id="dependencia-web"><span class="header-section-number">10.3</span> Dependencia web</h2>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;project&gt;</span>
+    ...
+    <span class="kw">&lt;dependencies&gt;</span>
+        <span class="kw">&lt;dependency&gt;</span>
+            <span class="kw">&lt;groupId&gt;</span>org.springframework.boot<span class="kw">&lt;/groupId&gt;</span>
+            <span class="kw">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="kw">&lt;/artifactId&gt;</span>
+        <span class="kw">&lt;/dependency&gt;</span>
+    <span class="kw">&lt;/dependencies&gt;</span>
+    ...
+<span class="kw">&lt;/project&gt;</span></code></pre></div>
+<h2 id="configutación-inicial"><span class="header-section-number">10.4</span> Configutación inicial</h2>
+<ul>
+<li><strong><span class="citation" data-cites="SpringBootApplication">@SpringBootApplication</span></strong>: es la unión de:
+<ul>
+<li><strong><span class="citation" data-cites="Configuration">@Configuration</span></strong>: clase como origen de definiciones de Beans.</li>
+<li><strong><span class="citation" data-cites="ComponentScan">@ComponentScan</span></strong>: buscar otras clases con anotaciones como <span class="citation" data-cites="RestController">@RestController</span>.</li>
+<li><strong><span class="citation" data-cites="EnableAutoConfiguration">@EnableAutoConfiguration</span></strong>: incluir configuración por defecto.</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@SpringBootApplication</span>
+<span class="kw">public</span> <span class="kw">class</span> HolaMundoApplication {
+    ...
+}</code></pre></div>
+<h2 id="jar-ejecutable"><span class="header-section-number">10.5</span> jar ejecutable</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@SpringBootApplication</span>
+<span class="kw">public</span> <span class="kw">class</span> HolaMundoApplication {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        SpringApplication.<span class="fu">run</span>(HolaMundoApplication.<span class="fu">class</span>, args);
+    }
+}</code></pre></div>
+<h2 id="primer-restcontroller"><span class="header-section-number">10.6</span> Primer RestController</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@RestController</span>
+<span class="kw">public</span> <span class="kw">class</span> HolaMundoController {
+    <span class="at">@RequestMapping</span>(<span class="st">&quot;/&quot;</span>)
+    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">holaMundo</span>() {
+        <span class="kw">return</span> <span class="st">&quot;¡Hola Mundo!&quot;</span>;
+    }
+}</code></pre></div>
+<h2 id="ejecución"><span class="header-section-number">10.7</span> Ejecución</h2>
+<pre><code>mvn spring-boot:run</code></pre>
+<pre><code>mvn package
+java -jar nombre-del-jar.jar</code></pre>
+<h1 id="bibliografía"><span class="header-section-number">11</span> Bibliografía</h1>
+<h2 id="oficial-de-spring"><span class="header-section-number">11.1</span> Oficial de Spring</h2>
+<ul>
+<li><a href="https://spring.io/guides/gs/spring-boot/">Building an Application with Spring Boot</a></li>
+<li><a href="https://spring.io/guides/gs/rest-service/">Building a RESTful Web Service</a></li>
+<li><a href="https://spring.io/guides/gs/accessing-data-jpa/">Accessing Data with JPA</a></li>
+<li><a href="https://spring.io/guides/gs/securing-web/">Securing a Web Application</a></li>
+<li><a href="https://spring.io/guides/gs/accessing-data-mysql/">Accessing data with MySQL</a></li>
+<li><a href="https://spring.io/guides/gs/rest-service-cors/">Enabling Cross Origin Requests</a></li>
+</ul>
+</body>
+</html>

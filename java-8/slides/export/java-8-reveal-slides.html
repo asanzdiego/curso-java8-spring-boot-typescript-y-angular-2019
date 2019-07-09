@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc">
+  <meta name="description" content="Java 8" />
+  <meta name="author" content="Adolfo Sanz De Diego">
+  <title>Java 8</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../lib/reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="../lib/reveal.js-menu/menu.css">
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../lib/reveal.js/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="../lib/reveal.js/lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../lib/reveal.js/css/print/pdf.css' : '../lib/reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+  <style type="text/css">
+    body {
+      background: white !important;
+      background-color: white !important;
+    }
+    code{
+      white-space: pre;
+    }
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 200% !important;
+    }
+    h1 {
+      font-size: 200% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    h3 {
+      font-size: 100% !important;
+    }
+    @media print {
+      #only-print-parent { display: table !important; }
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 300% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+      h3 { font-size: 150% !important; }
+    }
+  </style>
+  <!--[if lt IE 9]>
+  <script src="../lib/reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">Java 8</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Pronoide</h3>
+    </div>
+</section>
+
+<section><section id="acerca-de" class="titleslide slide level1"><h1><span class="header-section-number">2</span> Acerca de</h1></section><section id="autor" class="slide level2">
+<h2><span class="header-section-number">2.1</span> Autor</h2>
+<ul>
+<li><strong>Adolfo Sanz De Diego</strong>
+<ul>
+<li>Blog: <a href="http://asanzdiego.com/">asanzdiego.com</a></li>
+<li>Correo: <a href="mailto:asanzdiego@gmail.com">asanzdiego@gmail.com</a></li>
+<li>GitHub: <a href="http://github.com/asanzdiego">github.com/asanzdiego</a></li>
+<li>Twitter: <a href="http://twitter.com/asanzdiego">twitter.com/asanzdiego</a></li>
+<li>LinkedIn: <a href="http://www.linkedin.com/in/asanzdiego">in/asanzdiego</a></li>
+<li>SlideShare: <a href="http://www.slideshare.net/asanzdiego/">slideshare.net/asanzdiego</a></li>
+</ul></li>
+</ul>
+</section><section id="licencia" class="slide level2">
+<h2><span class="header-section-number">2.2</span> Licencia</h2>
+<ul>
+<li><strong>Esta obra está bajo una licencia:</strong>
+<ul>
+<li><a href="http://creativecommons.org/licenses/by-sa/3.0/es/">Creative Commons Reconocimiento-CompartirIgual 3.0</a></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="interfaces" class="titleslide slide level1"><h1><span class="header-section-number">3</span> Interfaces</h1></section><section id="default" class="slide level2">
+<h2><span class="header-section-number">3.1</span> Default</h2>
+<ul>
+<li>Para declarar <strong>métodos por defecto en interfaces</strong>.</li>
+<li>Este método es sobreescribible por las implementaciones.</li>
+<li>Si una <strong>clase hereda 2 interfaces con el mismo método default se le obliga a sobreescribir</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> EjemploDefault{
+    <span class="kw">default</span> <span class="dt">void</span> <span class="fu">porDefecto</span>(){
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Este por defecto&quot;</span>);
+    }
+}
+<span class="kw">public</span> <span class="kw">class</span> EjemploDefaultApp <span class="kw">implements</span> EjemploDefault{
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        EjemploDefaultApp obj = <span class="kw">new</span> <span class="fu">EjemploDefaultApp</span>();
+        obj.<span class="fu">porDefecto</span>();
+    }
+}</code></pre></div>
+</section><section id="static" class="slide level2">
+<h2><span class="header-section-number">3.2</span> Static</h2>
+<ul>
+<li>Ahora también podemos declarar <strong>métodos estáticos en una interfaces</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> EjemploConStatic {
+    <span class="dt">static</span> <span class="dt">void</span> <span class="fu">esteEsStatic</span>(<span class="bu">String</span> mensaje){
+       <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Pues estatico desde interface con : &quot;</span> + mensaje);
+    }
+}
+<span class="kw">public</span> <span class="kw">class</span> EjemploConStaticApp <span class="kw">implements</span> EjemploStatic {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        EjemploConStatic.<span class="fu">esteEsStatic</span>(<span class="st">&quot;un par&quot;</span>);
+    }
+}</code></pre></div>
+</section></section>
+<section><section id="programación-funcional" class="titleslide slide level1"><h1><span class="header-section-number">4</span> Programación Funcional</h1></section><section id="ventajas" class="slide level2">
+<h2><span class="header-section-number">4.1</span> Ventajas</h2>
+<ul>
+<li>En vez de escribir &quot;el cómo&quot; el código escribe &quot;<strong>el qué</strong>&quot;.</li>
+<li>Los programas son <strong>más cortos</strong>.</li>
+<li><strong>No tiene efectos colaterales</strong>.</li>
+<li>Se <strong>paraleliza</strong> mejor.</li>
+</ul>
+</section><section id="desventajas" class="slide level2">
+<h2><span class="header-section-number">4.2</span> Desventajas</h2>
+<ul>
+<li><strong>Difícil de leer</strong> para programadores no habituados.</li>
+<li><strong>Curva de aprendizaje</strong> alta.</li>
+</ul>
+</section></section>
+<section><section id="interfaces-funcionales" class="titleslide slide level1"><h1><span class="header-section-number">5</span> Interfaces funcionales</h1></section><section id="características" class="slide level2">
+<h2><span class="header-section-number">5.1</span> Características</h2>
+<ul>
+<li>Son interfaces con un método abstracto y con la anotación <strong><span class="citation" data-cites="FunctionalInterface">@FunctionalInterface</span></strong>.</li>
+<li>Puede poseer métodos estáticos o por defecto, pero <strong>solo un método abstracto</strong>.</li>
+<li>Se le conoce como interfaces <strong>SAM o Simple Abstract Method</strong>.</li>
+<li>Permite una aproximación a la <strong>programación funcional</strong> en Java.</li>
+</ul>
+</section><section id="ejemplo-sencillo" class="slide level2">
+<h2><span class="header-section-number">5.2</span> Ejemplo sencillo</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@FunctionalInterface</span> <span class="co">// No es obligatorio ponerlo</span>
+<span class="kw">interface</span> Cultivable{
+    <span class="dt">void</span> <span class="fu">cultivar</span>(<span class="bu">String</span> cultivo);
+}
+<span class="kw">public</span> <span class="kw">class</span> InterfazFuncional <span class="kw">implements</span> Cultivable{
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">cultivar</span>(<span class="bu">String</span> cultivo){
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;cultivando &quot;</span> + cultivo);
+    }
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        InterfazFuncional funcional = <span class="kw">new</span> <span class="fu">InterfazFuncional</span>();
+        funcional.<span class="fu">cultivar</span>(<span class="st">&quot;patatas&quot;</span>);
+    }
+}</code></pre></div>
+</section><section id="ejemplo-complejo" class="slide level2">
+<h2><span class="header-section-number">5.3</span> Ejemplo complejo</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> PorDefecto {
+    <span class="kw">default</span> <span class="dt">void</span> <span class="fu">porDefecto</span>() { <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Por defecto&quot;</span>); }
+}
+<span class="at">@FunctionalInterface</span>
+<span class="kw">interface</span> MiInterfazFuncional <span class="kw">extends</span> PorDefecto {
+    <span class="dt">void</span> <span class="fu">funciona</span>(<span class="bu">String</span> mensaje);
+}
+<span class="kw">public</span> <span class="kw">class</span> EjemploComplejo <span class="kw">implements</span> MiInterfazFuncional {
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">funciona</span>(<span class="bu">String</span> mensaje) { <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(mensaje);}
+
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        EjemploComplejo funcional = <span class="kw">new</span> <span class="fu">EjemploComplejo</span>();
+        funcional.<span class="fu">funciona</span>(<span class="st">&quot;Y es la leche!&quot;</span>);
+        funcional.<span class="fu">porDefecto</span>();
+    }
+}</code></pre></div>
+</section><section id="funciones-predefinidas" class="slide level2">
+<h2><span class="header-section-number">5.4</span> Funciones predefinidas</h2>
+<ul>
+<li>Java provee de una serie de interfaces funcionales muy útiles:</li>
+</ul>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html" class="uri">https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html</a></p>
+</section><section id="consumers" class="slide level2">
+<h2><span class="header-section-number">5.5</span> Consumers</h2>
+<ul>
+<li>Reciben uno o más parámetros y no devuelven nada.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(T, U)-&gt;{}</code></pre></div>
+</section><section id="suppliers" class="slide level2">
+<h2><span class="header-section-number">5.6</span> Suppliers</h2>
+<ul>
+<li>No reciben parámetros y devuelven un resultado.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">()-&gt;{<span class="kw">return</span> R}</code></pre></div>
+</section><section id="functions" class="slide level2">
+<h2><span class="header-section-number">5.7</span> Functions</h2>
+<ul>
+<li>Reciben uno o más parámetros y retornan un resultado.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(T, U)-&gt;{<span class="kw">return</span> R}</code></pre></div>
+</section><section id="predicates" class="slide level2">
+<h2><span class="header-section-number">5.8</span> Predicates</h2>
+<ul>
+<li>Reciben uno o más parámetros y retornan un boolean.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(T, U)-&gt;{<span class="kw">return</span> B}</code></pre></div>
+</section><section id="operators" class="slide level2">
+<h2><span class="header-section-number">5.9</span> Operators</h2>
+<ul>
+<li>Reciben uno o más parámetros del mismo tipo y retornan un resultado del mismo tipo.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(T, T)-&gt;{<span class="kw">return</span> T}</code></pre></div>
+</section></section>
+<section><section id="expresiones-lambda" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Expresiones Lambda</h1></section><section id="características-1" class="slide level2">
+<h2><span class="header-section-number">6.1</span> Características</h2>
+<ul>
+<li>Son <strong>azúcar sintáctico</strong> para las antiguas Clases Abstractas.</li>
+<li>Eliminan código inútil y repetitivo.</li>
+<li>Son <strong>implementaciones de interfaces funcionales</strong>.</li>
+</ul>
+</section><section id="sintaxis" class="slide level2">
+<h2><span class="header-section-number">6.2</span> Sintaxis</h2>
+<ul>
+<li><strong>(args) : Lista de argumentos entre paréntesis</strong>, que puede estar vacía o no.</li>
+<li><strong>-&gt; : Flecha</strong> que enlaza la lista de argumentos con el cuerpo de la expresión.</li>
+<li><strong>{body} : Cuerpo entre llaves</strong>, que contiene el código de la expresión lambda.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(args)-&gt;{body}</code></pre></div>
+</section><section id="comentarios" class="slide level2">
+<h2><span class="header-section-number">6.3</span> Comentarios</h2>
+<ul>
+<li>En la mayoría de los casos <strong>el tipo de los argumentos es opcional</strong> y el compilador lo resuelve por inferencia.</li>
+<li>Los <strong>parantesis son opcionales</strong> si hay uno (y solo un) argumento.</li>
+<li>Las <strong>llaves opcionales</strong> si hay una (y solo una) línea.</li>
+<li>La <strong>palabra reservada return es opional</strong> si hay una (y solo una) línea.</li>
+</ul>
+</section><section id="ejemplo-sin-lambda" class="slide level2">
+<h2><span class="header-section-number">6.4</span> Ejemplo sin Lambda</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> Buscar{
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">buscar</span>();
+}
+<span class="kw">public</span> <span class="kw">class</span> SinExpresionLambda {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="dt">int</span> encontrados=<span class="dv">3</span>;
+        Buscar b = <span class="kw">new</span> <span class="fu">Buscar</span>() {
+            <span class="kw">public</span> <span class="dt">void</span> <span class="fu">buscar</span>() {
+                <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;encontrado &quot;</span>+encontrados);
+            }
+        };
+        b.<span class="fu">buscar</span>();
+    }
+}</code></pre></div>
+</section><section id="ejemplo-con-lambda" class="slide level2">
+<h2><span class="header-section-number">6.5</span> Ejemplo con Lambda</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@FunctionalInterface</span>
+<span class="kw">interface</span> Buscar{
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">buscar</span>();
+}
+
+<span class="kw">public</span> <span class="kw">class</span> ConExpresionLambda {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="dt">int</span> encontrados=<span class="dv">3</span>;
+        Buscar b=()-&gt;<span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;encontrado &quot;</span>+encontrados);
+        b.<span class="fu">buscar</span>();
+    }
+}</code></pre></div>
+</section></section>
+<section><section id="referencia-a-métodos" class="titleslide slide level1"><h1><span class="header-section-number">7</span> Referencia a métodos</h1></section><section id="características-2" class="slide level2">
+<h2><span class="header-section-number">7.1</span> Características</h2>
+<ul>
+<li>Nos permite referenciar métodos mediante el <strong>operador ::</strong></li>
+</ul>
+</section><section id="método-estático" class="slide level2">
+<h2><span class="header-section-number">7.2</span> Método estático</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Clase::nombreDeMetodoEstatico</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> Construible{
+    <span class="dt">void</span> <span class="fu">construir</span>();
+}
+<span class="kw">public</span> <span class="kw">class</span> MetodoEstatico {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">construyendoAlgo</span>(){
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Dandole al pico y la pala&quot;</span>);
+    }
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        Construible construible = MetodoEstatico::construyendoAlgo;
+        construible.<span class="fu">construir</span>();
+    }
+}</code></pre></div>
+</section><section id="método-de-instancia" class="slide level2">
+<h2><span class="header-section-number">7.3</span> Método de instancia</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">objetoInstanciado::nombreDeMetodoDeInstancia</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> Vendible{
+    <span class="dt">void</span> <span class="fu">vender</span>();
+}
+<span class="kw">public</span> <span class="kw">class</span> MetodoDeInstancia {
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">vendiendoAlgo</span>(){
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Ahora tienes pasta en vez de móvil.&quot;</span>);
+    }
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        MetodoDeInstancia metodo = <span class="kw">new</span> <span class="fu">MetodoDeInstancia</span>();
+        Vendible vendible = metodo::vendiendoAlgo;
+        vendible.<span class="fu">vender</span>();
+        Vendible otraForma = <span class="kw">new</span> <span class="fu">MetodoDeInstancia</span>()::vendiendoAlgo;
+        otraFormaDeVender.<span class="fu">vender</span>();
+    }
+}</code></pre></div>
+</section><section id="constructor" class="slide level2">
+<h2><span class="header-section-number">7.4</span> Constructor</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Clase::<span class="kw">new</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> Almacen{
+    Arma <span class="fu">getArma</span>(<span class="bu">String</span> arma);
+}
+<span class="kw">class</span> Arma{
+    <span class="fu">Arma</span>(<span class="bu">String</span> arma){
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">print</span>(<span class="st">&quot;Toma una &quot;</span> + arma + <span class="st">&quot; del calibre 42&quot;</span>);
+    }
+}
+<span class="kw">public</span> <span class="kw">class</span> ReferenciaAlConstructor {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        Almacen almacen = Arma::<span class="kw">new</span>;
+        Arma porra = almacen.<span class="fu">getArma</span>(<span class="st">&quot;Porra&quot;</span>);
+    }
+}</code></pre></div>
+</section></section>
+<section><section id="optional" class="titleslide slide level1"><h1><span class="header-section-number">8</span> Optional</h1></section><section id="características-3" class="slide level2">
+<h2><span class="header-section-number">8.1</span> Características</h2>
+<ul>
+<li>Nueva clase que se utiliza para <strong>gestionar los NullPointerExceptions</strong>.</li>
+<li>Utiliza el nuevo paradigma funcional.</li>
+</ul>
+</section><section id="ejemplo-sin-optional" class="slide level2">
+<h2><span class="header-section-number">8.2</span> Ejemplo sin Optional</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> EjemploSinOptional {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">String</span>[] cadena = <span class="kw">new</span> <span class="bu">String</span>[<span class="dv">3</span>];
+        <span class="bu">String</span> cadenaEnMinusculas = cadena[<span class="dv">2</span>].<span class="fu">toLowerCase</span>();
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">print</span>(cadenaEnMinusculas);
+    }
+}</code></pre></div>
+</section><section id="ejemplo-con-optional" class="slide level2">
+<h2><span class="header-section-number">8.3</span> Ejemplo con Optional</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> EjemploConOptional {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">String</span>[] cadena = <span class="kw">new</span> <span class="bu">String</span>[<span class="dv">3</span>];
+        Optional&lt;<span class="bu">String</span>&gt; testNull = Optional.<span class="fu">ofNullable</span>(cadena[<span class="dv">2</span>]);
+        <span class="kw">if</span> (testNull.<span class="fu">isPresent</span>()) {
+            <span class="bu">String</span> cadenaEnMinusculas = cadena[<span class="dv">2</span>].<span class="fu">toLowerCase</span>();
+            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(cadenaEnMinusculas);
+        } <span class="kw">else</span> {
+            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;No hay cadena en la posición indicada&quot;</span>);
+        }
+    }
+}</code></pre></div>
+</section></section>
+<section><section id="stream" class="titleslide slide level1"><h1><span class="header-section-number">9</span> Stream</h1></section><section id="características-4" class="slide level2">
+<h2><span class="header-section-number">9.1</span> Características</h2>
+<ul>
+<li>Nuevas interfaces, clases y enum para <strong>procesar datos mediante el paradigma funcional</strong>.</li>
+<li>Las operaciones realizadas en el stream <strong>no modifican el origen de datos</strong>.</li>
+<li>Pueden tener <strong>varias operaciones intermedias</strong> (filter(), map(), distinct(), etc.).</li>
+<li>Pero <strong>solo una operación final</strong> (collect(), findAny(), count(), etc.).</li>
+<li>Las <strong>operaciones intermedias son perezosas</strong> y sólo se invocarán si se ejecuta una operación final.</li>
+<li>El pipeline de operaciones <strong>se ejecutará para cada elemento</strong>.</li>
+</ul>
+</section><section id="ejemplo-sin-stream" class="slide level2">
+<h2><span class="header-section-number">9.2</span> Ejemplo sin Stream</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> EjemploSinStream {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">List</span>&lt;Producto&gt; productos = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;Producto&gt;();
+        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">200000000</span>; i++) {
+            <span class="dt">int</span> random = <span class="kw">new</span> <span class="bu">Random</span>().<span class="fu">nextInt</span>(<span class="dv">10</span> - <span class="dv">100</span>) + <span class="dv">10</span>;
+            productos.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Producto</span>(random));
+        }
+        <span class="bu">List</span>&lt;<span class="bu">Float</span>&gt; precios = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;<span class="bu">Float</span>&gt;();
+        <span class="kw">for</span> (Producto producto : productos) {
+            <span class="kw">if</span> (producto.<span class="fu">precio</span> &lt; <span class="dv">20</span>) {
+                precios.<span class="fu">add</span>(producto.<span class="fu">precio</span>);
+            }
+        }
+    }
+}</code></pre></div>
+</section><section id="ejemplo-con-stream" class="slide level2">
+<h2><span class="header-section-number">9.3</span> Ejemplo con Stream</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> EjemploConStream {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">List</span>&lt;Producto&gt; productos = <span class="kw">new</span> <span class="bu">Random</span>().<span class="fu">ints</span>(<span class="dv">200000000</span>, <span class="dv">10</span>, <span class="dv">100</span>)
+            .<span class="fu">map</span>(random -&gt; <span class="kw">new</span> <span class="fu">Product</span>(random))
+            .<span class="fu">collect</span>(Collectors.<span class="fu">toList</span>());
+        <span class="bu">List</span>&lt;<span class="bu">Float</span>&gt; preciosStream = productos.<span class="fu">stream</span>()
+            .<span class="fu">filter</span>(product -&gt; product.<span class="fu">getPrecio</span>() &lt; <span class="dv">20</span>)
+            .<span class="fu">map</span>(product -&gt; p.<span class="fu">getPrecio</span>())
+            .<span class="fu">collect</span>(Collectors.<span class="fu">toList</span>());
+    }
+}</code></pre></div>
+</section></section>
+<section><section id="foreach" class="titleslide slide level1"><h1><span class="header-section-number">10</span> ForEach</h1></section><section id="características-5" class="slide level2">
+<h2><span class="header-section-number">10.1</span> Características</h2>
+<ul>
+<li>Nuevo método para <strong>iterar</strong> elementos.</li>
+<li>Se define en las interfaces Iterable y Stream.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">default</span> <span class="dt">void</span> <span class="fu">forEach</span>(Consumer&lt;<span class="kw">super</span> T&gt; action)</code></pre></div>
+</section><section id="ejemplo-foreach" class="slide level2">
+<h2><span class="header-section-number">10.2</span> Ejemplo forEach</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> EjemploForEach {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">List</span>&lt;<span class="bu">String</span>&gt; crimenes = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;<span class="bu">String</span>&gt;();
+        crimenes.<span class="fu">add</span>(<span class="st">&quot;Asesinamiento&quot;</span>);
+        crimenes.<span class="fu">add</span>(<span class="st">&quot;Tener mal gusto&quot;</span>);
+        crimenes.<span class="fu">add</span>(<span class="st">&quot;Faltas de ortografía&quot;</span>);
+        crimenes.<span class="fu">add</span>(<span class="st">&quot;Bocata de chorizo con nocilla&quot;</span>);
+        crimenes.<span class="fu">forEach</span>(crimen -&gt; {
+            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Es un crimen el &quot;</span> + crimen)
+        });
+    }
+}</code></pre></div>
+</section></section>
+<section><section id="collector" class="titleslide slide level1"><h1><span class="header-section-number">11</span> Collector</h1></section><section id="características-6" class="slide level2">
+<h2><span class="header-section-number">11.1</span> Características</h2>
+<ul>
+<li>Permite realizar operaciones de <strong>reducción</strong>.</li>
+<li>Similar al <strong>group by</strong> de sql.</li>
+</ul>
+</section><section id="ejemplo-de-uso-de-collector" class="slide level2">
+<h2><span class="header-section-number">11.2</span> Ejemplo de uso de Collector</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">
+<span class="kw">public</span> <span class="kw">class</span> EjemploCollectors {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">List</span>&lt;Pelicula&gt; peliculas = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;&gt;();
+        peliculas.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Pelicula</span>(<span class="dv">1</span>, <span class="st">&quot;ESDLA&quot;</span>, <span class="dv">25</span>));
+        peliculas.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Pelicula</span>(<span class="dv">2</span>, <span class="st">&quot;Piratas del Caribe&quot;</span>, <span class="dv">30</span>));
+        peliculas.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Pelicula</span>(<span class="dv">3</span>, <span class="st">&quot;Spiderman&quot;</span>, <span class="dv">28</span>));
+        peliculas.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Pelicula</span>(<span class="dv">4</span>, <span class="st">&quot;Wonder Woman&quot;</span>, <span class="dv">27</span>));
+        <span class="bu">List</span>&lt;<span class="bu">Float</span>&gt; precios = peliculas.<span class="fu">stream</span>()
+            .<span class="fu">map</span>(p -&gt; p.<span class="fu">getPrecio</span>())
+            .<span class="fu">collect</span>(Collectors.<span class="fu">toList</span>());
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(precios);
+        DoubleSummaryStatistics total = peliculas.<span class="fu">stream</span>()
+            .<span class="fu">collect</span>(Collectors.<span class="fu">summarizingDouble</span>(p -&gt; p.<span class="fu">getPrecio</span>()));
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Total: &quot;</span> + total.<span class="fu">getSum</span>());
+    }
+}</code></pre></div>
+</section></section>
+<section><section id="ordenación-parallel-array" class="titleslide slide level1"><h1><span class="header-section-number">12</span> Ordenación Parallel Array</h1></section><section id="características-7" class="slide level2">
+<h2><span class="header-section-number">12.1</span> Características</h2>
+<ul>
+<li>Java permite <strong>ordenar elementos en paralelo</strong>.</li>
+</ul>
+</section><section id="ejemplo" class="slide level2">
+<h2><span class="header-section-number">12.2</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import</span><span class="im"> java.util.Arrays;</span>
+<span class="kw">public</span> <span class="kw">class</span> OrdenarArraysEnParalelo {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="dt">int</span>[] aOrdenar = {<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">6</span>,<span class="dv">9</span>};
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">print</span>(<span class="st">&quot;A Ordenar : &quot;</span>);
+        <span class="kw">for</span> (<span class="dt">int</span> i : aOrdenar) {
+            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">print</span>(i+<span class="st">&quot; &quot;</span>);
+        }
+        <span class="bu">Arrays</span>.<span class="fu">parallelSort</span>(aOrdenar);
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Array Ordenado: &quot;</span>);
+        <span class="kw">for</span> (<span class="dt">int</span> i : aOrdenar) {
+            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">print</span>(i+<span class="st">&quot; &quot;</span>);
+        }
+    }
+}</code></pre></div>
+</section></section>
+<section><section id="java-time" class="titleslide slide level1"><h1><span class="header-section-number">13</span> Java time</h1></section><section id="características-8" class="slide level2">
+<h2><span class="header-section-number">13.1</span> Características</h2>
+<ul>
+<li>Nuevas interfaces, clases y enums que simplifican el procesamiento de fechas.</li>
+<li><strong>DateTimeFormatter</strong> para formatear.</li>
+<li><strong>ZonedDateTime</strong> para manejar fechas y horas en distintos usos horarios.</li>
+<li><strong>Duration</strong> para manejar duraciones de tiempos (horas, minutos, segundos, etc.)</li>
+<li><strong>Period</strong> para manejar periodos de fechas (años, meses, días, etc.)</li>
+</ul>
+</section><section id="ejemplo-de-la-fecha-actual" class="slide level2">
+<h2><span class="header-section-number">13.2</span> Ejemplo de la fecha actual</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">
+<span class="kw">public</span> <span class="kw">class</span> HoraActual {
+  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+    DateTimeFormatter formattter = 
+        DateTimeFormatter.<span class="fu">ofPattern</span>(<span class="st">&quot;dd/MM/yyyy HH:mm:ss&quot;</span>);
+    ZonedDateTime now = ZonedDateTime.<span class="fu">now</span>();
+    <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(formattter<span class="fu">.format</span>(now));
+    <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(formattter<span class="fu">.format</span>(now.<span class="fu">plus</span>(<span class="bu">Duration</span>.<span class="fu">ofHours</span>(<span class="dv">2</span>))));
+    <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(formattter<span class="fu">.format</span>(now.<span class="fu">plus</span>(Period.<span class="fu">ofDays</span>(<span class="dv">2</span>))));
+  }
+}</code></pre></div>
+</section></section>
+<section><section id="bibliografía" class="titleslide slide level1"><h1><span class="header-section-number">14</span> Bibliografía</h1></section><section id="oficial-de-oracle" class="slide level2">
+<h2><span class="header-section-number">14.1</span> Oficial de Oracle</h2>
+<ul>
+<li><a href="https://www.oracle.com/technetwork/es/articles/java/class-optional-java-se-8-2262753-esa.html">Optional</a></li>
+<li><a href="https://www.oracle.com/technetwork/es/articles/java/paquete-java-time-2390472-esa.html">Fechas y horas</a></li>
+<li><a href="https://www.oracle.com/technetwork/es/articles/java/expresiones-lambda-api-stream-java-2633852-esa.html">Expresiones Lambda y API Stream – Parte 1</a></li>
+<li><a href="">Expresiones Lambda y API Stream – Parte 2</a>https://www.oracle.com/technetwork/es/articles/java/expresiones-lambda-api-stream-java-2737544-esa.html</li>
+<li><a href="https://www.oracle.com/technetwork/es/articles/java/procesamiento-streams-java-se-8-2763402-esa.html">Procesamiento de datos con streams</a></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        pdfMaxPagesPerSlide: 1,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1024,
+        height: 576,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.3,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.1,
+        maxScale: 1.9,
+
+        menu: {
+            // Specifies which side of the presentation the menu will
+            // be shown. Use 'left' or 'right'.
+            side: 'left',
+
+            // Add slide numbers to the titles in the slide list.
+            // Use 'true' or format string (same as reveal.js slide numbers)
+            numbers: false,
+
+            // Specifies which slide elements will be used for generating
+            // the slide titles in the menu. The default selects the first
+            // heading element found in the slide, but you can specify any
+            // valid css selector and the text from the first matching
+            // element will be used.
+            // Note: that a section data-menu-title attribute or an element
+            // with a menu-title class will take precedence over this option
+            titleSelector: 'h1, h2, h3, h4, h5, h6',
+
+            // Hide slides from the menu that do not have a title.
+            // Set to 'true' to only list slides with titles.
+            hideMissingTitles: false,
+
+            // Add markers to the slide titles to indicate the
+            // progress through the presentation
+            markers: false,
+
+            // Specify custom panels to be included in the menu, by
+            // providing an array of objects with 'title', 'icon'
+            // properties, and either a 'src' or 'content' property.
+            custom: false,
+
+            // Specifies the themes that will be available in the themes
+            // menu panel. Set to 'false' to hide themes panel.
+            themes: [
+                { name: 'Black', theme: '../lib/reveal.js/css/theme/black.css' },
+                { name: 'White', theme: '../lib/reveal.js/css/theme/white.css' },
+                { name: 'League', theme: '../lib/reveal.js/css/theme/league.css' },
+                { name: 'Sky', theme: '../lib/reveal.js/css/theme/sky.css' },
+                { name: 'Beige', theme: '../lib/reveal.js/css/theme/beige.css' },
+                { name: 'Simple', theme: '../lib/reveal.js/css/theme/simple.css' },
+                { name: 'Serif', theme: '../lib/reveal.js/css/theme/serif.css' },
+                { name: 'Blood', theme: '../lib/reveal.js/css/theme/blood.css' },
+                { name: 'Night', theme: '../lib/reveal.js/css/theme/night.css' },
+                { name: 'Moon', theme: '../lib/reveal.js/css/theme/moon.css' },
+                { name: 'Solarized', theme: '../lib/reveal.js/css/theme/solarized.css' }
+            ],
+
+            // Specifies if the transitions menu panel will be shown.
+            transitions: true,
+
+            // Adds a menu button to the slides to open the menu panel.
+            // Set to 'false' to hide the button.
+            openButton: true,
+
+            // If 'true' allows the slide number in the presentation to
+            // open the menu panel. The reveal.js slideNumber option must
+            // be displayed for this to take effect
+            openSlideNumber: false,
+
+            // If true allows the user to open and navigate the menu using
+            // the keyboard. Standard keyboard interaction with reveal
+            // will be disabled while the menu is open.
+            keyboard: true
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../lib/reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../lib/reveal.js/plugin/notes/notes.js', async: true },
+          //{ src: '../lib/reveal.js/plugin/search/search.js', async: true },
+          { src: '../lib/reveal.js-menu/menu.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

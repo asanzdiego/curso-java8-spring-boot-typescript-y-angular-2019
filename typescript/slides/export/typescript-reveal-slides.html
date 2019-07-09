@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc">
+  <meta name="description" content="TypeScript" />
+  <meta name="author" content="Adolfo Sanz De Diego">
+  <title>TypeScript</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../lib/reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="../lib/reveal.js-menu/menu.css">
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../lib/reveal.js/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="../lib/reveal.js/lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../lib/reveal.js/css/print/pdf.css' : '../lib/reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+  <style type="text/css">
+    body {
+      background: white !important;
+      background-color: white !important;
+    }
+    code{
+      white-space: pre;
+    }
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 200% !important;
+    }
+    h1 {
+      font-size: 200% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    h3 {
+      font-size: 100% !important;
+    }
+    @media print {
+      #only-print-parent { display: table !important; }
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 300% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+      h3 { font-size: 150% !important; }
+    }
+  </style>
+  <!--[if lt IE 9]>
+  <script src="../lib/reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">TypeScript</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Pronoide</h3>
+    </div>
+</section>
+
+<section><section id="acerca-de" class="titleslide slide level1"><h1><span class="header-section-number">2</span> Acerca de</h1></section><section id="autor" class="slide level2">
+<h2><span class="header-section-number">2.1</span> Autor</h2>
+<ul>
+<li><strong>Adolfo Sanz De Diego</strong>
+<ul>
+<li>Blog: <a href="http://asanzdiego.blogspot.com.es/">asanzdiego.blogspot.com.es</a></li>
+<li>Correo: <a href="mailto:asanzdiego@gmail.com">asanzdiego@gmail.com</a></li>
+<li>GitHub: <a href="http://github.com/asanzdiego">github.com/asanzdiego</a></li>
+<li>Twitter: <a href="http://twitter.com/asanzdiego">twitter.com/asanzdiego</a></li>
+<li>LinkedIn: <a href="http://www.linkedin.com/in/asanzdiego">in/asanzdiego</a></li>
+<li>SlideShare: <a href="http://www.slideshare.net/asanzdiego/">slideshare.net/asanzdiego</a></li>
+</ul></li>
+</ul>
+</section><section id="licencia" class="slide level2">
+<h2><span class="header-section-number">2.2</span> Licencia</h2>
+<ul>
+<li><strong>Esta obra está bajo una licencia:</strong>
+<ul>
+<li><a href="http://creativecommons.org/licenses/by-sa/3.0/es/">Creative Commons Reconocimiento-CompartirIgual 3.0</a></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="introducción" class="titleslide slide level1"><h1><span class="header-section-number">3</span> Introducción</h1></section><section id="introducción-1" class="slide level2">
+<h2><span class="header-section-number">3.1</span> Introducción</h2>
+<ul>
+<li><p>Lenguaje de programación de alto nivel, de código abierto, desarrollado por Microsoft.</p></li>
+<li><p>Cuenta con algunos de los mecanismos habituales en la programación orientada a objetos.</p></li>
+<li><p>Es un <strong>superset de JavaScript</strong>.</p></li>
+<li><p>Se <strong>compila a JavaScript</strong>.</p></li>
+<li><p>Añade mecanismos como el tipado de variables, uso de clases, módulos e interfaces y nos permite detectar errores en tiempo de compilación.</p></li>
+</ul>
+</section><section id="ejemplo" class="slide level2">
+<h2><span class="header-section-number">3.2</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// En JavaScript funciona perfectamente</span>
+<span class="co">// mientras que en TypeScript te dir</span>
+<span class="co">// á que no puedes asignar un número</span>
+<span class="co">//  a una variable de tipo String.</span>
+<span class="kw">let</span> miString <span class="op">=</span> <span class="st">&#39;Esto es un string&#39;</span><span class="op">;</span>
+miString <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></code></pre></div>
+</section><section id="instalación" class="slide level2">
+<h2><span class="header-section-number">3.3</span> Instalación</h2>
+<ul>
+<li><p>Para poder instalar TypeScript <strong>necesitamos tener instalado NPM</strong> (el gestor de paquetes de NodeJS).</p></li>
+<li><p>Comprobamos que lo tenemos instalado y ejecutamos el siguiente comando para realizar la instalación de TypeScript:</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">npm</span> install typescript -g</code></pre></div>
+</section><section id="compilar-a-javascript" class="slide level2">
+<h2><span class="header-section-number">3.4</span> Compilar a JavaScript</h2>
+<ul>
+<li>Para <strong>compilar nuestro código TypeScript a JavaScript</strong> escribimos el siguiente comando en la consola:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">tsc</span> archivo.ts</code></pre></div>
+</section><section id="tsc" class="slide level2">
+<h2><span class="header-section-number">3.5</span> TSC</h2>
+<ul>
+<li><p><strong>TSC</strong> (TypeScript Compiler) es la herramienta que se encarga de compilar el código.</p></li>
+<li><p>Al compilar el archivo con el código en TypeScript se genera un archivo con extensión <strong>.js</strong> que contiene el código JavaScript equivalente al archivo que hemos compilado.</p></li>
+<li><p>El TSC incluye también los <strong>watchers</strong> que permiten vigilar los cambios en el archivo TypeScript, y cuando se realiza algún cambio se encarga de compilar el archivo auntomáticamente sin que tengamos que intervenir.</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">tsc</span> -w archivo.ts</code></pre></div>
+</section></section>
+<section><section id="variables" class="titleslide slide level1"><h1><span class="header-section-number">4</span> Variables</h1></section><section id="tipos-de-variables" class="slide level2">
+<h2><span class="header-section-number">4.1</span> Tipos de variables</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>number</td>
+<td>Representa tanto números enteros como fracciones.</td>
+</tr>
+<tr class="even">
+<td>string</td>
+<td>Representa una cadena de caracteres.</td>
+</tr>
+<tr class="odd">
+<td>boolean</td>
+<td>Representa valores lógicos (true o false).</td>
+</tr>
+<tr class="even">
+<td>void</td>
+<td>Cuando una función no devuelve ningún tipo.</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>Representa la ausencia (intencionada) de valor.</td>
+</tr>
+<tr class="even">
+<td>undefined</td>
+<td>Representa una variables sin inicializar.</td>
+</tr>
+<tr class="odd">
+<td>any</td>
+<td>Acepta cualquier tipo de los mencionados antes.</td>
+</tr>
+</tbody>
+</table>
+</section><section id="tuplas" class="slide level2">
+<h2><span class="header-section-number">4.2</span> Tuplas</h2>
+<ul>
+<li>En Typescript se introduce un tipo de datos parecido a los Arrays, que son las <strong>Tuplas</strong>. Las tuplas son arrays de dos elementos, y para indicar que la variable es una tupla, se añaden los tipos de los dos elementos entre corchetes.</li>
+</ul>
+<pre class="javacript"><code>let telefono: [string, number] = [&#39;+34&#39;, 637291043];
+let direccion: [string, string] = [&#39;Baker Street&#39;, &#39;221B&#39;];</code></pre>
+<ul>
+<li>Para acceder a los valores de la tupla, hay que hacerlo como cuando se accede a un array, indicando la posición en la que se encuentra el valor que queremos obtener.</li>
+</ul>
+</section><section id="inicialización-i" class="slide level2">
+<h2><span class="header-section-number">4.3</span> Inicialización (I)</h2>
+<ul>
+<li>Al declarar una variable se le puede <strong>indicar el tipo de datos que va a guardar y el valor con el que se inicializa</strong> la variable.</li>
+</ul>
+<pre class="javacript"><code>// Declara una variable de un tipo y le asigna un valor.
+// let [identificador]: [tipo] = [valor];
+let miString: string = &#39;Esto es un string&#39;;</code></pre>
+</section><section id="inicialización-ii" class="slide level2">
+<h2><span class="header-section-number">4.4</span> Inicialización (II)</h2>
+<ul>
+<li>Al declarar la variable podemos <strong>indicar el tipo de datos sin asignarle un valor</strong> de inicialización.</li>
+</ul>
+<pre class="javacript"><code>// Declara una variable de un tipo, pero sin asignarle ningún valor.
+// let [identificador]: [tipo];
+let miNumeroDeLaSuerte: number;</code></pre>
+</section><section id="inicialización-iii" class="slide level2">
+<h2><span class="header-section-number">4.5</span> Inicialización (III)</h2>
+<ul>
+<li>Si vamos a inicializar la variable cuando se declara, <strong>no hace falta indicarle de que tipo es ya que TypeScript infiere el tipo</strong> del valor que se le ha asignado.</li>
+</ul>
+<pre class="javacript"><code>// Declara una variable sin tipo a la que le asigna un valor.
+// El tipo se infiere del valor.
+// let [identificador] = [valor];
+let esVerdad = true;</code></pre>
+</section><section id="inicialización-iv" class="slide level2">
+<h2><span class="header-section-number">4.6</span> Inicialización (IV)</h2>
+<ul>
+<li>Por último podemos declarar una variable sin darle un valor ni indicarle de que tipo va a ser. En este caso la variable tendrá como tipo <strong>any</strong> y como valor <strong>undefined</strong>.</li>
+</ul>
+<pre class="javacript"><code>// Declara una variable sin tipo ni valor.
+// El tipo será any y el valor undefined.
+// let [identificador];
+let nombre;</code></pre>
+</section><section id="inicialización-v" class="slide level2">
+<h2><span class="header-section-number">4.7</span> Inicialización (V)</h2>
+<ul>
+<li>Cuando una variable es de tipo <strong>any</strong>, esta puede recibir distintos tipos de valores sin que muestre errores.</li>
+</ul>
+<pre class="javacript"><code>// let cualquierValor;
+let cualquierValor: any;
+cualquierValor = true;
+cualquierValor = &#39;Cualquier valor&#39;;
+cualquierValor = 11;</code></pre>
+</section><section id="unión-de-tipos" class="slide level2">
+<h2><span class="header-section-number">4.8</span> Unión de tipos</h2>
+<ul>
+<li>La <strong>unión de tipos</strong> nos permite indicar que una variable, un parámetro o el retorno de una función puede ser de varios tipos. Para usar la unión de tipos, a la hora de indicar el tipo de algún elemento hay que poner todos los tipos separados por <strong>|</strong>.</li>
+</ul>
+<pre class="javacript"><code>let unionType: number | string;
+unionType = 3;
+unionType = &#39;Y ahora un string&#39;;</code></pre>
+</section><section id="alias-para-tipos" class="slide level2">
+<h2><span class="header-section-number">4.9</span> Alias para tipos</h2>
+<ul>
+<li><p>TypeScript nos permite crear <strong>alias para los tipos</strong>, es decir, que podremos crear nuestros propios tipos o cambiarle el nombre a los que ya existen.</p></li>
+<li><p>Para crear un tipo, se usa la palabra <strong>type</strong> seguida del alias que le queremos poner, y a esto se le iguala el tipo o tipos que queremos que represente.</p></li>
+</ul>
+<pre class="javacript"><code>type texto = string;
+let unTexto: texto;
+unString = &#39;Un string&#39;;
+
+type miTipo = string | number;
+let conAlias: miTipo;
+conAlias = &#39;Un texto&#39;;
+conAlias = 4;</code></pre>
+</section><section id="template-literals-i" class="slide level2">
+<h2><span class="header-section-number">4.10</span> Template literals (I)</h2>
+<ul>
+<li>Los <strong>templates literals</strong> son una nueva forma de crear <strong>strings</strong>. Para usarlos hay que añadir el texto que queremos crear entre las comillas <strong>``</strong>.</li>
+</ul>
+<pre class="javacript"><code>let texto = `Si eres bueno en algo, nunca lo hagas gratis`;</code></pre>
+<ul>
+<li>El principal problema a la hora de crear strings a los que les queremos asignar valores que nos devuelve alguna expresión, es que tenemos que ir concatenándolos junto al texto que queremos mostrar, y esto puede darnos bastante trabajo si tenemos que mostrar bastantes valores almacenados en variables.</li>
+</ul>
+</section><section id="template-literals-ii" class="slide level2">
+<h2><span class="header-section-number">4.11</span> Template literals (II)</h2>
+<ul>
+<li>Con los <strong>template literals</strong> vamos a evitar concatenar todo esto. Para ello, donde queramos mostrar una variable o el resultado de una expresión, vamos a añadir la expresión o la variable entre <strong>${}</strong>.</li>
+</ul>
+<pre class="javacript"><code>let cuenta = &#39;2+2&#39;;
+let resultado = `El resultado de ${cuenta} es ${2+2}`;</code></pre>
+</section><section id="template-literals-iii" class="slide level2">
+<h2><span class="header-section-number">4.12</span> Template literals (III)</h2>
+<ul>
+<li>Por último, si queremos añadir saltos de línea, ahora lo podemos hacer de una forma mucho más sencilla que antes. Solo hay que saltar de línea dentro del <strong>template literal</strong> en lugar de añadir <strong>\n</strong> como haríamos usando el método antiguo.</li>
+</ul>
+<pre class="javacript"><code>let textoMultiLinea = `Este texto aparece
+en varias
+líneas`;</code></pre>
+</section><section id="desestructuración-i" class="slide level2">
+<h2><span class="header-section-number">4.13</span> Desestructuración (I)</h2>
+<ul>
+<li>La desestructuración nos permite sacar de un array o un objeto los valores a unas variables sin necesidad de hacerlo uno a uno.</li>
+</ul>
+</section><section id="desestructuración-ii" class="slide level2">
+<h2><span class="header-section-number">4.14</span> Desestructuración (II)</h2>
+<ul>
+<li>En el caso de los objetos las variables a las que vamos a sacar el valor tienen que ir entre <strong>llaves</strong> y tener el mismo nombre que las propiedades que hay en el objeto.</li>
+</ul>
+<pre class="javacript"><code>let obj = {
+  nombre: &#39;Lucifer&#39;,
+  apellido: &#39;Morningstar&#39;
+};
+let { nombre, apellido } = obj;</code></pre>
+</section><section id="desestructuración-iii" class="slide level2">
+<h2><span class="header-section-number">4.15</span> Desestructuración (III)</h2>
+<ul>
+<li>Mientras que en los arrays, el nombre de las propiedades no importa cual sea, pero tienen que ir entre <strong>corchetes</strong>.</li>
+</ul>
+<pre class="javacript"><code>let arrayNums = [2, 5, 7];
+let [n1, n2, n3] = arrayNums;</code></pre>
+</section></section>
+<section><section id="operadores" class="titleslide slide level1"><h1><span class="header-section-number">5</span> Operadores</h1></section><section id="operadores-aritméticos" class="slide level2">
+<h2><span class="header-section-number">5.1</span> Operadores aritméticos</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+ (Suma)</td>
+<td>5 + 10 = 15</td>
+</tr>
+<tr class="even">
+<td>- (Resta)</td>
+<td>8 - 3 = 5</td>
+</tr>
+<tr class="odd">
+<td>* (Multiplicación)</td>
+<td>2 * 4 = 8</td>
+</tr>
+<tr class="even">
+<td>/ (División)</td>
+<td>9 / 4 = 2.25</td>
+</tr>
+<tr class="odd">
+<td>% (Módulo)</td>
+<td>10 % 3 = 1</td>
+</tr>
+<tr class="even">
+<td>++ (Incremento)</td>
+<td>a=1; a++; =&gt; a=2;</td>
+</tr>
+<tr class="odd">
+<td>-- (Decremento)</td>
+<td>a=5; a--; =&gt; a=4;</td>
+</tr>
+</tbody>
+</table>
+</section><section id="operadores-relacionales" class="slide level2">
+<h2><span class="header-section-number">5.2</span> Operadores relacionales</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt; (Menor que)</td>
+<td>3 &lt; 7 (true)</td>
+</tr>
+<tr class="even">
+<td>&gt; (Mayor que)</td>
+<td>8 &gt; 9 (false)</td>
+</tr>
+<tr class="odd">
+<td>&lt;= (Menor o igual que)</td>
+<td>2 &lt;= 2 (true)</td>
+</tr>
+<tr class="even">
+<td>&gt;= (Mayor o igual que)</td>
+<td>9 &gt;= 4 (true)</td>
+</tr>
+<tr class="odd">
+<td>== (Igual a)</td>
+<td>3 == 2 (false)</td>
+</tr>
+<tr class="even">
+<td>!= (Distinto de)</td>
+<td>4 != 5 (true)</td>
+</tr>
+</tbody>
+</table>
+</section><section id="operadores-lógicos" class="slide level2">
+<h2><span class="header-section-number">5.3</span> Operadores lógicos</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&amp;&amp; (AND)</td>
+<td>10 &gt; 3 &amp;&amp; false (false)</td>
+</tr>
+<tr class="even">
+<td>|| (OR)</td>
+<td>10 &gt; 3 || false (true)</td>
+</tr>
+<tr class="odd">
+<td>! (NOT)</td>
+<td>!(10 &gt; 3) (false)</td>
+</tr>
+</tbody>
+</table>
+</section><section id="operadores-de-asignación" class="slide level2">
+<h2><span class="header-section-number">5.4</span> Operadores de asignación</h2>
+<ul>
+<li>Para a = 5 y b = 4:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>= (Igual)</td>
+<td>a = b (4)</td>
+</tr>
+<tr class="even">
+<td>+= (Suma)</td>
+<td>a += b =&gt; a = a + b (9)</td>
+</tr>
+<tr class="odd">
+<td>-= (Resta)</td>
+<td>a -= b =&gt; a = a - b (1)</td>
+</tr>
+<tr class="even">
+<td>*= (Multiplicación)</td>
+<td>a *= b =&gt; a = a * b (20)</td>
+</tr>
+<tr class="odd">
+<td>/= (División)</td>
+<td>a /= b =&gt; a = a / b (1.25)</td>
+</tr>
+</tbody>
+</table>
+</section><section id="operador-condicional-o-ternario" class="slide level2">
+<h2><span class="header-section-number">5.5</span> Operador condicional o ternario (?)</h2>
+<ul>
+<li>Este operador es equivalente al if...else.</li>
+</ul>
+<pre class="javacript"><code>// [condicion] ? [si es true] : [si es false]
+let resultado = (5 &lt; 3) ? &#39;Es menor&#39; : &#39;Es mayor&#39;; // resultado = &#39;Es mayor&#39;</code></pre>
+</section><section id="operador-de-tipo-typeof" class="slide level2">
+<h2><span class="header-section-number">5.6</span> Operador de tipo (typeof)</h2>
+<ul>
+<li>Este operador nos dice el tipo de una variable o valor.</li>
+</ul>
+<pre class="javacript"><code>// typeof [variable o valor]
+let a = 6;
+typeof a; // =&gt; number</code></pre>
+</section></section>
+<section><section id="estructuras-condicionales" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Estructuras condicionales</h1></section><section id="if" class="slide level2">
+<h2><span class="header-section-number">6.1</span> IF</h2>
+<ul>
+<li>La instrucción condicional <strong>if</strong> comprueba una condición, y si esta condición resulta ser <strong>true</strong>, entonces se ejecutará el bloque de código perteneciente al <strong>if</strong>. En caso de ser <strong>false</strong>, el bloque de código del <strong>if</strong> se salta y la ejecución sigue a partir de donde termina ese bloque.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="cf">if</span> (nota <span class="op">&gt;=</span> <span class="dv">5</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Has aprobado&#39;</span>)<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="if---else" class="slide level2">
+<h2><span class="header-section-number">6.2</span> IF - ELSE</h2>
+<ul>
+<li>La instrucción condicional <strong>if ... else</strong> también va a comprobar una condición. En este caso, si la condición resulta ser <strong>true</strong> se va a ejecutar el bloque de código del <strong>if</strong>, mientras que si la condición es <strong>false</strong>, se ejecutará el bloque del <strong>else</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="cf">if</span> (nota <span class="op">&gt;=</span> <span class="dv">5</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Has aprobado&#39;</span>)<span class="op">;</span>
+<span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Has suspendido&#39;</span>)<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="if---else-if" class="slide level2">
+<h2><span class="header-section-number">6.3</span> IF - ELSE IF</h2>
+<ul>
+<li>Si necesitamos tener en nuestro código más de un camino, podemos añadir más instrucciones <strong>if</strong> justo después de la instrucción del <strong>else</strong>. De esta forma, si la primera condición no se cumple, comprobará la del segundo <strong>if</strong> y así sucesivamente hasta el último <strong>else</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="cf">if</span> (nota \<span class="op">&lt;</span> <span class="dv">5</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Has suspendido&#39;</span>)<span class="op">;</span>
+<span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> (nota <span class="op">&lt;</span> <span class="dv">6</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Suficiente&#39;</span>)<span class="op">;</span>
+<span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> (nota <span class="op">&lt;</span> <span class="dv">8</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Bien&#39;</span>)<span class="op">;</span>
+<span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> (nota <span class="op">&lt;</span> <span class="dv">10</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Notable&#39;</span>)<span class="op">;</span>
+<span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Sobresaliente&#39;</span>)<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="switch-i" class="slide level2">
+<h2><span class="header-section-number">6.4</span> SWITCH (I)</h2>
+<ul>
+<li><p>La instrucción <strong>switch</strong> va a comparar el valor que recibe, con cada uno de los valores que hay en los casos (instrucción <strong>case</strong>), y va a ejecutar el bloque de código correspondiente al caso cuyo valor coincida con el valor que se le pasa al <strong>switch</strong>.</p></li>
+<li><p>El <strong>switch</strong> tiene un caso especial (<strong>default</strong>) cuyo bloque de código se va a ejecutar cuando ninguno de los casos coincida con el valor que se está comparando.</p></li>
+<li><p>Al final de cada <strong>case</strong>, se pone la palabra instrucción <strong>break</strong> que le dice al interprete de JavaSript que ya ha terminado de ejecutar el <strong>switch</strong> y que puede seguir ejecutando el código a partir de su bloque.</p></li>
+</ul>
+</section><section id="switch-ii" class="slide level2">
+<h2><span class="header-section-number">6.5</span> SWITCH (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="cf">switch</span> (dia) <span class="op">{</span>
+  <span class="cf">case</span> <span class="st">&#39;Sábado&#39;</span><span class="op">:</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Fin de semana&#39;</span>)<span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+  <span class="cf">case</span> <span class="st">&#39;Domingo&#39;</span><span class="op">:</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Fin de semana&#39;</span>)<span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+  <span class="dt">default</span><span class="op">:</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Entre semana&#39;</span>)<span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="bucles" class="slide level2">
+<h2><span class="header-section-number">6.6</span> Bucles</h2>
+<ul>
+<li>Los bucles van a comprobar una condición. Si esta condición es <strong>true</strong>, el bloque de código se va a ejecutar. Una vez ejecutado el bloque de código, se vuelve a comprobar la condición y si sigue siendo <strong>true</strong> se vuelve a ejecutar otra vez, y así sucesivamente hasta que la condición sea <strong>false</strong> que será cuando deje de ejecutar ese bloque de código correspondiente al bucle.</li>
+</ul>
+</section><section id="for" class="slide level2">
+<h2><span class="header-section-number">6.7</span> FOR</h2>
+<ul>
+<li>El <strong>for</strong> se usa para cuando necesitamos ejecutar un bloque de código un número de veces conocido. Este el bucle más común a la hora de usarse. En este bucle la condición es el número de veces que se tiene que repetir el bloque de código. El valor que se usa en la condición tendremos que inicializarlo, e ir incrementandolo/decrementandolo para que no se quede en un bucle infinito al final de la ejecución del bloque.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Iteración &#39;</span> <span class="op">+</span> (i <span class="op">+</span> <span class="dv">1</span>))<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="for-in" class="slide level2">
+<h2><span class="header-section-number">6.8</span> FOR IN</h2>
+<ul>
+<li>El <strong>for in</strong> es una versión del bucle <strong>for</strong> que se usa para iterar sobre Arrays u Objetos. En cada iteración se va a ir guardando en la variable la <strong>posición</strong> y si se está usando para iterar sobre un objeto, se va a guardar la <strong>clave</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">let</span> nums <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">;</span>
+<span class="cf">for</span> (<span class="kw">let</span> j <span class="kw">in</span> nums) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Posición del array en esta iteración&#39; + j);</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="for-of" class="slide level2">
+<h2><span class="header-section-number">6.9</span> FOR OF</h2>
+<ul>
+<li>El <strong>for of</strong> es como el bucle <strong>for in</strong> que hemos visto anteriormente, solo que esta vez en lugar de guardar en la variable la posición o la clave, se guarda el <strong>valor</strong> del elemento.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">let</span> nums <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">;</span>
+<span class="cf">for</span> (<span class="kw">let</span> k of nums) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Elemento del array en esta iteración&#39; + k);</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="while" class="slide level2">
+<h2><span class="header-section-number">6.10</span> WHILE</h2>
+<ul>
+<li>En caso de no conocer el número de veces que se tiene que ejecutar el bloque de código, deberíamos usar el <strong>while</strong>, en el que la condición puede ser otra expresión que no sea un contador (como en el <strong>for</strong>) y el código se repetirá hasta que esta condición sea <strong>false</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">let</span> num <span class="op">=</span> <span class="at">prompt</span>(<span class="st">&#39;Dame un número... Introduce -1 si quieres terminar.&#39;</span>)<span class="op">;</span>
+<span class="cf">while</span> (num <span class="op">!=</span> <span class="dv">-1</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Has introducido el número &#39;</span> <span class="op">+</span> num)<span class="op">;</span>
+  num <span class="op">=</span> <span class="at">prompt</span>(<span class="st">&#39;Dame un número... Introduce -1 si quieres terminar.&#39;</span>)<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="do---while" class="slide level2">
+<h2><span class="header-section-number">6.11</span> DO - WHILE</h2>
+<ul>
+<li>Este bucle es muy parecido al <strong>while</strong>. La única diferencia entre ellos, es que el bloque de código correspondiente a este bucle, se va a ejecutar la primera vez aunque la condición sea <strong>false</strong>. En este caso, primero se ejecuta el bloque, luego comprueba la condición, y a partir de aquí todo funciona igual que el <strong>while</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="cf">do</span> <span class="op">{</span>
+  <span class="kw">let</span> num <span class="op">=</span> <span class="at">prompt</span>(<span class="st">&#39;Dame un número... Introduce -1 si quieres terminar.&#39;</span>)<span class="op">;</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Has introducido el número &#39;</span> <span class="op">+</span> num)<span class="op">;</span>
+<span class="op">}</span> <span class="cf">while</span> (num <span class="op">!=</span> <span class="dv">-1</span>)<span class="op">;</span></code></pre></div>
+</section></section>
+<section><section id="funciones" class="titleslide slide level1"><h1><span class="header-section-number">7</span> Funciones</h1></section><section id="intoducción" class="slide level2">
+<h2><span class="header-section-number">7.1</span> Intoducción</h2>
+<ul>
+<li><p>Las funciones son bloques de código mantenible y reusable que realizan una tarea específica.</p></li>
+<li><p>Las funciones nos ayudan a organizar el programa en bloques de código que nos facilita su lectura.</p></li>
+<li><p>Para ejecutar una función solo hace falta llamarla donde quieres ejecutar el bloque de código que contiene.</p></li>
+<li><p>A las funciones se les pueden pasar parámetros y algunas devuelven valores.</p></li>
+</ul>
+</section><section id="typescript" class="slide level2">
+<h2><span class="header-section-number">7.2</span> TypeScript</h2>
+<ul>
+<li>Son <strong>tipadas</strong>, es decir que le vamos a poder indicar de que tipo son los parámetros que recibe la función, y que tipo de datos tiene que devolver.</li>
+<li>Permite <strong>sobrecarga de funciones</strong> (funciones con el mismo nombre y distintos parámetros).</li>
+<li>Los parámetros pueden ser <strong>requeridos u opcionales</strong>.</li>
+<li>Soporta <strong>arrow functions</strong>.</li>
+<li>Se le pueden poner <strong>valores por defecto a los parámetros</strong>.</li>
+<li>Soporta <strong>parámetros rest</strong>.</li>
+</ul>
+</section><section id="javascript" class="slide level2">
+<h2><span class="header-section-number">7.3</span> JavaScript</h2>
+<ul>
+<li><strong>No tiene tipos</strong>.</li>
+<li><strong>No se permite sobrecargar funciones</strong> (funciones con el mismo nombre y distintos parámetros).</li>
+<li>Todos los parámetros son <strong>opcionales</strong>.</li>
+<li>Soporta <strong>arrow functions en ES6</strong>.</li>
+<li>Se le pueden poner <strong>valores por defecto a los parámetros en ES6</strong>.</li>
+<li>Soporta <strong>parámetros rest en ES6</strong>.</li>
+</ul>
+</section><section id="tipos-en-parámetros-y-en-valores-de-retorno" class="slide level2">
+<h2><span class="header-section-number">7.4</span> Tipos en parámetros y en valores de retorno</h2>
+<ul>
+<li>En las funciones es posible indicar el tipo de los parámetros que va a recibir, y el tipo del valor que va a devolver dicha función.</li>
+</ul>
+<pre class="javacript"><code>function crearUsuarioId(nombre: string, id: number): string {
+  return nombre + id;
+}</code></pre>
+</section><section id="arrow-functions-i" class="slide level2">
+<h2><span class="header-section-number">7.5</span> Arrow functions (I)</h2>
+<ul>
+<li><p>Las <strong>arrow functions</strong> que a veces se les llama <strong>funciones lambda</strong>, son funciones anónimas que se usan muy amenudo tanto en TypeScript como en JavaScript.</p></li>
+<li><p>Las arrow functions nos ahorran el tener que escribir código y se llaman arrow functions porque el cuerpo y los parámetros van separados por una flecha (<strong>=&gt;</strong>).</p></li>
+</ul>
+</section><section id="arrow-functions-ii" class="slide level2">
+<h2><span class="header-section-number">7.6</span> Arrow functions (II)</h2>
+<pre class="javacript"><code>let misPeliculas = [
+  { titulo: &#39;Scary movie&#39;, genero: &#39;comedia&#39;},
+  { titulo: &#39;La jungla de cristal&#39;, genero: &#39;accion&#39;},
+  { titulo: &#39;Los mercenarios&#39;, genero: &#39;accion&#39;},
+  { titulo: &#39;Salvar al soldado Ryan&#39;, genero: &#39;belica&#39;}
+];
+
+let peliculasComedia = misPeliculas.filter(function(pelicula) {
+  return pelicula.genero == &#39;comedia&#39;;
+});
+
+let peliculasAccion = misPeliculas.filter(pelicula =&gt;
+  pelicula.genero == &#39;accion&#39;);</code></pre>
+</section><section id="arrow-functions-iii" class="slide level2">
+<h2><span class="header-section-number">7.7</span> Arrow functions (III)</h2>
+<ul>
+<li>Cuando estas funciones no reciben parámetros o reciben más de uno, entonces hay que ponerlos entre <strong>paréntesis</strong>, mientras que si reciben solo uno, da igual si ponemos los paréntesis o no.</li>
+<li>Y en caso de tener más de una linea de código, el cuerpo de la función tiene que ir entre <strong>llaves</strong>.</li>
+</ul>
+<pre class="javacript"><code>misPeliculas.forEach(() =&gt; console.log(&#39;Vista!&#39;));
+misPeliculas.forEach(pelicula =&gt; console.log(pelicula.titulo + &#39; vista!&#39;));
+misPeliculas.forEach((pelicula, index) =&gt; console.log(pelicula.titulo + &#39; (&#39; + pelicula.genero + &#39;)&#39; + &#39; vista!&#39;));
+misPeliculas.forEach((pelicula, index) =&gt; {
+  let texto = pelicula.titulo + &#39; (&#39; + pelicula.genero + &#39;)&#39; + &#39; vista!&#39;;
+  console.log(texto);
+});</code></pre>
+</section><section id="arrow-functions-iv" class="slide level2">
+<h2><span class="header-section-number">7.8</span> Arrow functions (IV)</h2>
+<ul>
+<li>Normalmente cuando necesitamos usar la variable <strong>this</strong> dentro de un <strong>callback</strong>, tenemos que asignarle su valor a otra variable que se suele llamar <strong>self</strong>. Con las arrow functions no hace falta capturar la variable <strong>this</strong> sino que te deja usarla directamente.</li>
+</ul>
+<pre class="javacript"><code>function pelicula() {
+  let self = this;
+  self.añoEstreno = 2000;
+  setTimeout(function() {
+    console.log(self.añoEstreno);
+  }, 1500);
+}
+
+function peliculaArrow() {
+  this.añoEstreno = 2000;
+  setTimeout(() =&gt; {
+    console.log(this.añoEstreno);
+  }, 1500);
+}</code></pre>
+</section><section id="definición-de-funciones" class="slide level2">
+<h2><span class="header-section-number">7.9</span> Definición de funciones</h2>
+<ul>
+<li>Podemos indicar la forma que va que tener una función.</li>
+</ul>
+<pre class="javacript"><code>let generadorIds1: (chars: string, nums: number) =&gt; string;
+let generadorIds2: (chars: string, nums: number) =&gt; string;
+
+function crearUsuarioId2(nombre: string, id: number): string {
+  return nombre + id;
+}
+
+generadorIds1 = crearUsuarioId2;
+let miId1 = generadorIds1(&#39;angel&#39;, 201);
+console.log(miId1);
+
+generadorIds2 = (nombre: string, id: number) =&gt; { return id + nombre; };
+let miId2 = generadorIds2(&#39;pedro&#39;, 104);
+console.log(miId2);</code></pre>
+</section><section id="parámetros-opcionales-y-por-defecto" class="slide level2">
+<h2><span class="header-section-number">7.10</span> Parámetros opcionales y por defecto</h2>
+<ul>
+<li>Podemos indicar que un parámetro es opcional poniéndole <strong>?</strong> después del nombre del parámetro.</li>
+<li>Todos los parámetros opcionales deben de ir situados después de todos aquellos que son obligatorios.</li>
+<li>Para asignarle un valor por defecto le igualamos el valor en la sección donde se definen los parámetros.</li>
+</ul>
+<pre class="javacript"><code>function muestraDatosUsuario(nombre: string = &#39;Blanca&#39;, email?: string): void {
+  ...
+}
+
+muestraDatosUsuario(&#39;James&#39;, &#39;jmcgill@bettercallsaul.com&#39;);
+muestraDatosUsuario(&#39;Robb&#39;);
+muestraDatosUsuario();</code></pre>
+</section><section id="parámetros-rest" class="slide level2">
+<h2><span class="header-section-number">7.11</span> Parámetros Rest</h2>
+<ul>
+<li>Los parámetros rest, se usan para <strong>recoger un conjunto de valores en un array</strong>.</li>
+</ul>
+<pre class="javacript"><code>function getNumeroLoteria(...nums: number[]): string {
+  return nums.join(&#39;, &#39;);
+}
+
+let num = getNumeroLoteria(1, 5, 12, 22, 35, 37);
+console.log(num);</code></pre>
+</section><section id="sobrecarga-de-funciones" class="slide level2">
+<h2><span class="header-section-number">7.12</span> Sobrecarga de funciones</h2>
+<ul>
+<li>Con la sobrecarga de funciones vamos a tener la <strong>posibilidad de crear varias funciones con el mismo nombre</strong>, pero con distintos parámetros.</li>
+</ul>
+<pre class="javacript"><code>function hola(valor: number) {
+  console.log(&#39;Hola número &#39;+ valor)
+}
+function hola(valor: string) {
+  console.log(&#39;Hola texto &#39;+ valor)
+}</code></pre>
+</section></section>
+<section><section id="interfaces" class="titleslide slide level1"><h1><span class="header-section-number">8</span> Interfaces</h1></section><section id="introducción-2" class="slide level2">
+<h2><span class="header-section-number">8.1</span> Introducción</h2>
+<ul>
+<li><p>Las interfaces son <strong>contratos</strong> que definen como va a ser un tipo de dato.</p></li>
+<li><p>Estas interfaces no se compilan a nada en JavaScript.</p></li>
+<li><p>Es una colección de <strong>definiciones de propiedades y métodos</strong> que no se llegan a implementar.</p></li>
+<li><p>Solo indica de que tipo tienen que ser las propiedades y en cuanto a los métodos, define que parámetros recibe y que tiene que devolver.</p></li>
+</ul>
+</section><section id="definir-una-interfaz" class="slide level2">
+<h2><span class="header-section-number">8.2</span> Definir una interfaz</h2>
+<p>Una interfaz se define de la siguiente forma:</p>
+<pre class="javacript"><code>interface Pelicula {
+  titulo: string,
+  duracion?: number, // Parámetro opcional
+  ganadoraOscar?: (gana: boolean) =&gt; void // Los métodos sin implementar
+}
+
+let pelicula: Pelicula = {
+  titulo: &#39;Los mercenarios&#39;,
+  duracion: 113,
+  ganadoraOscar: (gana: boolean) =&gt;
+    console.log(gana ? &#39;Ha ganado un oscar&#39; : &#39;No ha ganado ningún oscar&#39;)
+}
+
+pelicula.ganadoraOscar(true);</code></pre>
+</section><section id="extendiendo-interfaces" class="slide level2">
+<h2><span class="header-section-number">8.3</span> Extendiendo interfaces</h2>
+<ul>
+<li>Las interfaces pueden ser extendidas con la palabra reservada <strong>extends</strong>.</li>
+</ul>
+<pre class="javacript"><code>interface Persona {
+  nombre: string,
+  email: string
+}
+
+interface DirectorCine extends Persona {
+  numPeliculasDirigidas: number
+}
+
+let director: DirectorCine = {
+  nombre: &#39;Joss Whedon&#39;,
+  email: &#39;jossw@gmail.com&#39;,
+  numPeliculasDirigidas: 20
+}</code></pre>
+</section><section id="tipos-de-clases" class="slide level2">
+<h2><span class="header-section-number">8.4</span> Tipos de clases</h2>
+<ul>
+<li>Para indicar que una clase implementa una interfaz se usa la palabra reservada <strong>implements</strong>.</li>
+</ul>
+<pre class="javacript"><code>interface Desarrollador {
+  trabaja: () =&gt; void;
+}
+
+class DesarrolladorJavascript implements Desarrollador {
+  trabaja() {
+    console.log(&#39;Desarrollo aplicaciones con JavaScript&#39;);
+  }
+}
+
+let desarrollador: Desarrollador = new DesarrolladorJavascript();
+desarrollador.trabaja();</code></pre>
+</section></section>
+<section><section id="clases" class="titleslide slide level1"><h1><span class="header-section-number">9</span> Clases</h1></section><section id="introducción-3" class="slide level2">
+<h2><span class="header-section-number">9.1</span> Introducción</h2>
+<ul>
+<li>Las clases son <strong>plantillas</strong> que nos van a permitir crear objetos.</li>
+<li>Todos los objetos que se crean con las clases van a tener las mismas propiedades y los mismos métodos.</li>
+<li>Las clases encapsulan una funcionalidad que se puede reutilizar.</li>
+</ul>
+</section><section id="constructores" class="slide level2">
+<h2><span class="header-section-number">9.2</span> Constructores</h2>
+<ul>
+<li>Se encargan de crear nuevas instancias de una clase.</li>
+<li>Son métodos cuyo nombre es <strong>constructor</strong> y solo puede haber uno por clase.</li>
+<li>Pueden recibir parámetros que van a servir para darle valores a las propiedades de los objetos.</li>
+<li>Para crear objetos se usa la palabra <strong>new</strong> seguida del nombre de la clase con los parámetros.</li>
+</ul>
+<pre class="javacript"><code>class Mascota {
+  constructor(nombre: string, tipo: string) { ... }
+}
+
+let perro = new Mascota(&#39;Rocky&#39;, &#39;perro&#39;);</code></pre>
+</section><section id="propiedades-y-métodos-i" class="slide level2">
+<h2><span class="header-section-number">9.3</span> Propiedades y métodos (I)</h2>
+<ul>
+<li>Al igual que las interfaces, las clases pueden tener propiedades y métodos, pero en este caso, si que se van a <strong>implementar</strong>.</li>
+</ul>
+<pre class="javacript"><code>class Mascota {
+  public nombre: string;
+  public tipo: string;
+
+  constructor(nombre: string, tipo: string, sonido: string) {
+    this.nombre = nombre;
+    this.tipo = tipo;
+  }
+
+  toString (): void {
+    console.log(`Mi ${this.tipo} se llama ${this.nombre}`);
+  }
+}
+
+let perro = new Mascota(&#39;Rocky&#39;, &#39;perro&#39;);
+perro.toString();</code></pre>
+</section><section id="propiedades-y-métodos-ii" class="slide level2">
+<h2><span class="header-section-number">9.4</span> Propiedades y métodos (II)</h2>
+<ul>
+<li><p>Hay dos formas de inicializar las propiedades, una es declarando la propiedad y en el constructor le asignamos el valor.</p></li>
+<li><p>Y la otra es <strong>indicando la visibilidad de la propiedad en el propio constructor</strong>.</p></li>
+</ul>
+<pre class="javacript"><code>class Mascota {
+  constructor(public nombre: string, public tipo: string) { }
+
+  toString (): void {
+    console.log(`Mi ${this.tipo} se llama ${this.nombre}`);
+  }
+}
+
+let perro = new Mascota(&#39;Rocky&#39;, &#39;perro&#39;, &#39;guau&#39;);
+perro.toString();</code></pre>
+</section><section id="propiedades-y-métodos-iii" class="slide level2">
+<h2><span class="header-section-number">9.5</span> Propiedades y métodos (III)</h2>
+<ul>
+<li>También podemos tener propiedades <strong>estáticas</strong>, que no son propiedades de la instancia, sino que son propiedades de la clase.</li>
+<li>Para acceder al valor de esa propiedad tenemos que usar el nombre de la clase en lugar de la instancia de un objeto.</li>
+</ul>
+<pre class="javacript"><code>class Coche {
+  constructor(public marca: string) { }
+  static numRuedas: number = 4;
+}
+
+let coche = new Coche(&#39;Seat&#39;);
+let marca = coche.marca;
+let ruedas = Coche.numRuedas;</code></pre>
+</section><section id="herencia-i" class="slide level2">
+<h2><span class="header-section-number">9.6</span> Herencia (I)</h2>
+<ul>
+<li>La herencia es un medio por el que una clase puede compartir con sus subclases las propiedades y métodos.</li>
+<li>Si tenemos una clase que tiene dos clases hijas o subclases, estas dos subsclases podrán usar la funcionalidad que tiene la clase padre.</li>
+<li>Para indicar que una clase hereda de otra se usa la palabra <strong>extends</strong>.</li>
+<li>En caso de que una subclase tenga un método con el mismo nombre que un método del padre, esta usará su propio método, en caso de que no, entonces usará el método del padre.</li>
+</ul>
+</section><section id="herencia-ii" class="slide level2">
+<h2><span class="header-section-number">9.7</span> Herencia (II)</h2>
+<pre class="javacript"><code>class Persona {
+  constructor(public nombre: string, public dni: string) { }
+  toString() { 
+    console.log(`Nombre: ${this.nombre} DNI: ${this.dni}`);
+  }
+}
+class Alumno extends Persona {
+  constructor(nombre: string, dni: string, 
+    public numMatricula: number, public creditosAprobados: number) {
+    super(nombre, dni);
+  }
+  toString() {
+    super.toString();
+    console.log(`Num. Matrícula: ${this.numMatricula} 
+      Creditos Aprobados: ${this.creditosAprobados}`);
+  }
+}</code></pre>
+</section><section id="visibilidad" class="slide level2">
+<h2><span class="header-section-number">9.8</span> Visibilidad</h2>
+<ul>
+<li><p>En TypeScript nos podemos encontrar los tres tipos de visibilidad que hay en otros lenguajes: <strong>public, private y protected</strong>.</p></li>
+<li><p>Por defecto todas las propiedades y los métodos de una clase van a ser <strong>públicos</strong> a no ser que se les indique otro tipo de visibilidad. Al ser públicos, se van a poder acceder a ellos tanto desde dentro de la clase, como fuera de esta (a través de los objetos).</p></li>
+</ul>
+</section><section id="public" class="slide level2">
+<h2><span class="header-section-number">9.9</span> Public</h2>
+<ul>
+<li>Si queremos indicar de forma explicita que una propiedad o método va a ser público, hay que añadir delante del nombre la palabra reservada <strong>public</strong>.</li>
+</ul>
+<pre class="javacript"><code>class PersonaPublica {
+  constructor(public nombre: string) { }
+  toString () {
+    console.log(`Me llamo ${this.nombre}`);
+  }
+}</code></pre>
+</section><section id="private" class="slide level2">
+<h2><span class="header-section-number">9.10</span> Private</h2>
+<ul>
+<li>Para indicar que una propiedad o método es <strong>privado</strong> hay que añadir delante del nombre la palabra reservada <strong>private</strong>. Y en este caso a esta propiedad o método solo se va a poder acceder desde dentro de la clase.</li>
+</ul>
+<pre class="javacript"><code>class PersonaPrivada {
+  constructor(private nombre: string) { }
+  toString () {
+    console.log(`Me llamo ${this.nombre}`);
+  }
+}</code></pre>
+</section><section id="protected" class="slide level2">
+<h2><span class="header-section-number">9.11</span> Protected</h2>
+<ul>
+<li>Y por último, aunque en JavaScript no exista, también vamos a poder indicar que un método o propiedad tiene visibilidad <strong>protegida</strong> añadiendo la palabra <strong>protected</strong> delante del nombre. Y este tipo de visibilidad actuá como la privada, pero con la diferencia de que una subclase si que puede acceder a los métodos y propiedades protegidas de la clase de la que hereda.</li>
+</ul>
+<pre class="javacript"><code>class PersonaProtegida {
+  constructor(protected nombre: string) { }
+  toString() {
+    console.log(`Me llamo ${this.nombre}`);
+  }
+}</code></pre>
+</section><section id="readonly" class="slide level2">
+<h2><span class="header-section-number">9.12</span> ReadOnly</h2>
+<ul>
+<li><p>En TypeScript también podemos indicar que las propiedades sean solo de <strong>lectura</strong>, por lo que no se van a poder modificar, son como constantes de la clase.</p></li>
+<li><p>Estas propiedades llevan la palabra reservada <strong>readonly</strong> delante del nombre y se tienen que inicializar en el constructor o en la declaración.</p></li>
+</ul>
+<pre class="javacript"><code>class PersonaSoloLectura {
+  constructor(readonly nombre: string) { }
+  toString() {
+    console.log(`Me llamo ${this.nombre}`);
+  }
+}</code></pre>
+</section><section id="getters-y-setters" class="slide level2">
+<h2><span class="header-section-number">9.13</span> Getters y Setters</h2>
+<ul>
+<li>TypeScript permite usar <strong>getters</strong> y <strong>setters</strong> para interceptar los accesos a las propiedades de las clases. De esta forma se puede tener un mayor control sobre quien accede o modifica estas propiedades añadiendo comprobaciones dentro de estos métodos.</li>
+</ul>
+</section><section id="getters" class="slide level2">
+<h2><span class="header-section-number">9.14</span> Getters</h2>
+<ul>
+<li>Los <strong>getters</strong> nos van a devolver el valor de la propiedad y se declaran añadiendo la palabra <strong>get</strong> delante del nombre de la función que se va a ejecutar cuando se acceda a la propiedad correspondiente al getter.</li>
+</ul>
+<pre class="javacript"><code>class Persona {
+  constructor(private _nombre: string) { }
+  get nombre(): string {
+    return this._nombre;
+  }
+  toString() {
+    console.log(`Me llamo ${this.nombre}`);
+  }
+}</code></pre>
+</section><section id="setters" class="slide level2">
+<h2><span class="header-section-number">9.15</span> Setters</h2>
+<ul>
+<li>Los <strong>setters</strong> por otro lado se van a encargar de modificar el valor de la propiedad y se declaran usando la palabra <strong>set</strong> delante del nombre de la función que se va a ejecutar cuando se vaya a igualar un valor a la propiedad correspondiente al setter.</li>
+</ul>
+<pre class="javacript"><code>class Persona {
+  constructor(private _nombre: string) { }
+  set nombre(nombre: string) {
+    this._nombre = nombre;
+  }
+  toString() {
+    console.log(`Me llamo ${this.nombre}`);
+  }
+}</code></pre>
+</section><section id="buenas-prácticas" class="slide level2">
+<h2><span class="header-section-number">9.16</span> Buenas prácticas</h2>
+<ul>
+<li><p>Como buena práctica, las propiedades privadas se declaran con un <strong>guión bajo</strong> al inicio del nombre. Y a los <strong>getters</strong> y <strong>setters</strong> se les da el mismo nombre sin el guión bajo.</p></li>
+<li><p>Ahora para usar el <strong>getter</strong> y el <strong>setter</strong> solo hay que llamar al método <strong>nombre</strong>. Si se le asigna un valor se ejecutará el <strong>setter</strong>, y si solo se pide el valor entonces se ejecuta el <strong>getter</strong>.</p></li>
+</ul>
+<pre class="javacript"><code>let p = new Persona(&#39;Chloe&#39;);
+
+p.nombre = &#39;Maze&#39;; // Se llama al setter
+
+p.toString(); // Se llama al getter</code></pre>
+</section><section id="clases-abstractas-i" class="slide level2">
+<h2><span class="header-section-number">9.17</span> Clases Abstractas (I)</h2>
+<ul>
+<li>Son clases que van a ser heredadas y que implementan métodos que van a compartir las clases que heredan de esta.</li>
+<li>Las clases abstractas llevan la palabra <strong>abstract</strong> y no se pueden instanciar.</li>
+</ul>
+<pre class="javacript"><code>abstract class Animal {
+  constructor(protected _nombre: string) { }
+  get nombre() {
+    return this._nombre;
+  }
+  set nombre(nombre: string) {
+    this._nombre = nombre;
+  }
+}
+
+class Gato extends Animal {
+  constructor(nombre: string) {
+    super(nombre);
+  }
+}</code></pre>
+</section><section id="clases-abstractas-ii" class="slide level2">
+<h2><span class="header-section-number">9.18</span> Clases Abstractas (II)</h2>
+<ul>
+<li>Pueden declarar <strong>métodos abstractos</strong> que serán implementados en las clases que heredan de ella.</li>
+<li>Estos métodos llevan la palabra <strong>abstract</strong> y no hay que implementarlos.</li>
+</ul>
+<pre class="javacript"><code>abstract class Animal {
+  constructor(protected _nombre: string) { }
+
+  get nombre() {
+    return this._nombre;
+  }
+
+  set nombre(nombre: string) {
+    this._nombre = nombre;
+  }
+
+  abstract hazSonido(): void;
+}</code></pre>
+</section></section>
+<section><section id="enumerados" class="titleslide slide level1"><h1><span class="header-section-number">10</span> Enumerados</h1></section><section id="introducción-4" class="slide level2">
+<h2><span class="header-section-number">10.1</span> Introducción</h2>
+<ul>
+<li>Los enumerados nos permiten restringir el contenido de una variable a una serie de <strong>valores predefinidos</strong>. A cada uno de estos valores se les asigna por defecto un valor numérico que empieza en 0.</li>
+</ul>
+</section><section id="creación" class="slide level2">
+<h2><span class="header-section-number">10.2</span> Creación</h2>
+<ul>
+<li>Para crear un enumerado, se usa la palabra <strong>enum</strong> seguida del nombre del enumerado y todos los valores entre llaves <strong>{}</strong>.</li>
+</ul>
+<pre class="javacript"><code>enum Direction { Up, Down, Left, Right };
+console.log(Direction.Up);</code></pre>
+</section><section id="personalización" class="slide level2">
+<h2><span class="header-section-number">10.3</span> Personalización</h2>
+<ul>
+<li>Podemos establecer estos valores nosotros mismos igualándolos a lo que queramos.</li>
+<li>En caso de ponerle un número al primer valor, el resto obtendrán el valor anterior incrementado en una unidad.</li>
+<li>También les podemos dar a cada uno el valor que queramos.</li>
+</ul>
+<pre class="javacript"><code>enum Category { Fantasy = 1, Comedy, Action, Science_Fiction };
+console.log(Category.Comedy);
+enum Languages { Spanish = 2, French = 8, English = 4, Germany = 7 };
+console.log(Languages.English);
+console.log(Languages[8]);</code></pre>
+</section></section>
+<section><section id="genéricos" class="titleslide slide level1"><h1><span class="header-section-number">11</span> Genéricos</h1></section><section id="introducción-5" class="slide level2">
+<h2><span class="header-section-number">11.1</span> Introducción</h2>
+<ul>
+<li>Los genéricos son bloques de código que nos permiten trabajar con múltiples tipos de datos.</li>
+<li>Usando los genéricos vamos a poder <strong>crear versiones genéricas</strong> de funciones, clases e interfaces.</li>
+<li>Los parámetros que se le pasan a los genéricos van a indicar sobre que tipo de datos se van a realizar operaciones.</li>
+</ul>
+<pre class="javacript"><code>let arrayOfNumbers: Array&lt;number&gt;;
+arrayOfNumbers = [1, 2, 3, 4];</code></pre>
+</section><section id="funciones-genéricas" class="slide level2">
+<h2><span class="header-section-number">11.2</span> Funciones genéricas</h2>
+<ul>
+<li>Podemos usar los genéricos con las funciones.</li>
+</ul>
+<pre class="javacript"><code>function dameItemAleatorio&lt;T&gt;(items: Array&lt;T&gt;): T {
+  let posicion = Math.floor(Math.random() ** items.length);
+  return items[posicion];
+}
+
+let itemNum = dameItemAleatorio&lt;number&gt;([1, 3, 5, 2]);
+let itemFamiliaGot = dameItemAleatorio&lt;string&gt;(
+  [&#39;Stark&#39;, &#39;Lannister&#39;, &#39;Baratheon&#39;, &#39;Targaryen&#39;, &#39;Martell&#39;, &#39;Greyjoy&#39;]);</code></pre>
+</section><section id="interfaces-y-clases-genéricas" class="slide level2">
+<h2><span class="header-section-number">11.3</span> Interfaces y clases genéricas</h2>
+<ul>
+<li>Se pueden crear interfaces y clases con tipos genéricos.</li>
+</ul>
+<pre class="javacript"><code>interface Inventario&lt;T&gt; {
+  addItem: (item: T) =&gt; void;
+}
+interface Portatil {
+  marca: string;
+}
+class Catalogo&lt;T&gt; implements Inventario&lt;T&gt; {
+  private catalogo = new Array&lt;T&gt;();
+  addItem(item: T) {
+    this.catalogo.push(item);
+  }
+}
+let catalogoPortatil = new Catalogo&lt;Portatil&gt;();
+catalogoPortatil.addItem({marca: &#39;HP&#39;});
+catalogoPortatil.addItem({marca: &#39;Lenovo&#39;});</code></pre>
+</section></section>
+<section><section id="módulos" class="titleslide slide level1"><h1><span class="header-section-number">12</span> Módulos</h1></section><section id="introducción-6" class="slide level2">
+<h2><span class="header-section-number">12.1</span> Introducción</h2>
+<ul>
+<li><p>Los módulos nos permiten agrupar bloques de código y exportarlos para poder usarlos en cualquier lugar de la aplicación cuando queramos.</p></li>
+<li><p>Todo aquello que hemos puesto en un módulo solo va a poder ser usado en otros módulos si se está exportando, por lo tanto tendremos que indicar, que cosas hay que exportar con la palabra <strong>export</strong>.</p></li>
+</ul>
+</section><section id="export" class="slide level2">
+<h2><span class="header-section-number">12.2</span> Export</h2>
+<pre class="javacript"><code>export class Mascota {
+  constructor(public nombre: string, public tipo: string) { }
+}</code></pre>
+<pre class="javacript"><code>class Mascota {
+  constructor(public nombre: string, public tipo: string) { }
+}
+export { Mascota };</code></pre>
+</section><section id="import" class="slide level2">
+<h2><span class="header-section-number">12.3</span> Import</h2>
+<ul>
+<li>Para poder usar aquello que se está exportando desde un módulo, tendremos que importarlo en el archivo donde lo necesitemos usando la palabra <strong>import</strong> seguida de lo que se quiere importar y indicando desde que archivo hay que importarlo. A la hora de importarlo le podemos poner un alias a lo que se importa.</li>
+</ul>
+<pre class="javacript"><code>import { Mascota as Masc } from &#39;./mascota&#39;;
+
+let perro = new Masc(&#39;Toby&#39;, &#39;perro&#39;);</code></pre>
+</section><section id="import-1" class="slide level2">
+<h2><span class="header-section-number">12.4</span> Import *</h2>
+<ul>
+<li>Hay otra forma de importar módulos y es usando el <strong>asterisco</strong>, que importará todo aquello que se está exportando. A la hora de usar esta forma tendremos que darle un alias para poder acceder a las cosas que se están importando.</li>
+</ul>
+<pre class="javacript"><code>import * as masc from &#39;./mascota&#39;;
+
+let perro = new masc.Mascota(&#39;Toby&#39;, &#39;perro&#39;);</code></pre>
+</section><section id="exportando-por-defecto" class="slide level2">
+<h2><span class="header-section-number">12.5</span> Exportando por defecto</h2>
+<ul>
+<li>Hay otra opción para exportar a parte de las vistas antes, y es la exportación por defecto que se usa cuando vamos a exportar solo una cosa del módulo. Aquí no hace falta ponerle nombre a lo que estamos exportando.</li>
+</ul>
+<pre class="javacript"><code>export default class {
+  constructor(public nombre: string, public tipo: string);
+}</code></pre>
+<pre class="javacript"><code>import Mascota from &#39;./mascota&#39;;
+
+let perro = new Mascota(&#39;Toby&#39;, &#39;perro&#39;);</code></pre>
+</section></section>
+<section><section id="namespaces" class="titleslide slide level1"><h1><span class="header-section-number">13</span> Namespaces</h1></section><section id="introducción-7" class="slide level2">
+<h2><span class="header-section-number">13.1</span> Introducción</h2>
+<ul>
+<li><p>Los <strong>namespaces</strong> nos permiten separar el código en distintos scopes para no ensuciar el scope global (window).</p></li>
+<li><p>Cuando la aplicación se vuelve demasiado grande, podemos cometer errores como duplicar el nombre de alguna función, clase... y esto puede provocar errores en nuestra aplicación.</p></li>
+<li><p>Todo aquello que va dentro del namespace no va a interferir con lo que hay en el <strong>scope global</strong>, y de esta forma tendremos mucho más limpio nuestro código y evitaremos algunos errores comunes en proyectos grandes.</p></li>
+</ul>
+</section><section id="creación-1" class="slide level2">
+<h2><span class="header-section-number">13.2</span> Creación</h2>
+<ul>
+<li><p>Para crear un namespace, se pone la palabra reservada <strong>namespace</strong> seguida del nombre que le vamos a dar, y entre llaves todo el código correspondiente a ese namespace (constantes, funciones, clases ...).</p></li>
+<li><p>Todo aquello a lo que se necesite acceder desde fuera del namespace se tiene que exportar.</p></li>
+</ul>
+</section><section id="ejemplo-1" class="slide level2">
+<h2><span class="header-section-number">13.3</span> Ejemplo</h2>
+<pre class="javacript"><code>namespace Validator {
+  const letras = /^\w[^\d_.]+$/g;
+  const numeros = /^\d+$/g;
+  export function soloLetras(cadena: any) {
+    return letras.test(cadena);
+  }
+  export function soloNumeros(cadena: any) {
+    return numeros.test(cadena);
+  }
+}
+console.log(Validator.soloLetras(&#39;h0la&#39;));
+console.log(Validator.soloNumeros(123));</code></pre>
+</section></section>
+<section><section id="promesas" class="titleslide slide level1"><h1><span class="header-section-number">14</span> Promesas</h1></section><section id="introducción-8" class="slide level2">
+<h2><span class="header-section-number">14.1</span> Introducción</h2>
+<ul>
+<li><p>Las <strong>promesas</strong> son objetos que se usan en las operaciones asíncronas, por lo que no se sabe si vamos a obtener el resultado de la operación ahora, en el futuro o nunca.</p></li>
+<li><p><strong>Para usar las promesas, hay que usar una versión de Javascript &gt;= ES6</strong></p></li>
+<li><p>Surgen sobre todo para mejorar la legibilidad de nuestro código y evitar tener que pasar el contenido de las funciones directamente como argumentos a nuestra llamada (el <strong>callback hell</strong>).</p></li>
+</ul>
+</section><section id="funcionamiento" class="slide level2">
+<h2><span class="header-section-number">14.2</span> Funcionamiento</h2>
+<ul>
+<li><p>Al constructor de la <strong>promesa</strong> se le pasa una función que se encargará de realizar algunas operaciones asíncronas y de avisar si estas operaciones han terminado bien o ha ocurrido algún error.</p></li>
+<li><p>Esta función recibe dos parámetros que son los encargados de indicar que la promesa ha terminado correctamente (primer parámetro <strong>resolve</strong>) o que ha finalizado con algún error (segundo parámetro <strong>reject</strong>).</p></li>
+</ul>
+</section><section id="resolve-y-reject" class="slide level2">
+<h2><span class="header-section-number">14.3</span> resolve y reject</h2>
+<ul>
+<li><p>En caso de que haya ido bien la promesa, se usará la función <strong>resolve</strong> y se le pasará como parámetro los datos que queremos pasar al código que va a procesarlos.</p></li>
+<li><p>Mientras que si la promesa termina con algún error, entonces vamos a llamar a la función de <strong>reject</strong> pasandole la razón por la cual no se ha podido obtener los datos esperados.</p></li>
+</ul>
+</section><section id="creación-2" class="slide level2">
+<h2><span class="header-section-number">14.4</span> Creación</h2>
+<pre class="javacript"><code>let promesa: Promise&lt;Array&lt;number&gt;&gt; = 
+  new Promise&lt;Array&lt;number&gt;&gt;(getNumeros);
+
+function getNumeros(resolve, reject) {
+  funcionAsincrona((arrayResultados)=&gt;{
+    if (arrayResultados.length &gt; 0) {
+      resolve(arrayResultados);
+    } else {
+      reject(new Error(&#39;Error&#39;));
+    }
+  });
+}</code></pre>
+</section><section id="arrow-function" class="slide level2">
+<h2><span class="header-section-number">14.5</span> Arrow function</h2>
+<ul>
+<li>Aunque en el ejemplo de arriba la función que recibe la promesa se ha declarado fuera, en la mayoría de los sitios nos encontraremos que a la promesa se le pasa una <strong>arrow function</strong>.</li>
+</ul>
+<pre class="javacript"><code>let promesa: Promise&lt;Array&lt;number&gt;&gt; = 
+  new Promise&lt;Array&lt;number&gt;&gt;((resolve, reject) {
+  funcionAsincrona((arrayResultados)=&gt;{
+    if (arrayResultados.length &gt; 0) {
+      resolve(arrayResultados);
+    } else {
+      reject(new Error(&#39;Error&#39;));
+    }
+  });
+});</code></pre>
+</section><section id="uso" class="slide level2">
+<h2><span class="header-section-number">14.6</span> Uso</h2>
+<ul>
+<li>Una vez que tenemos la promesa construida, tenemos que procesar los resultados, y para ello se usan los métodos <strong>then</strong> (la promesa se ha terminado correctamente) y <strong>catch</strong> (la promesa ha terminado con algún error).</li>
+</ul>
+<pre class="javacript"><code>promesa.then((nums) =&gt; {
+  console.log(nums);
+}).catch((error) =&gt; {
+  console.log(&#39;Error: &#39; + error.message);
+});</code></pre>
+</section><section id="promesas-encadenadas" class="slide level2">
+<h2><span class="header-section-number">14.7</span> Promesas encadenadas</h2>
+<ul>
+<li>Las promesas se pueden encadenar una detrás de otra poniendo los <strong>then</strong> seguidos, de esta forma podemos hacer que todas las peticiones asíncronas se ejecuten en el orden en que nosotros queremos que se hagan.</li>
+</ul>
+</section></section>
+<section><section id="decoradores" class="titleslide slide level1"><h1><span class="header-section-number">15</span> Decoradores</h1></section><section id="introducción-9" class="slide level2">
+<h2><span class="header-section-number">15.1</span> Introducción</h2>
+<ul>
+<li>Con la introducción de las clases existen ciertos escenarios que requieren características adicionales para soportar la anotación o modificación de clases y miembros de la clase. Los decoradores proporcionan una forma de añadir anotaciones y una sintaxis de <strong>metaprogramación</strong> para las declaraciones de clase y los miembros.</li>
+</ul>
+</section><section id="soporte" class="slide level2">
+<h2><span class="header-section-number">15.2</span> Soporte</h2>
+<ul>
+<li><p>Los decoradores son una <strong>característica experimental</strong> que puede cambiar en futuras versiones.</p></li>
+<li><p>Para habilitar el soporte experimental para decoradores, debe habilitar la opción del compilador <strong>experimentalDecorators</strong> en la línea de comandos o en su tsconfig.json:</p></li>
+</ul>
+</section><section id="habilitar" class="slide level2">
+<h2><span class="header-section-number">15.3</span> Habilitar</h2>
+<p>Línea de comandos:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">tsc</span> --target ES5 --experimentalDecorators</code></pre></div>
+<p>tsconfig.json:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="op">{</span>
+    <span class="st">&quot;compilerOptions&quot;</span><span class="op">:</span> <span class="op">{</span>
+        <span class="st">&quot;target&quot;</span><span class="op">:</span> <span class="st">&quot;ES5&quot;</span><span class="op">,</span>
+        <span class="st">&quot;experimentalDecorators&quot;</span><span class="op">:</span> <span class="kw">true</span>
+    <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="definición" class="slide level2">
+<h2><span class="header-section-number">15.4</span> Definición</h2>
+<ul>
+<li>Es un tipo especial de declaración que se puede adjuntar a una declaración de clase, método, getter/setter, propiedad o parámetro. Los decoradores utilizan la forma <strong><span class="citation" data-cites="expresion">@expresion</span></strong>, donde la expresión debe evaluar una función que será <strong>llamada en tiempo de ejecución</strong> con información sobre la declaración decorada.</li>
+</ul>
+</section><section id="composición-del-decorador" class="slide level2">
+<h2><span class="header-section-number">15.5</span> Composición del decorador</h2>
+<ul>
+<li>Se pueden aplicar varios decoradores a una declaración, como en los siguientes ejemplos:</li>
+</ul>
+<p>En una sola línea:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">@f @g x</code></pre></div>
+<p>En múltiples líneas:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">@f
+@g
+x</code></pre></div>
+</section><section id="orden-de-ejecución-i" class="slide level2">
+<h2><span class="header-section-number">15.6</span> Orden de ejecución (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">f</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;f(): evaluated&quot;</span>)<span class="op">;</span>
+    <span class="cf">return</span> <span class="kw">function</span>(destino<span class="op">,</span> <span class="dt">propiedadKey</span><span class="op">:</span> string<span class="op">,</span> 
+      <span class="dt">descriptor</span><span class="op">:</span> PropertyDescriptor) <span class="op">{</span>
+        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;f(): llamado&quot;</span>)<span class="op">;</span>
+    <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="kw">function</span> <span class="at">g</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;g(): evaluated&quot;</span>)<span class="op">;</span>
+    <span class="cf">return</span> <span class="kw">function</span>(destino<span class="op">,</span> <span class="dt">propiedadKey</span><span class="op">:</span> string<span class="op">,</span>
+      <span class="dt">descriptor</span><span class="op">:</span> PropertyDescriptor) <span class="op">{</span>
+        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;g(): llamado&quot;</span>)<span class="op">;</span>
+    <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="orden-de-ejecución-ii" class="slide level2">
+<h2><span class="header-section-number">15.7</span> Orden de ejecución (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">clase C <span class="op">{</span>
+    @<span class="at">f</span>()
+    @<span class="at">g</span>()
+    <span class="at">method</span>() <span class="op">{}</span>
+<span class="op">}</span>
+
+<span class="at">f</span>()<span class="op">:</span> evaluado
+<span class="at">g</span>()<span class="op">:</span> evaluado
+<span class="at">g</span>()<span class="op">:</span> llamado
+<span class="at">f</span>()<span class="op">:</span> llamado</code></pre></div>
+</section><section id="tipos-de-decoradores" class="slide level2">
+<h2><span class="header-section-number">15.8</span> Tipos de decoradores</h2>
+<ul>
+<li><strong>De clase</strong>: es declarado justo antes de una declaración de clase.</li>
+<li><strong>De método</strong>: se declara justo antes de una declaración de métodos.</li>
+<li><strong>De getters y setters</strong>: se declara justo antes de una declaración de getters o setters. TypeScript no permite decorar los getters y setters por separado.</li>
+<li><strong>De propiedades</strong>: es declarado justo antes de una declaración de propiedad.</li>
+<li><strong>De parámetro</strong>: se declara justo antes de una declaración de parámetros.</li>
+</ul>
+</section></section>
+<section><section id="compilador" class="titleslide slide level1"><h1><span class="header-section-number">16</span> Compilador</h1></section><section id="introducción-10" class="slide level2">
+<h2><span class="header-section-number">16.1</span> Introducción</h2>
+<ul>
+<li><p>Hemos visto como compilar los archivos de TypeScript usando la línea de comandos, pero si queremos añadir varias opciones, estos comandos se van a hacer muy largos.</p></li>
+<li><p>En lugar de poner las opciones en la linea de comandos, podemos añadirlas en un fichero de configuración <strong>tsconfig.json</strong>.</p></li>
+</ul>
+</section><section id="inicialización" class="slide level2">
+<h2><span class="header-section-number">16.2</span> Inicialización</h2>
+<ul>
+<li>Este fichero de configuración se puede crear con el siguiente comando:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">tsc</span> --init</code></pre></div>
+</section><section id="por-defecto" class="slide level2">
+<h2><span class="header-section-number">16.3</span> Por defecto</h2>
+<ul>
+<li>Una vez lanzado el comando, se debe de haber creado un archivo <strong>tsconfig.json</strong> con las siguientes opciones de configuración por defecto.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+  <span class="dt">&quot;compilerOptions&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;module&quot;</span><span class="fu">:</span> <span class="st">&quot;commonjs&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;target&quot;</span><span class="fu">:</span> <span class="st">&quot;es5&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;noImplicitAny&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span>
+    <span class="dt">&quot;sourceMap&quot;</span><span class="fu">:</span> <span class="kw">false</span>
+  <span class="fu">}</span>
+<span class="fu">}</span></code></pre></div>
+</section><section id="opciones" class="slide level2">
+<h2><span class="header-section-number">16.4</span> Opciones</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Opción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>compilerOptions</td>
+<td>Opciones de compilación.</td>
+</tr>
+<tr class="even">
+<td>files</td>
+<td>Archivos a compilar.</td>
+</tr>
+<tr class="odd">
+<td>include</td>
+<td>Expresión regular con los ficheros a incluir.</td>
+</tr>
+<tr class="even">
+<td>exclude</td>
+<td>Expresión regular con los ficheros a excluir.</td>
+</tr>
+</tbody>
+</table>
+</section><section id="ejemplo-2" class="slide level2">
+<h2><span class="header-section-number">16.5</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+  <span class="dt">&quot;compilerOptions&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;module&quot;</span><span class="fu">:</span> <span class="st">&quot;commonjs&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;target&quot;</span><span class="fu">:</span> <span class="st">&quot;es5&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;noImplicitAny&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span>
+    <span class="dt">&quot;sourceMap&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span>
+  <span class="fu">},</span>
+  <span class="dt">&quot;exclude&quot;</span><span class="fu">:</span> <span class="ot">[</span>
+    <span class="st">&quot;node_modules&quot;</span><span class="ot">,</span>
+    <span class="st">&quot;**/**.spec.ts&quot;</span>
+  <span class="ot">]</span><span class="fu">,</span>
+  <span class="dt">&quot;files&quot;</span><span class="fu">:</span> <span class="ot">[</span>
+    <span class="st">&quot;app.ts&quot;</span>
+  <span class="ot">]</span>
+<span class="fu">}</span></code></pre></div>
+</section><section id="compileroptions" class="slide level2">
+<h2><span class="header-section-number">16.6</span> compilerOptions</h2>
+<ul>
+<li>En el objeto de <strong>compilerOptions</strong> se pueden añadir distintas opciones que nos ayudarán a escribir mejor nuestro código. Todas estas opciones se pueden encontrar en <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html" class="uri">https://www.typescriptlang.org/docs/handbook/compiler-options.html</a></li>
+</ul>
+</section><section id="sourcemap" class="slide level2">
+<h2><span class="header-section-number">16.7</span> sourceMap</h2>
+<ul>
+<li>Esto nos permite tener archivos .map para debuguear.</li>
+</ul>
+</section><section id="noimplicitany" class="slide level2">
+<h2><span class="header-section-number">16.8</span> noImplicitAny</h2>
+<ul>
+<li>En algunos casos como con los argumentos de las funciones, estos no pueden inferir el tipo de datos que van a guardar, por lo tanto puede no quedar claro que argumentos acepta para que este método funcione correctamente. Para evitar esto se puede activar la opción de <strong>noImplicitAny</strong> que nos dará errores cuando esto ocurra.</li>
+</ul>
+</section><section id="noemitonerror" class="slide level2">
+<h2><span class="header-section-number">16.9</span> noEmitOnError</h2>
+<ul>
+<li>Cuando compilamos los archivos de TypeScript, en la consola pueden aparecernos errores, pero aun así el archivo se va a compilar a JavaScript al cual estos errores le dan igual porque va a funcionar correctamente. Podemos hacer que solo se compilen los archivos una vez que estos ya no tengan errores para asegurarnos que el código funcionará correctamente. Para ello vamos a añadir la opción de <strong>noEmitOnError</strong>.</li>
+</ul>
+</section><section id="pretty" class="slide level2">
+<h2><span class="header-section-number">16.10</span> pretty</h2>
+<ul>
+<li>Podemos hacer que los mensajes que aparecen por consola a la hora de compilar los archivos, salgan con colores para que sean más fáciles de leer con la opción <strong>pretty</strong>.</li>
+</ul>
+</section><section id="removecomments" class="slide level2">
+<h2><span class="header-section-number">16.11</span> removeComments</h2>
+<ul>
+<li>También se pueden eliminar todos los comentarios que hemos puesto en el código con la opción de <strong>removeComments</strong>.</li>
+</ul>
+</section><section id="outdir" class="slide level2">
+<h2><span class="header-section-number">16.12</span> outDir</h2>
+<ul>
+<li>En caso de querer crear los archivos JavaScript compilados en una carpeta, se le puede indicar con la opción <strong>outDir</strong>.</li>
+</ul>
+</section><section id="watch" class="slide level2">
+<h2><span class="header-section-number">16.13</span> watch</h2>
+<ul>
+<li>Para evitar tener que estar lanzando constantemente el comando que compila los archivos, podemos añadir la opción <strong>watch</strong>, y de esta forma cada que un archivo cambie, se compilaran otra vez.</li>
+</ul>
+</section><section id="strictnullchecks" class="slide level2">
+<h2><span class="header-section-number">16.14</span> strictNullChecks</h2>
+<ul>
+<li>Otra de las opciones que pueden ayudarnos a tener una aplicación con menos errores es <strong>strictNullChecks</strong> que nos va a dar un error en caso de que una variable se esté usando sin llegarla a inicializar como en el siguiente código.</li>
+</ul>
+</section><section id="nounused" class="slide level2">
+<h2><span class="header-section-number">16.15</span> noUnused</h2>
+<ul>
+<li>En el código hay veces que podemos añadir variables locales o parámetros que luego no necesitamos y se nos olvida de quitar. Para evitar esto y que al compilar nos avise de que esos parámetros o variables no se están usando, se pueden usar las opciones <strong>noUnusedParameters</strong> y <strong>noUnusedLocals</strong>.</li>
+</ul>
+</section><section id="noimplicitreturns" class="slide level2">
+<h2><span class="header-section-number">16.16</span> noImplicitReturns</h2>
+<ul>
+<li>Y hay otras veces que escribimos código que puede ejecutarse o no dependiendo del camino que se siga según las expresiones condicionales, y puede ser que en algún caso se nos olvide añadir un <strong>return</strong> por lo tanto uno de esos caminos no va a devolver ningún valor cuando se espera que si lo haga. En este caso podemos añadir la opción <strong>noImplicitReturns</strong> para que nos avise si eso ocurre.</li>
+</ul>
+</section><section id="ejemplo-3" class="slide level2">
+<h2><span class="header-section-number">16.17</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+  <span class="dt">&quot;compilerOptions&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;module&quot;</span><span class="fu">:</span> <span class="st">&quot;commonjs&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;target&quot;</span><span class="fu">:</span> <span class="st">&quot;es5&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;noImplicitAny&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span>
+    <span class="dt">&quot;sourceMap&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span>
+    <span class="dt">&quot;noEmitOnError&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span>
+    <span class="dt">&quot;pretty&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span>
+    <span class="dt">&quot;removeComments&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span>
+    <span class="dt">&quot;outDir&quot;</span><span class="fu">:</span> <span class="st">&quot;./js&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;watch&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span>
+    <span class="dt">&quot;strictNullChecks&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span>
+    <span class="dt">&quot;noUnusedParameters&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span>
+    <span class="dt">&quot;noUnusedLocals&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span>
+    <span class="dt">&quot;noImplicitReturns&quot;</span><span class="fu">:</span> <span class="kw">true</span>
+  <span class="fu">}</span>
+<span class="fu">}</span></code></pre></div>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        pdfMaxPagesPerSlide: 1,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1024,
+        height: 576,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.3,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.1,
+        maxScale: 1.9,
+
+        menu: {
+            // Specifies which side of the presentation the menu will
+            // be shown. Use 'left' or 'right'.
+            side: 'left',
+
+            // Add slide numbers to the titles in the slide list.
+            // Use 'true' or format string (same as reveal.js slide numbers)
+            numbers: false,
+
+            // Specifies which slide elements will be used for generating
+            // the slide titles in the menu. The default selects the first
+            // heading element found in the slide, but you can specify any
+            // valid css selector and the text from the first matching
+            // element will be used.
+            // Note: that a section data-menu-title attribute or an element
+            // with a menu-title class will take precedence over this option
+            titleSelector: 'h1, h2, h3, h4, h5, h6',
+
+            // Hide slides from the menu that do not have a title.
+            // Set to 'true' to only list slides with titles.
+            hideMissingTitles: false,
+
+            // Add markers to the slide titles to indicate the
+            // progress through the presentation
+            markers: false,
+
+            // Specify custom panels to be included in the menu, by
+            // providing an array of objects with 'title', 'icon'
+            // properties, and either a 'src' or 'content' property.
+            custom: false,
+
+            // Specifies the themes that will be available in the themes
+            // menu panel. Set to 'false' to hide themes panel.
+            themes: [
+                { name: 'Black', theme: '../lib/reveal.js/css/theme/black.css' },
+                { name: 'White', theme: '../lib/reveal.js/css/theme/white.css' },
+                { name: 'League', theme: '../lib/reveal.js/css/theme/league.css' },
+                { name: 'Sky', theme: '../lib/reveal.js/css/theme/sky.css' },
+                { name: 'Beige', theme: '../lib/reveal.js/css/theme/beige.css' },
+                { name: 'Simple', theme: '../lib/reveal.js/css/theme/simple.css' },
+                { name: 'Serif', theme: '../lib/reveal.js/css/theme/serif.css' },
+                { name: 'Blood', theme: '../lib/reveal.js/css/theme/blood.css' },
+                { name: 'Night', theme: '../lib/reveal.js/css/theme/night.css' },
+                { name: 'Moon', theme: '../lib/reveal.js/css/theme/moon.css' },
+                { name: 'Solarized', theme: '../lib/reveal.js/css/theme/solarized.css' }
+            ],
+
+            // Specifies if the transitions menu panel will be shown.
+            transitions: true,
+
+            // Adds a menu button to the slides to open the menu panel.
+            // Set to 'false' to hide the button.
+            openButton: true,
+
+            // If 'true' allows the slide number in the presentation to
+            // open the menu panel. The reveal.js slideNumber option must
+            // be displayed for this to take effect
+            openSlideNumber: false,
+
+            // If true allows the user to open and navigate the menu using
+            // the keyboard. Standard keyboard interaction with reveal
+            // will be disabled while the menu is open.
+            keyboard: true
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../lib/reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../lib/reveal.js/plugin/notes/notes.js', async: true },
+          //{ src: '../lib/reveal.js/plugin/search/search.js', async: true },
+          { src: '../lib/reveal.js-menu/menu.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

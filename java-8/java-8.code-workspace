@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"cSpell.language": ",es",
+		"cSpell.enabled": false,
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}

@@ -1,0 +1,14 @@
+<p *ngIf="usuario">
+        {{usuario.username}} |
+        <a href="#" (click)="logout()">Cerrar sesión</a> |
+        <a [routerLink]="['/centros/']">Listado de centros</a> |
+        <a [routerLink]="['/centros/new']">Nuevo centro</a>
+</p>
+
+<form *ngIf="!usuario" (ngSubmit)="login()" #loginForm="ngForm">
+  <label for="username">Username</label>:
+  <input type="text" id="username" name="username" [(ngModel)]="username" required><br />
+  <label for="password">Password</label>:
+  <input type="text" id="password" name="password" [(ngModel)]="password" required><br />
+  <button type="submit" [disabled]="!loginForm.form.valid">Enviar</button>
+</form>

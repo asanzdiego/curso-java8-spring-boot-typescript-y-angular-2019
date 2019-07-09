@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Java 8" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Java 8</title>
+  <style type="text/css">code{white-space: pre; background-color: lightgrey;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+</head>
+<body>
+<header>
+<h1 class="title">Java 8</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Pronoide</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#acerca-de"><span class="toc-section-number">2</span> Acerca de</a><ul>
+<li><a href="#autor"><span class="toc-section-number">2.1</span> Autor</a></li>
+<li><a href="#licencia"><span class="toc-section-number">2.2</span> Licencia</a></li>
+</ul></li>
+<li><a href="#interfaces"><span class="toc-section-number">3</span> Interfaces</a><ul>
+<li><a href="#default"><span class="toc-section-number">3.1</span> Default</a></li>
+<li><a href="#static"><span class="toc-section-number">3.2</span> Static</a></li>
+</ul></li>
+<li><a href="#programación-funcional"><span class="toc-section-number">4</span> Programación Funcional</a><ul>
+<li><a href="#ventajas"><span class="toc-section-number">4.1</span> Ventajas</a></li>
+<li><a href="#desventajas"><span class="toc-section-number">4.2</span> Desventajas</a></li>
+</ul></li>
+<li><a href="#interfaces-funcionales"><span class="toc-section-number">5</span> Interfaces funcionales</a><ul>
+<li><a href="#características"><span class="toc-section-number">5.1</span> Características</a></li>
+<li><a href="#ejemplo-sencillo"><span class="toc-section-number">5.2</span> Ejemplo sencillo</a></li>
+<li><a href="#ejemplo-complejo"><span class="toc-section-number">5.3</span> Ejemplo complejo</a></li>
+<li><a href="#funciones-predefinidas"><span class="toc-section-number">5.4</span> Funciones predefinidas</a><ul>
+<li><a href="#consumers"><span class="toc-section-number">5.4.1</span> Consumers</a></li>
+<li><a href="#suppliers"><span class="toc-section-number">5.4.2</span> Suppliers</a></li>
+<li><a href="#functions"><span class="toc-section-number">5.4.3</span> Functions</a></li>
+<li><a href="#predicates"><span class="toc-section-number">5.4.4</span> Predicates</a></li>
+<li><a href="#operators"><span class="toc-section-number">5.4.5</span> Operators</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#expresiones-lambda"><span class="toc-section-number">6</span> Expresiones Lambda</a><ul>
+<li><a href="#características-1"><span class="toc-section-number">6.1</span> Características</a></li>
+<li><a href="#sintaxis"><span class="toc-section-number">6.2</span> Sintaxis</a><ul>
+<li><a href="#comentarios"><span class="toc-section-number">6.2.1</span> Comentarios</a></li>
+<li><a href="#ejemplo-sin-lambda"><span class="toc-section-number">6.2.2</span> Ejemplo sin Lambda</a></li>
+<li><a href="#ejemplo-con-lambda"><span class="toc-section-number">6.2.3</span> Ejemplo con Lambda</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#referencia-a-métodos"><span class="toc-section-number">7</span> Referencia a métodos</a><ul>
+<li><a href="#características-2"><span class="toc-section-number">7.1</span> Características</a></li>
+<li><a href="#método-estático"><span class="toc-section-number">7.2</span> Método estático</a></li>
+<li><a href="#método-de-instancia"><span class="toc-section-number">7.3</span> Método de instancia</a></li>
+<li><a href="#constructor"><span class="toc-section-number">7.4</span> Constructor</a></li>
+</ul></li>
+<li><a href="#optional"><span class="toc-section-number">8</span> Optional</a><ul>
+<li><a href="#características-3"><span class="toc-section-number">8.1</span> Características</a><ul>
+<li><a href="#ejemplo-sin-optional"><span class="toc-section-number">8.1.1</span> Ejemplo sin Optional</a></li>
+<li><a href="#ejemplo-con-optional"><span class="toc-section-number">8.1.2</span> Ejemplo con Optional</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#stream"><span class="toc-section-number">9</span> Stream</a><ul>
+<li><a href="#características-4"><span class="toc-section-number">9.1</span> Características</a><ul>
+<li><a href="#ejemplo-sin-stream"><span class="toc-section-number">9.1.1</span> Ejemplo sin Stream</a></li>
+<li><a href="#ejemplo-con-stream"><span class="toc-section-number">9.1.2</span> Ejemplo con Stream</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#foreach"><span class="toc-section-number">10</span> ForEach</a><ul>
+<li><a href="#características-5"><span class="toc-section-number">10.1</span> Características</a><ul>
+<li><a href="#ejemplo-foreach"><span class="toc-section-number">10.1.1</span> Ejemplo forEach</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#collector"><span class="toc-section-number">11</span> Collector</a><ul>
+<li><a href="#características-6"><span class="toc-section-number">11.1</span> Características</a><ul>
+<li><a href="#ejemplo-de-uso-de-collector"><span class="toc-section-number">11.1.1</span> Ejemplo de uso de Collector</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#ordenación-parallel-array"><span class="toc-section-number">12</span> Ordenación Parallel Array</a><ul>
+<li><a href="#características-7"><span class="toc-section-number">12.1</span> Características</a><ul>
+<li><a href="#ejemplo"><span class="toc-section-number">12.1.1</span> Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#java-time"><span class="toc-section-number">13</span> Java time</a><ul>
+<li><a href="#características-8"><span class="toc-section-number">13.1</span> Características</a><ul>
+<li><a href="#ejemplo-de-la-fecha-actual"><span class="toc-section-number">13.1.1</span> Ejemplo de la fecha actual</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#bibliografía"><span class="toc-section-number">14</span> Bibliografía</a><ul>
+<li><a href="#oficial-de-oracle"><span class="toc-section-number">14.1</span> Oficial de Oracle</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="acerca-de"><span class="header-section-number">2</span> Acerca de</h1>
+<h2 id="autor"><span class="header-section-number">2.1</span> Autor</h2>
+<ul>
+<li><strong>Adolfo Sanz De Diego</strong>
+<ul>
+<li>Blog: <a href="http://asanzdiego.com/">asanzdiego.com</a></li>
+<li>Correo: <a href="mailto:asanzdiego@gmail.com">asanzdiego@gmail.com</a></li>
+<li>GitHub: <a href="http://github.com/asanzdiego">github.com/asanzdiego</a></li>
+<li>Twitter: <a href="http://twitter.com/asanzdiego">twitter.com/asanzdiego</a></li>
+<li>LinkedIn: <a href="http://www.linkedin.com/in/asanzdiego">in/asanzdiego</a></li>
+<li>SlideShare: <a href="http://www.slideshare.net/asanzdiego/">slideshare.net/asanzdiego</a></li>
+</ul></li>
+</ul>
+<h2 id="licencia"><span class="header-section-number">2.2</span> Licencia</h2>
+<ul>
+<li><strong>Esta obra está bajo una licencia:</strong>
+<ul>
+<li><a href="http://creativecommons.org/licenses/by-sa/3.0/es/">Creative Commons Reconocimiento-CompartirIgual 3.0</a></li>
+</ul></li>
+</ul>
+<h1 id="interfaces"><span class="header-section-number">3</span> Interfaces</h1>
+<h2 id="default"><span class="header-section-number">3.1</span> Default</h2>
+<ul>
+<li>Para declarar <strong>métodos por defecto en interfaces</strong>.</li>
+<li>Este método es sobreescribible por las implementaciones.</li>
+<li>Si una <strong>clase hereda 2 interfaces con el mismo método default se le obliga a sobreescribir</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> EjemploDefault{
+    <span class="kw">default</span> <span class="dt">void</span> <span class="fu">porDefecto</span>(){
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Este por defecto&quot;</span>);
+    }
+}
+<span class="kw">public</span> <span class="kw">class</span> EjemploDefaultApp <span class="kw">implements</span> EjemploDefault{
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        EjemploDefaultApp obj = <span class="kw">new</span> <span class="fu">EjemploDefaultApp</span>();
+        obj.<span class="fu">porDefecto</span>();
+    }
+}</code></pre></div>
+<h2 id="static"><span class="header-section-number">3.2</span> Static</h2>
+<ul>
+<li>Ahora también podemos declarar <strong>métodos estáticos en una interfaces</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> EjemploConStatic {
+    <span class="dt">static</span> <span class="dt">void</span> <span class="fu">esteEsStatic</span>(<span class="bu">String</span> mensaje){
+       <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Pues estatico desde interface con : &quot;</span> + mensaje);
+    }
+}
+<span class="kw">public</span> <span class="kw">class</span> EjemploConStaticApp <span class="kw">implements</span> EjemploStatic {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        EjemploConStatic.<span class="fu">esteEsStatic</span>(<span class="st">&quot;un par&quot;</span>);
+    }
+}</code></pre></div>
+<h1 id="programación-funcional"><span class="header-section-number">4</span> Programación Funcional</h1>
+<h2 id="ventajas"><span class="header-section-number">4.1</span> Ventajas</h2>
+<ul>
+<li>En vez de escribir &quot;el cómo&quot; el código escribe &quot;<strong>el qué</strong>&quot;.</li>
+<li>Los programas son <strong>más cortos</strong>.</li>
+<li><strong>No tiene efectos colaterales</strong>.</li>
+<li>Se <strong>paraleliza</strong> mejor.</li>
+</ul>
+<h2 id="desventajas"><span class="header-section-number">4.2</span> Desventajas</h2>
+<ul>
+<li><strong>Difícil de leer</strong> para programadores no habituados.</li>
+<li><strong>Curva de aprendizaje</strong> alta.</li>
+</ul>
+<h1 id="interfaces-funcionales"><span class="header-section-number">5</span> Interfaces funcionales</h1>
+<h2 id="características"><span class="header-section-number">5.1</span> Características</h2>
+<ul>
+<li>Son interfaces con un método abstracto y con la anotación <strong><span class="citation" data-cites="FunctionalInterface">@FunctionalInterface</span></strong>.</li>
+<li>Puede poseer métodos estáticos o por defecto, pero <strong>solo un método abstracto</strong>.</li>
+<li>Se le conoce como interfaces <strong>SAM o Simple Abstract Method</strong>.</li>
+<li>Permite una aproximación a la <strong>programación funcional</strong> en Java.</li>
+</ul>
+<h2 id="ejemplo-sencillo"><span class="header-section-number">5.2</span> Ejemplo sencillo</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@FunctionalInterface</span> <span class="co">// No es obligatorio ponerlo</span>
+<span class="kw">interface</span> Cultivable{
+    <span class="dt">void</span> <span class="fu">cultivar</span>(<span class="bu">String</span> cultivo);
+}
+<span class="kw">public</span> <span class="kw">class</span> InterfazFuncional <span class="kw">implements</span> Cultivable{
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">cultivar</span>(<span class="bu">String</span> cultivo){
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;cultivando &quot;</span> + cultivo);
+    }
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        InterfazFuncional funcional = <span class="kw">new</span> <span class="fu">InterfazFuncional</span>();
+        funcional.<span class="fu">cultivar</span>(<span class="st">&quot;patatas&quot;</span>);
+    }
+}</code></pre></div>
+<h2 id="ejemplo-complejo"><span class="header-section-number">5.3</span> Ejemplo complejo</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> PorDefecto {
+    <span class="kw">default</span> <span class="dt">void</span> <span class="fu">porDefecto</span>() { <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Por defecto&quot;</span>); }
+}
+<span class="at">@FunctionalInterface</span>
+<span class="kw">interface</span> MiInterfazFuncional <span class="kw">extends</span> PorDefecto {
+    <span class="dt">void</span> <span class="fu">funciona</span>(<span class="bu">String</span> mensaje);
+}
+<span class="kw">public</span> <span class="kw">class</span> EjemploComplejo <span class="kw">implements</span> MiInterfazFuncional {
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">funciona</span>(<span class="bu">String</span> mensaje) { <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(mensaje);}
+
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        EjemploComplejo funcional = <span class="kw">new</span> <span class="fu">EjemploComplejo</span>();
+        funcional.<span class="fu">funciona</span>(<span class="st">&quot;Y es la leche!&quot;</span>);
+        funcional.<span class="fu">porDefecto</span>();
+    }
+}</code></pre></div>
+<h2 id="funciones-predefinidas"><span class="header-section-number">5.4</span> Funciones predefinidas</h2>
+<ul>
+<li>Java provee de una serie de interfaces funcionales muy útiles:</li>
+</ul>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html" class="uri">https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html</a></p>
+<h3 id="consumers"><span class="header-section-number">5.4.1</span> Consumers</h3>
+<ul>
+<li>Reciben uno o más parámetros y no devuelven nada.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(T, U)-&gt;{}</code></pre></div>
+<h3 id="suppliers"><span class="header-section-number">5.4.2</span> Suppliers</h3>
+<ul>
+<li>No reciben parámetros y devuelven un resultado.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">()-&gt;{<span class="kw">return</span> R}</code></pre></div>
+<h3 id="functions"><span class="header-section-number">5.4.3</span> Functions</h3>
+<ul>
+<li>Reciben uno o más parámetros y retornan un resultado.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(T, U)-&gt;{<span class="kw">return</span> R}</code></pre></div>
+<h3 id="predicates"><span class="header-section-number">5.4.4</span> Predicates</h3>
+<ul>
+<li>Reciben uno o más parámetros y retornan un boolean.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(T, U)-&gt;{<span class="kw">return</span> B}</code></pre></div>
+<h3 id="operators"><span class="header-section-number">5.4.5</span> Operators</h3>
+<ul>
+<li>Reciben uno o más parámetros del mismo tipo y retornan un resultado del mismo tipo.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(T, T)-&gt;{<span class="kw">return</span> T}</code></pre></div>
+<h1 id="expresiones-lambda"><span class="header-section-number">6</span> Expresiones Lambda</h1>
+<h2 id="características-1"><span class="header-section-number">6.1</span> Características</h2>
+<ul>
+<li>Son <strong>azúcar sintáctico</strong> para las antiguas Clases Abstractas.</li>
+<li>Eliminan código inútil y repetitivo.</li>
+<li>Son <strong>implementaciones de interfaces funcionales</strong>.</li>
+</ul>
+<h2 id="sintaxis"><span class="header-section-number">6.2</span> Sintaxis</h2>
+<ul>
+<li><strong>(args) : Lista de argumentos entre paréntesis</strong>, que puede estar vacía o no.</li>
+<li><strong>-&gt; : Flecha</strong> que enlaza la lista de argumentos con el cuerpo de la expresión.</li>
+<li><strong>{body} : Cuerpo entre llaves</strong>, que contiene el código de la expresión lambda.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(args)-&gt;{body}</code></pre></div>
+<h3 id="comentarios"><span class="header-section-number">6.2.1</span> Comentarios</h3>
+<ul>
+<li>En la mayoría de los casos <strong>el tipo de los argumentos es opcional</strong> y el compilador lo resuelve por inferencia.</li>
+<li>Los <strong>parantesis son opcionales</strong> si hay uno (y solo un) argumento.</li>
+<li>Las <strong>llaves opcionales</strong> si hay una (y solo una) línea.</li>
+<li>La <strong>palabra reservada return es opional</strong> si hay una (y solo una) línea.</li>
+</ul>
+<h3 id="ejemplo-sin-lambda"><span class="header-section-number">6.2.2</span> Ejemplo sin Lambda</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> Buscar{
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">buscar</span>();
+}
+<span class="kw">public</span> <span class="kw">class</span> SinExpresionLambda {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="dt">int</span> encontrados=<span class="dv">3</span>;
+        Buscar b = <span class="kw">new</span> <span class="fu">Buscar</span>() {
+            <span class="kw">public</span> <span class="dt">void</span> <span class="fu">buscar</span>() {
+                <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;encontrado &quot;</span>+encontrados);
+            }
+        };
+        b.<span class="fu">buscar</span>();
+    }
+}</code></pre></div>
+<h3 id="ejemplo-con-lambda"><span class="header-section-number">6.2.3</span> Ejemplo con Lambda</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@FunctionalInterface</span>
+<span class="kw">interface</span> Buscar{
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">buscar</span>();
+}
+
+<span class="kw">public</span> <span class="kw">class</span> ConExpresionLambda {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="dt">int</span> encontrados=<span class="dv">3</span>;
+        Buscar b=()-&gt;<span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;encontrado &quot;</span>+encontrados);
+        b.<span class="fu">buscar</span>();
+    }
+}</code></pre></div>
+<h1 id="referencia-a-métodos"><span class="header-section-number">7</span> Referencia a métodos</h1>
+<h2 id="características-2"><span class="header-section-number">7.1</span> Características</h2>
+<ul>
+<li>Nos permite referenciar métodos mediante el <strong>operador ::</strong></li>
+</ul>
+<h2 id="método-estático"><span class="header-section-number">7.2</span> Método estático</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Clase::nombreDeMetodoEstatico</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> Construible{
+    <span class="dt">void</span> <span class="fu">construir</span>();
+}
+<span class="kw">public</span> <span class="kw">class</span> MetodoEstatico {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">construyendoAlgo</span>(){
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Dandole al pico y la pala&quot;</span>);
+    }
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        Construible construible = MetodoEstatico::construyendoAlgo;
+        construible.<span class="fu">construir</span>();
+    }
+}</code></pre></div>
+<h2 id="método-de-instancia"><span class="header-section-number">7.3</span> Método de instancia</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">objetoInstanciado::nombreDeMetodoDeInstancia</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> Vendible{
+    <span class="dt">void</span> <span class="fu">vender</span>();
+}
+<span class="kw">public</span> <span class="kw">class</span> MetodoDeInstancia {
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">vendiendoAlgo</span>(){
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Ahora tienes pasta en vez de móvil.&quot;</span>);
+    }
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        MetodoDeInstancia metodo = <span class="kw">new</span> <span class="fu">MetodoDeInstancia</span>();
+        Vendible vendible = metodo::vendiendoAlgo;
+        vendible.<span class="fu">vender</span>();
+        Vendible otraForma = <span class="kw">new</span> <span class="fu">MetodoDeInstancia</span>()::vendiendoAlgo;
+        otraFormaDeVender.<span class="fu">vender</span>();
+    }
+}</code></pre></div>
+<h2 id="constructor"><span class="header-section-number">7.4</span> Constructor</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Clase::<span class="kw">new</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">interface</span> Almacen{
+    Arma <span class="fu">getArma</span>(<span class="bu">String</span> arma);
+}
+<span class="kw">class</span> Arma{
+    <span class="fu">Arma</span>(<span class="bu">String</span> arma){
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">print</span>(<span class="st">&quot;Toma una &quot;</span> + arma + <span class="st">&quot; del calibre 42&quot;</span>);
+    }
+}
+<span class="kw">public</span> <span class="kw">class</span> ReferenciaAlConstructor {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        Almacen almacen = Arma::<span class="kw">new</span>;
+        Arma porra = almacen.<span class="fu">getArma</span>(<span class="st">&quot;Porra&quot;</span>);
+    }
+}</code></pre></div>
+<h1 id="optional"><span class="header-section-number">8</span> Optional</h1>
+<h2 id="características-3"><span class="header-section-number">8.1</span> Características</h2>
+<ul>
+<li>Nueva clase que se utiliza para <strong>gestionar los NullPointerExceptions</strong>.</li>
+<li>Utiliza el nuevo paradigma funcional.</li>
+</ul>
+<h3 id="ejemplo-sin-optional"><span class="header-section-number">8.1.1</span> Ejemplo sin Optional</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> EjemploSinOptional {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">String</span>[] cadena = <span class="kw">new</span> <span class="bu">String</span>[<span class="dv">3</span>];
+        <span class="bu">String</span> cadenaEnMinusculas = cadena[<span class="dv">2</span>].<span class="fu">toLowerCase</span>();
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">print</span>(cadenaEnMinusculas);
+    }
+}</code></pre></div>
+<h3 id="ejemplo-con-optional"><span class="header-section-number">8.1.2</span> Ejemplo con Optional</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> EjemploConOptional {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">String</span>[] cadena = <span class="kw">new</span> <span class="bu">String</span>[<span class="dv">3</span>];
+        Optional&lt;<span class="bu">String</span>&gt; testNull = Optional.<span class="fu">ofNullable</span>(cadena[<span class="dv">2</span>]);
+        <span class="kw">if</span> (testNull.<span class="fu">isPresent</span>()) {
+            <span class="bu">String</span> cadenaEnMinusculas = cadena[<span class="dv">2</span>].<span class="fu">toLowerCase</span>();
+            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(cadenaEnMinusculas);
+        } <span class="kw">else</span> {
+            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;No hay cadena en la posición indicada&quot;</span>);
+        }
+    }
+}</code></pre></div>
+<h1 id="stream"><span class="header-section-number">9</span> Stream</h1>
+<h2 id="características-4"><span class="header-section-number">9.1</span> Características</h2>
+<ul>
+<li>Nuevas interfaces, clases y enum para <strong>procesar datos mediante el paradigma funcional</strong>.</li>
+<li>Las operaciones realizadas en el stream <strong>no modifican el origen de datos</strong>.</li>
+<li>Pueden tener <strong>varias operaciones intermedias</strong> (filter(), map(), distinct(), etc.).</li>
+<li>Pero <strong>solo una operación final</strong> (collect(), findAny(), count(), etc.).</li>
+<li>Las <strong>operaciones intermedias son perezosas</strong> y sólo se invocarán si se ejecuta una operación final.</li>
+<li>El pipeline de operaciones <strong>se ejecutará para cada elemento</strong>.</li>
+</ul>
+<h3 id="ejemplo-sin-stream"><span class="header-section-number">9.1.1</span> Ejemplo sin Stream</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> EjemploSinStream {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">List</span>&lt;Producto&gt; productos = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;Producto&gt;();
+        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">200000000</span>; i++) {
+            <span class="dt">int</span> random = <span class="kw">new</span> <span class="bu">Random</span>().<span class="fu">nextInt</span>(<span class="dv">10</span> - <span class="dv">100</span>) + <span class="dv">10</span>;
+            productos.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Producto</span>(random));
+        }
+        <span class="bu">List</span>&lt;<span class="bu">Float</span>&gt; precios = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;<span class="bu">Float</span>&gt;();
+        <span class="kw">for</span> (Producto producto : productos) {
+            <span class="kw">if</span> (producto.<span class="fu">precio</span> &lt; <span class="dv">20</span>) {
+                precios.<span class="fu">add</span>(producto.<span class="fu">precio</span>);
+            }
+        }
+    }
+}</code></pre></div>
+<h3 id="ejemplo-con-stream"><span class="header-section-number">9.1.2</span> Ejemplo con Stream</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> EjemploConStream {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">List</span>&lt;Producto&gt; productos = <span class="kw">new</span> <span class="bu">Random</span>().<span class="fu">ints</span>(<span class="dv">200000000</span>, <span class="dv">10</span>, <span class="dv">100</span>)
+            .<span class="fu">map</span>(random -&gt; <span class="kw">new</span> <span class="fu">Product</span>(random))
+            .<span class="fu">collect</span>(Collectors.<span class="fu">toList</span>());
+        <span class="bu">List</span>&lt;<span class="bu">Float</span>&gt; preciosStream = productos.<span class="fu">stream</span>()
+            .<span class="fu">filter</span>(product -&gt; product.<span class="fu">getPrecio</span>() &lt; <span class="dv">20</span>)
+            .<span class="fu">map</span>(product -&gt; p.<span class="fu">getPrecio</span>())
+            .<span class="fu">collect</span>(Collectors.<span class="fu">toList</span>());
+    }
+}</code></pre></div>
+<h1 id="foreach"><span class="header-section-number">10</span> ForEach</h1>
+<h2 id="características-5"><span class="header-section-number">10.1</span> Características</h2>
+<ul>
+<li>Nuevo método para <strong>iterar</strong> elementos.</li>
+<li>Se define en las interfaces Iterable y Stream.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">default</span> <span class="dt">void</span> <span class="fu">forEach</span>(Consumer&lt;<span class="kw">super</span> T&gt; action)</code></pre></div>
+<h3 id="ejemplo-foreach"><span class="header-section-number">10.1.1</span> Ejemplo forEach</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> EjemploForEach {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">List</span>&lt;<span class="bu">String</span>&gt; crimenes = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;<span class="bu">String</span>&gt;();
+        crimenes.<span class="fu">add</span>(<span class="st">&quot;Asesinamiento&quot;</span>);
+        crimenes.<span class="fu">add</span>(<span class="st">&quot;Tener mal gusto&quot;</span>);
+        crimenes.<span class="fu">add</span>(<span class="st">&quot;Faltas de ortografía&quot;</span>);
+        crimenes.<span class="fu">add</span>(<span class="st">&quot;Bocata de chorizo con nocilla&quot;</span>);
+        crimenes.<span class="fu">forEach</span>(crimen -&gt; {
+            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Es un crimen el &quot;</span> + crimen)
+        });
+    }
+}</code></pre></div>
+<h1 id="collector"><span class="header-section-number">11</span> Collector</h1>
+<h2 id="características-6"><span class="header-section-number">11.1</span> Características</h2>
+<ul>
+<li>Permite realizar operaciones de <strong>reducción</strong>.</li>
+<li>Similar al <strong>group by</strong> de sql.</li>
+</ul>
+<h3 id="ejemplo-de-uso-de-collector"><span class="header-section-number">11.1.1</span> Ejemplo de uso de Collector</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">
+<span class="kw">public</span> <span class="kw">class</span> EjemploCollectors {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="bu">List</span>&lt;Pelicula&gt; peliculas = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;&gt;();
+        peliculas.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Pelicula</span>(<span class="dv">1</span>, <span class="st">&quot;ESDLA&quot;</span>, <span class="dv">25</span>));
+        peliculas.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Pelicula</span>(<span class="dv">2</span>, <span class="st">&quot;Piratas del Caribe&quot;</span>, <span class="dv">30</span>));
+        peliculas.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Pelicula</span>(<span class="dv">3</span>, <span class="st">&quot;Spiderman&quot;</span>, <span class="dv">28</span>));
+        peliculas.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Pelicula</span>(<span class="dv">4</span>, <span class="st">&quot;Wonder Woman&quot;</span>, <span class="dv">27</span>));
+        <span class="bu">List</span>&lt;<span class="bu">Float</span>&gt; precios = peliculas.<span class="fu">stream</span>()
+            .<span class="fu">map</span>(p -&gt; p.<span class="fu">getPrecio</span>())
+            .<span class="fu">collect</span>(Collectors.<span class="fu">toList</span>());
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(precios);
+        DoubleSummaryStatistics total = peliculas.<span class="fu">stream</span>()
+            .<span class="fu">collect</span>(Collectors.<span class="fu">summarizingDouble</span>(p -&gt; p.<span class="fu">getPrecio</span>()));
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Total: &quot;</span> + total.<span class="fu">getSum</span>());
+    }
+}</code></pre></div>
+<h1 id="ordenación-parallel-array"><span class="header-section-number">12</span> Ordenación Parallel Array</h1>
+<h2 id="características-7"><span class="header-section-number">12.1</span> Características</h2>
+<ul>
+<li>Java permite <strong>ordenar elementos en paralelo</strong>.</li>
+</ul>
+<h3 id="ejemplo"><span class="header-section-number">12.1.1</span> Ejemplo</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import</span><span class="im"> java.util.Arrays;</span>
+<span class="kw">public</span> <span class="kw">class</span> OrdenarArraysEnParalelo {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="dt">int</span>[] aOrdenar = {<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">6</span>,<span class="dv">9</span>};
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">print</span>(<span class="st">&quot;A Ordenar : &quot;</span>);
+        <span class="kw">for</span> (<span class="dt">int</span> i : aOrdenar) {
+            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">print</span>(i+<span class="st">&quot; &quot;</span>);
+        }
+        <span class="bu">Arrays</span>.<span class="fu">parallelSort</span>(aOrdenar);
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Array Ordenado: &quot;</span>);
+        <span class="kw">for</span> (<span class="dt">int</span> i : aOrdenar) {
+            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">print</span>(i+<span class="st">&quot; &quot;</span>);
+        }
+    }
+}</code></pre></div>
+<h1 id="java-time"><span class="header-section-number">13</span> Java time</h1>
+<h2 id="características-8"><span class="header-section-number">13.1</span> Características</h2>
+<ul>
+<li>Nuevas interfaces, clases y enums que simplifican el procesamiento de fechas.</li>
+<li><strong>DateTimeFormatter</strong> para formatear.</li>
+<li><strong>ZonedDateTime</strong> para manejar fechas y horas en distintos usos horarios.</li>
+<li><strong>Duration</strong> para manejar duraciones de tiempos (horas, minutos, segundos, etc.)</li>
+<li><strong>Period</strong> para manejar periodos de fechas (años, meses, días, etc.)</li>
+</ul>
+<h3 id="ejemplo-de-la-fecha-actual"><span class="header-section-number">13.1.1</span> Ejemplo de la fecha actual</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">
+<span class="kw">public</span> <span class="kw">class</span> HoraActual {
+  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+    DateTimeFormatter formattter = 
+        DateTimeFormatter.<span class="fu">ofPattern</span>(<span class="st">&quot;dd/MM/yyyy HH:mm:ss&quot;</span>);
+    ZonedDateTime now = ZonedDateTime.<span class="fu">now</span>();
+    <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(formattter<span class="fu">.format</span>(now));
+    <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(formattter<span class="fu">.format</span>(now.<span class="fu">plus</span>(<span class="bu">Duration</span>.<span class="fu">ofHours</span>(<span class="dv">2</span>))));
+    <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(formattter<span class="fu">.format</span>(now.<span class="fu">plus</span>(Period.<span class="fu">ofDays</span>(<span class="dv">2</span>))));
+  }
+}</code></pre></div>
+<h1 id="bibliografía"><span class="header-section-number">14</span> Bibliografía</h1>
+<h2 id="oficial-de-oracle"><span class="header-section-number">14.1</span> Oficial de Oracle</h2>
+<ul>
+<li><a href="https://www.oracle.com/technetwork/es/articles/java/class-optional-java-se-8-2262753-esa.html">Optional</a></li>
+<li><a href="https://www.oracle.com/technetwork/es/articles/java/paquete-java-time-2390472-esa.html">Fechas y horas</a></li>
+<li><a href="https://www.oracle.com/technetwork/es/articles/java/expresiones-lambda-api-stream-java-2633852-esa.html">Expresiones Lambda y API Stream – Parte 1</a></li>
+<li><a href="">Expresiones Lambda y API Stream – Parte 2</a>https://www.oracle.com/technetwork/es/articles/java/expresiones-lambda-api-stream-java-2737544-esa.html</li>
+<li><a href="https://www.oracle.com/technetwork/es/articles/java/procesamiento-streams-java-se-8-2763402-esa.html">Procesamiento de datos con streams</a></li>
+</ul>
+</body>
+</html>

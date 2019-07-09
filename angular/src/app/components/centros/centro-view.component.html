@@ -1,0 +1,5 @@
+<h3>Centro {{centro.codigo}} {{centro.generico}} {{centro.nombre}} ({{centro.localidad}})</h3>
+
+Modificado el {{centro.ultimaModificacion | date:'dd/MM/yyyy'}} por {{centro.usuarioModificacion}} |
+
+<a [routerLink]="['/centros/'+centro.codigo]">Editar centro</a>
