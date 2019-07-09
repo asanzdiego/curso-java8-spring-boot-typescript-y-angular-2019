@@ -1,4 +1,4 @@
-# Curso Java 8, Spring Boot, TypeScript y Angular
+# Curso de Java 8, Spring Boot, TypeScript y Angular
 
 - [Teoría Java 8](https://github.com/asanzdiego/curso-java8-spring-boot-typescript-y-angular-2019/raw/master/java-8/slides/export/java-8-reveal-slides.pdf)
 
